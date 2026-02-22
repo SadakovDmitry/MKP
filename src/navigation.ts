@@ -1,4 +1,4 @@
-export type SitePage = 'home' | 'about' | 'services' | 'cases' | 'news' | 'contacts';
+export type SitePage = 'home' | 'about' | 'services' | 'cases' | 'news' | 'useful' | 'contacts';
 
 export const PAGE_LABELS: Record<SitePage, string> = {
   home: 'Главная',
@@ -6,7 +6,8 @@ export const PAGE_LABELS: Record<SitePage, string> = {
   services: 'Услуги',
   cases: 'Кейсы',
   news: 'Статьи и новости',
+  useful: 'Полезное',
   contacts: 'Контакты',
 };
 
-export const NAV_ORDER: SitePage[] = ['home', 'about', 'services', 'cases', 'news', 'contacts'];
+export const NAV_ORDER: SitePage[] = ['home', 'about', 'services', 'cases', 'news', 'useful', 'contacts'];

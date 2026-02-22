@@ -1,25 +1,25 @@
 import { useState } from 'react';
 import { PAGE_LABELS, type SitePage } from './navigation';
 
-const imgVector = 'http://localhost:3845/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
-const imgVector1 = 'http://localhost:3845/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
-const imgVector2 = 'http://localhost:3845/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
-const imgVector3 = 'http://localhost:3845/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
-const imgGroup = 'http://localhost:3845/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
-const imgGroup1 = 'http://localhost:3845/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
-const imgGroup2 = 'http://localhost:3845/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
-const imgVector4 = 'http://localhost:3845/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
-const imgFrame13Desktop = 'http://localhost:3845/assets/552b828f557817905235015c2dad5dabdcd75d06.svg';
+const imgVector = '/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
+const imgVector1 = '/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
+const imgVector2 = '/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
+const imgVector3 = '/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
+const imgGroup = '/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
+const imgGroup1 = '/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
+const imgGroup2 = '/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
+const imgVector4 = '/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
+const imgFrame13Desktop = '/assets/552b828f557817905235015c2dad5dabdcd75d06.svg';
 
-const imgVectorM = 'http://localhost:3845/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
-const imgVector1M = 'http://localhost:3845/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg';
-const imgVector2M = 'http://localhost:3845/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg';
-const imgGroupM = 'http://localhost:3845/assets/3708100262517055cb967c2c7070d13fd25c600c.svg';
-const imgGroup1M = 'http://localhost:3845/assets/de0afd488f2abf5f902c9e00d18d746042bce3de.svg';
-const imgGroup2M = 'http://localhost:3845/assets/4f02ca83f54f5878ab3cd2c0e77e150e1818eead.svg';
-const imgVector3M = 'http://localhost:3845/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg';
-const imgFrame13Mobile = 'http://localhost:3845/assets/d772172a110d44bbe912d9a42fe90a45867d191a.svg';
-const imgFrameMenu = 'http://localhost:3845/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg';
+const imgVectorM = '/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
+const imgVector1M = '/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg';
+const imgVector2M = '/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg';
+const imgGroupM = '/assets/3708100262517055cb967c2c7070d13fd25c600c.svg';
+const imgGroup1M = '/assets/de0afd488f2abf5f902c9e00d18d746042bce3de.svg';
+const imgGroup2M = '/assets/4f02ca83f54f5878ab3cd2c0e77e150e1818eead.svg';
+const imgVector3M = '/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg';
+const imgFrame13Mobile = '/assets/d772172a110d44bbe912d9a42fe90a45867d191a.svg';
+const imgFrameMenu = '/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg';
 
 type FloatingHeaderProps = {
   currentPage: SitePage;
@@ -65,6 +65,7 @@ const MENU_ITEMS: Array<{ key: SitePage; label: string; width: string }> = [
   { key: 'services', label: 'Услуги', width: 'w-[70.722px]' },
   { key: 'cases', label: 'Кейсы', width: 'w-[70.722px]' },
   { key: 'news', label: 'Статьи и новости', width: 'w-[145px]' },
+  { key: 'useful', label: 'Полезное', width: 'w-[95px]' },
   { key: 'contacts', label: 'Контакты', width: 'w-[91.567px]' },
 ];
 
@@ -83,7 +84,7 @@ export default function FloatingHeader({ currentPage, onNavigate }: FloatingHead
           <div className="mx-auto w-[1160px] max-w-[calc(100vw-32px)] bg-[var(--color-2,#44b1d2)] h-[47px] overflow-clip rounded-[50px] relative">
             <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-1/2 -translate-x-1/2 top-[23.5px] w-[1150px] max-w-[calc(100vw-42px)]">
               <DesktopBrand onClick={() => handleNavigate('home')} />
-              <div className="content-stretch flex gap-[20px] items-center relative shrink-0 w-[719.278px]">
+              <div className="content-stretch flex gap-[14px] items-center relative shrink-0 w-[770px] max-w-[calc(100vw-230px)]">
                 {MENU_ITEMS.map((item) => (
                   <button
                     key={item.key}
@@ -95,15 +96,19 @@ export default function FloatingHeader({ currentPage, onNavigate }: FloatingHead
                   </button>
                 ))}
               </div>
-              <button type="button" className="h-[37px] relative shrink-0 w-[37.032px] border-0 bg-transparent p-0 cursor-pointer" aria-label="Telegram">
-                <img alt="" className="absolute block max-w-none size-full" src={imgFrame13Desktop} />
+              <button
+                type="button"
+                className="h-[37px] w-[37px] shrink-0 border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center"
+                aria-label="Telegram"
+              >
+                <img alt="" className="block h-full w-full object-contain" src={imgFrame13Desktop} />
               </button>
             </div>
           </div>
         </div>
 
         <div className="lg:hidden px-3">
-          <div className="mx-auto max-w-[480px] bg-[var(--color-2,#44b1d2)] h-[56px] rounded-[60px] px-2 flex items-center justify-between">
+          <div className="w-full bg-[var(--color-2,#44b1d2)] h-[56px] rounded-[60px] px-2 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MobileBrand onClick={() => handleNavigate('home')} />
               <button
@@ -111,9 +116,9 @@ export default function FloatingHeader({ currentPage, onNavigate }: FloatingHead
                 aria-label="Открыть меню"
                 aria-expanded={menuOpen}
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="h-[36px] w-[36px] relative border-0 bg-transparent p-0 cursor-pointer"
+                className="h-[22px] w-[32px] relative border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center"
               >
-                <img alt="" className="absolute inset-0 block max-w-none size-full" src={imgFrameMenu} />
+                <img alt="" className="block h-[20px] w-[28px] object-contain" src={imgFrameMenu} />
               </button>
             </div>
 
@@ -127,15 +132,13 @@ export default function FloatingHeader({ currentPage, onNavigate }: FloatingHead
           </div>
 
           {menuOpen && (
-            <div className="mt-2 mx-auto max-w-[480px] bg-[#44b1d2] rounded-[24px] p-3 flex flex-col gap-2 shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
+            <div className="mt-2 ml-12 flex w-[152px] flex-col gap-[9px]">
               {MENU_ITEMS.map((item) => (
                 <button
                   key={item.key}
                   type="button"
                   onClick={() => handleNavigate(item.key)}
-                  className={`h-10 rounded-[999px] text-sm font-['Roboto:Medium',sans-serif] border-0 cursor-pointer ${
-                    item.key === currentPage ? 'bg-[#1f556b] text-white' : 'bg-white text-[#1f556b]'
-                  }`}
+                  className="h-[28px] w-full rounded-[999px] border-0 cursor-pointer bg-[#44b1d2] text-white text-[12px] leading-none font-['Roboto:Medium',sans-serif] text-center shadow-[0_6px_14px_rgba(0,0,0,0.2)]"
                 >
                   {item.label}
                 </button>

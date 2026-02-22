@@ -1,11 +1,11 @@
-const imgImage30 = "http://localhost:3845/assets/931b6633863d1f54a5fc4411e8d68e92170b9644.png";
-const imgImage32 = "http://localhost:3845/assets/fd2feb640c8e531cfacca0277edea7ff68ecea7f.png";
-const imgImage31 = "http://localhost:3845/assets/38c93582bc755349ad4bcef1516f2c8f81b8cf05.png";
-const imgImage33 = "http://localhost:3845/assets/60a83ebdd7f5d44a2f9856f2b9435915d6c51445.png";
-const imgExclude = "http://localhost:3845/assets/b64dd81d1a35824c308ed72b9711d0a00eedd245.svg";
-const imgExclude1 = "http://localhost:3845/assets/ee77955046f0fc75092854add3bc73ef4db13648.svg";
-const imgExclude2 = "http://localhost:3845/assets/6bb0d15635f2923b7f782e24ebf7c6401041f5bf.svg";
-const imgExclude3 = "http://localhost:3845/assets/6f378aae965602164109861c6e749b9386f7b4dd.svg";
+const imgImage30 = "/assets/931b6633863d1f54a5fc4411e8d68e92170b9644.png";
+const imgImage32 = "/assets/fd2feb640c8e531cfacca0277edea7ff68ecea7f.png";
+const imgImage31 = "/assets/38c93582bc755349ad4bcef1516f2c8f81b8cf05.png";
+const imgImage33 = "/assets/60a83ebdd7f5d44a2f9856f2b9435915d6c51445.png";
+const imgExclude = "/assets/b64dd81d1a35824c308ed72b9711d0a00eedd245.svg";
+const imgExclude1 = "/assets/ee77955046f0fc75092854add3bc73ef4db13648.svg";
+const imgExclude2 = "/assets/6bb0d15635f2923b7f782e24ebf7c6401041f5bf.svg";
+const imgExclude3 = "/assets/6f378aae965602164109861c6e749b9386f7b4dd.svg";
 
 export default function MobileNews() {
   return (

@@ -1,31 +1,31 @@
 import { useState } from 'react';
 import { NAV_ORDER, PAGE_LABELS, type SitePage } from './navigation';
 
-const imgChatGptImage2020251203481 = 'http://localhost:3845/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.png';
-const imgMkrIcons0003Layer4 = 'http://localhost:3845/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png';
-const imgMkrIcons0002Layer3 = 'http://localhost:3845/assets/bec0c030b20d45265db78ce720b9e7821571d36a.png';
-const imgMkrIcons0004Layer0Copy = 'http://localhost:3845/assets/967e1e665c88e5a01a218fecde6762cf105f578c.png';
-const imgMkrIcons0001Layer2 = 'http://localhost:3845/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.png';
-const imgMkrIcons0000Layer1 = 'http://localhost:3845/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png';
-const imgPhoto1581847797580A3Ac8010D37C6 = 'http://localhost:3845/assets/6826aba9ca6c5754507d0ace4c141b413a723ce2.png';
-const imgPhoto1581847797580A3Ac8010D37C4 = 'http://localhost:3845/assets/4c40daade4fe15d923424347599abcd4494255dc.png';
-const imgPhoto1581847797580A3Ac8010D37C2 = 'http://localhost:3845/assets/a3c6acf47334f080ede8b9f1d08b1c29979c7cb7.png';
-const imgPhoto1581847797580A3Ac8010D37C3 = 'http://localhost:3845/assets/a2690544f5482e64438463611a054497557f0095.png';
-const imgPhoto1581847797580A3Ac8010D37C1 = 'http://localhost:3845/assets/6e6dc8eaf9c066423b563fe491388fde30f273d3.png';
-const imgPhoto1581847797580A3Ac8010D37C5 = 'http://localhost:3845/assets/fbe5431bf3142ec8a7e5c55acb501ebdc6476716.png';
-const imgVector = 'http://localhost:3845/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
-const imgVector1 = 'http://localhost:3845/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
-const imgVector2 = 'http://localhost:3845/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
-const imgVector3 = 'http://localhost:3845/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
-const imgGroup = 'http://localhost:3845/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
-const imgGroup1 = 'http://localhost:3845/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
-const imgGroup2 = 'http://localhost:3845/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
-const imgVector4 = 'http://localhost:3845/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
-const imgFrame13 = 'http://localhost:3845/assets/6470d4adf4a48499ba84260d97166147d9ba6e00.svg';
-const imgVector5 = 'http://localhost:3845/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
-const imgExclude1 = 'http://localhost:3845/assets/99014d703a291afdf234eb6f59fec6227c1f1c68.svg';
-const imgVector6 = 'http://localhost:3845/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
-const imgExclude2 = 'http://localhost:3845/assets/0b7d9152cdcc38abcd33a65b61632eab52d87fe3.svg';
+const imgChatGptImage2020251203481 = '/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.png';
+const imgMkrIcons0003Layer4 = '/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png';
+const imgMkrIcons0002Layer3 = '/assets/bec0c030b20d45265db78ce720b9e7821571d36a.png';
+const imgMkrIcons0004Layer0Copy = '/assets/967e1e665c88e5a01a218fecde6762cf105f578c.png';
+const imgMkrIcons0001Layer2 = '/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.png';
+const imgMkrIcons0000Layer1 = '/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png';
+const imgPhoto1581847797580A3Ac8010D37C6 = '/assets/6826aba9ca6c5754507d0ace4c141b413a723ce2.png';
+const imgPhoto1581847797580A3Ac8010D37C4 = '/assets/4c40daade4fe15d923424347599abcd4494255dc.png';
+const imgPhoto1581847797580A3Ac8010D37C2 = '/assets/a3c6acf47334f080ede8b9f1d08b1c29979c7cb7.png';
+const imgPhoto1581847797580A3Ac8010D37C3 = '/assets/a2690544f5482e64438463611a054497557f0095.png';
+const imgPhoto1581847797580A3Ac8010D37C1 = '/assets/6e6dc8eaf9c066423b563fe491388fde30f273d3.png';
+const imgPhoto1581847797580A3Ac8010D37C5 = '/assets/fbe5431bf3142ec8a7e5c55acb501ebdc6476716.png';
+const imgVector = '/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
+const imgVector1 = '/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
+const imgVector2 = '/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
+const imgVector3 = '/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
+const imgGroup = '/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
+const imgGroup1 = '/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
+const imgGroup2 = '/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
+const imgVector4 = '/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
+const imgFrame13 = '/assets/6470d4adf4a48499ba84260d97166147d9ba6e00.svg';
+const imgVector5 = '/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
+const imgExclude1 = '/assets/99014d703a291afdf234eb6f59fec6227c1f1c68.svg';
+const imgVector6 = '/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
+const imgExclude2 = '/assets/0b7d9152cdcc38abcd33a65b61632eab52d87fe3.svg';
 
 type AboutPageAdaptiveProps = {
   onNavigate: (page: SitePage) => void;
@@ -303,6 +303,7 @@ export default function AboutPageAdaptive({ onNavigate }: AboutPageAdaptiveProps
             <button type="button" onClick={() => handleNavigate('services')} className="text-left hover:opacity-80">Услуги</button>
             <button type="button" onClick={() => handleNavigate('news')} className="text-left hover:opacity-80">Статьи</button>
             <button type="button" onClick={() => handleNavigate('cases')} className="text-left hover:opacity-80">Кейсы</button>
+            <button type="button" onClick={() => handleNavigate('useful')} className="text-left hover:opacity-80">Полезное</button>
             <button type="button" onClick={() => handleNavigate('contacts')} className="text-left hover:opacity-80">Контакты</button>
           </div>
 

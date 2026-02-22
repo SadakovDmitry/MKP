@@ -1,7 +1,7 @@
-const imgShutterstock2474508323Converted012 = "http://localhost:3845/assets/a721360e788c5c8db3a22e6abc8d2bd83fdd4248.png";
-const imgChatGptImage720251248321 = "http://localhost:3845/assets/94a22839c9325e1749240f5d169676c408f85555.png";
-const imgChatGptImage720251251291 = "http://localhost:3845/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.png";
-const imgChatGptImage1320251804221 = "http://localhost:3845/assets/c1943de73e30c25267fce6bfb7ea226035562464.png";
+const imgShutterstock2474508323Converted012 = "/assets/a721360e788c5c8db3a22e6abc8d2bd83fdd4248.png";
+const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.png";
+const imgChatGptImage720251251291 = "/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.png";
+const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.png";
 
 export default function MobileAdvantages() {
   return (

@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 9.60283 10.2393" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group" opacity="0.7">
+<path id="Vector" d="M0 10.2393C6.55371 9.01973 10.3198 6.74134 9.48881 1.39384C8.41663 0.670113 7.45167 0.227839 6.80836 0C8.56405 6.04443 4.54337 8.56405 0 10.2393Z" fill="url(#paint0_radial_2020_37)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_2020_37" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(8.18516 0.361609) rotate(-45) scale(10.5177)">
+<stop stop-color="white"/>
+<stop offset="1"/>
+</radialGradient>
+</defs>
+</svg>

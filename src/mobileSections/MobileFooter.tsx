@@ -1,9 +1,9 @@
-const imgLine2 = "http://localhost:3845/assets/4834aefdbebadba1abb4eb0735aa739e6898607f.svg";
-const imgVector = "http://localhost:3845/assets/7e8e9a9a286797089b23f5287ad6ada1d4f97712.svg";
-const imgExclude = "http://localhost:3845/assets/57ae13d395948302f09cc38d65527798d9d70ee8.svg";
-const imgExclude1 = "http://localhost:3845/assets/a2f96c9e39551efa4ca8df09dda7497031f49bf5.svg";
-const imgGroup = "http://localhost:3845/assets/1f493c18a22fbf614331ba02f6e28ba35fbae54c.svg";
-const imgVector1 = "http://localhost:3845/assets/3ec5538c32a262d9550a9627e987ff9e88203d0e.svg";
+const imgLine2 = "/assets/4834aefdbebadba1abb4eb0735aa739e6898607f.svg";
+const imgVector = "/assets/7e8e9a9a286797089b23f5287ad6ada1d4f97712.svg";
+const imgExclude = "/assets/57ae13d395948302f09cc38d65527798d9d70ee8.svg";
+const imgExclude1 = "/assets/a2f96c9e39551efa4ca8df09dda7497031f49bf5.svg";
+const imgGroup = "/assets/1f493c18a22fbf614331ba02f6e28ba35fbae54c.svg";
+const imgVector1 = "/assets/3ec5538c32a262d9550a9627e987ff9e88203d0e.svg";
 
 export default function MobileFooter() {
   return (

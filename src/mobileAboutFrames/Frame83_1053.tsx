@@ -1,5 +1,5 @@
-const imgPolygon4 = "http://localhost:3845/assets/8efeac8f73a978a929719ba606af91056365c6a3.svg";
-const imgPolygon5 = "http://localhost:3845/assets/bc757ad864f67c3668467c63e101f282a8dbfed1.svg";
+const imgPolygon4 = "/assets/8efeac8f73a978a929719ba606af91056365c6a3.svg";
+const imgPolygon5 = "/assets/bc757ad864f67c3668467c63e101f282a8dbfed1.svg";
 
 export default function Mobile() {
   return (

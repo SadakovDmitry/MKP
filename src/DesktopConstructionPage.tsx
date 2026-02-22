@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 import { PAGE_LABELS, type SitePage } from './navigation';
 
-const imgVector = 'http://localhost:3845/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
-const imgVector1 = 'http://localhost:3845/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
-const imgVector2 = 'http://localhost:3845/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
-const imgVector3 = 'http://localhost:3845/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
-const imgGroup = 'http://localhost:3845/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
-const imgGroup1 = 'http://localhost:3845/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
-const imgGroup2 = 'http://localhost:3845/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
-const imgVector4 = 'http://localhost:3845/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
-const imgFrame13 = 'http://localhost:3845/assets/552b828f557817905235015c2dad5dabdcd75d06.svg';
+const imgVector = '/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
+const imgVector1 = '/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
+const imgVector2 = '/assets/b644b22fa8721f42839eae50f1394fb5f7246d6c.svg';
+const imgVector3 = '/assets/afc4dff6a386e5a9bbef91e7deb6f74d4aef0f9f.svg';
+const imgGroup = '/assets/9797281a12c87b7ae0593e80ffe07a1a0d4c4124.svg';
+const imgGroup1 = '/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
+const imgGroup2 = '/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
+const imgVector4 = '/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
+const imgFrame13 = '/assets/552b828f557817905235015c2dad5dabdcd75d06.svg';
 
-const imgLine1 = 'http://localhost:3845/assets/7918af23ed3296b8e767190c8279c0139f0ec990.svg';
-const imgVector5 = 'http://localhost:3845/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
-const imgExclude3 = 'http://localhost:3845/assets/99014d703a291afdf234eb6f59fec6227c1f1c68.svg';
-const imgExclude4 = 'http://localhost:3845/assets/0b7d9152cdcc38abcd33a65b61632eab52d87fe3.svg';
-const imgVector6 = 'http://localhost:3845/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
+const imgLine1 = '/assets/7918af23ed3296b8e767190c8279c0139f0ec990.svg';
+const imgVector5 = '/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
+const imgExclude3 = '/assets/99014d703a291afdf234eb6f59fec6227c1f1c68.svg';
+const imgExclude4 = '/assets/0b7d9152cdcc38abcd33a65b61632eab52d87fe3.svg';
+const imgVector6 = '/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
 
 const FRAME_WIDTH = 1400;
 const FRAME_HEIGHT = 950;

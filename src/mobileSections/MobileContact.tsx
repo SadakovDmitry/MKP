@@ -1,5 +1,5 @@
-const img3DRenderedSilverEnvelopeIconSymbolShinyMetallicEmailIllustrationIsolatedOnTransparentBackgroundForMessagingAndCommunicationDesignPng1 = "http://localhost:3845/assets/99529a733eeb5b552be035c8cca8fe0182a35c67.png";
-const imgExclude = "http://localhost:3845/assets/e38681f5ecbd1f392819aea92eb2583c57615e89.svg";
+const img3DRenderedSilverEnvelopeIconSymbolShinyMetallicEmailIllustrationIsolatedOnTransparentBackgroundForMessagingAndCommunicationDesignPng1 = "/assets/99529a733eeb5b552be035c8cca8fe0182a35c67.png";
+const imgExclude = "/assets/e38681f5ecbd1f392819aea92eb2583c57615e89.svg";
 
 export default function MobileContact() {
   return (

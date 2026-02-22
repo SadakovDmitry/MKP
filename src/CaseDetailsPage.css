@@ -1,0 +1,319 @@
+.case-details-page {
+  background: #ffffff;
+  color: #313131;
+  min-height: 100vh;
+}
+
+.case-details-page__main {
+  width: min(1160px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-top: 116px;
+  padding-bottom: 56px;
+}
+
+.case-details-hero {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 470px);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.case-details-hero__content {
+  border: 1px solid #d2e7ef;
+  border-radius: 36px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  background: #f8fcfe;
+}
+
+.case-details-back {
+  width: fit-content;
+  border: 1px solid #1f556b;
+  border-radius: 999px;
+  padding: 8px 18px;
+  background: #ffffff;
+  color: #1f556b;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.case-details-kicker {
+  margin: 22px 0 0;
+  color: #1f556b;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-details-title {
+  margin: 10px 0 0;
+  font-family: 'Geologica', sans-serif;
+  font-size: clamp(32px, 5.2vw, 58px);
+  line-height: 0.95;
+  font-weight: 500;
+  color: #313131;
+}
+
+.case-details-subtitle {
+  margin: 16px 0 0;
+  font-family: 'Geologica', sans-serif;
+  font-size: clamp(20px, 2.2vw, 30px);
+  line-height: 0.95;
+  color: #1f556b;
+}
+
+.case-details-intro {
+  margin: 22px 0 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.25;
+}
+
+.case-details-cta {
+  margin-top: auto;
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 24px;
+  background: #1f556b;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'Geologica', sans-serif;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.case-details-hero__media {
+  position: relative;
+  border-radius: 36px;
+  overflow: hidden;
+  min-height: 420px;
+  background: #d9ebf2;
+}
+
+.case-details-hero__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.case-details-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(49, 49, 49, 0.08) 0%, rgba(49, 49, 49, 0.35) 100%);
+  pointer-events: none;
+}
+
+.case-details-meta {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.case-meta-card {
+  border: 1px solid #d2e7ef;
+  border-radius: 22px;
+  padding: 16px 18px;
+  background: #ffffff;
+}
+
+.case-meta-card__label {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #7a8e98;
+  font-size: 13px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.case-meta-card__value {
+  margin: 10px 0 0;
+  font-family: 'Roboto', sans-serif;
+  color: #313131;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.case-details-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.case-details-block {
+  border-radius: 30px;
+  background: #f3f9fc;
+  padding: 24px;
+}
+
+.case-details-block__title {
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+  color: #1f556b;
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 0.95;
+  font-weight: 500;
+}
+
+.case-details-list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.case-details-list li {
+  position: relative;
+  padding-left: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.2;
+  color: #313131;
+}
+
+.case-details-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #44b1d2;
+}
+
+.case-details-result {
+  margin-top: 14px;
+  border-radius: 30px;
+  background: #1f556b;
+  color: #ffffff;
+  padding: 24px;
+}
+
+.case-details-result .case-details-block__title,
+.case-details-result .case-details-list li {
+  color: #ffffff;
+}
+
+.case-details-result .case-details-list li::before {
+  background: #ffffff;
+}
+
+.case-details-related {
+  margin-top: 34px;
+}
+
+.case-details-related__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.case-details-all-cases {
+  border: 1px solid #1f556b;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1f556b;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.case-details-related__grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.case-details-related-card {
+  position: relative;
+  border: 0;
+  padding: 0;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 180px;
+  cursor: pointer;
+  background: #d8e8ef;
+}
+
+.case-details-related-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-details-related-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(49, 49, 49, 0.05) 0%, rgba(49, 49, 49, 0.72) 100%);
+}
+
+.case-details-related-card__title {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  color: #ffffff;
+  text-align: left;
+  font-family: 'Geologica', sans-serif;
+  font-size: clamp(18px, 1.8vw, 26px);
+  line-height: 0.95;
+}
+
+@media (max-width: 1100px) {
+  .case-details-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .case-details-page__main {
+    width: min(700px, calc(100% - 24px));
+    padding-top: 86px;
+    padding-bottom: 40px;
+  }
+
+  .case-details-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .case-details-hero__media {
+    min-height: 320px;
+    order: -1;
+  }
+
+  .case-details-hero__content {
+    padding: 24px;
+    border-radius: 28px;
+  }
+
+  .case-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-details-related__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .case-details-meta {
+    grid-template-columns: 1fr;
+  }
+}

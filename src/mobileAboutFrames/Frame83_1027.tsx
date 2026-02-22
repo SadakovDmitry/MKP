@@ -1,9 +1,9 @@
-const imgMkrIcons0003Layer4 = "http://localhost:3845/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png";
-const imgMkrIcons0002Layer3 = "http://localhost:3845/assets/bec0c030b20d45265db78ce720b9e7821571d36a.png";
-const imgMkrIcons0004Layer0Copy = "http://localhost:3845/assets/967e1e665c88e5a01a218fecde6762cf105f578c.png";
-const imgMkrIcons0001Layer2 = "http://localhost:3845/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.png";
-const imgMkrIcons0000Layer1 = "http://localhost:3845/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png";
-const imgExclude = "http://localhost:3845/assets/5b1e24b337d2c82bcf513937d48509498b8d98da.svg";
+const imgMkrIcons0003Layer4 = "/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png";
+const imgMkrIcons0002Layer3 = "/assets/bec0c030b20d45265db78ce720b9e7821571d36a.png";
+const imgMkrIcons0004Layer0Copy = "/assets/967e1e665c88e5a01a218fecde6762cf105f578c.png";
+const imgMkrIcons0001Layer2 = "/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.png";
+const imgMkrIcons0000Layer1 = "/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png";
+const imgExclude = "/assets/5b1e24b337d2c82bcf513937d48509498b8d98da.svg";
 
 export default function Mobile() {
   return (

@@ -1,9 +1,9 @@
-const imgChatGptImage1320251735561 = "http://localhost:3845/assets/9a2ea7309518ee76a6b97175e1aa7477a7cfc0fc.png";
-const imgChatGptImage1320251802081 = "http://localhost:3845/assets/90ec21a8e07043728f8fdadfb5773adc70c3b66e.png";
-const imgChatGptImage1320251737291 = "http://localhost:3845/assets/4a99f27e97f28314170723b56e93bfdc867d868a.png";
-const imgChatGptImage132025175029 = "http://localhost:3845/assets/a31d752484cb75bd4215525705c86961266bebee.png";
-const imgChatGptImage1320251738531 = "http://localhost:3845/assets/cb9636fa326937888360f117de63def7956a4533.png";
-const imgChatGptImage132025175238 = "http://localhost:3845/assets/061e136ba2bf5647e14f796954062344e97ad218.png";
+const imgChatGptImage1320251735561 = "/assets/9a2ea7309518ee76a6b97175e1aa7477a7cfc0fc.png";
+const imgChatGptImage1320251802081 = "/assets/90ec21a8e07043728f8fdadfb5773adc70c3b66e.png";
+const imgChatGptImage1320251737291 = "/assets/4a99f27e97f28314170723b56e93bfdc867d868a.png";
+const imgChatGptImage132025175029 = "/assets/a31d752484cb75bd4215525705c86961266bebee.png";
+const imgChatGptImage1320251738531 = "/assets/cb9636fa326937888360f117de63def7956a4533.png";
+const imgChatGptImage132025175238 = "/assets/061e136ba2bf5647e14f796954062344e97ad218.png";
 
 export default function MobileCases() {
   return (

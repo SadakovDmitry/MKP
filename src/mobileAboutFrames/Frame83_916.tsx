@@ -1,5 +1,5 @@
-const imgImage34 = "http://localhost:3845/assets/61ce1ecc45f7ae3dfa85ea190f09b612f702263e.png";
-const imgImage33 = "http://localhost:3845/assets/d90fc2f6a0441d6c47f97d9e67fb67373cedf843.png";
+const imgImage34 = "/assets/61ce1ecc45f7ae3dfa85ea190f09b612f702263e.png";
+const imgImage33 = "/assets/d90fc2f6a0441d6c47f97d9e67fb67373cedf843.png";
 
 export default function Mobile() {
   return (

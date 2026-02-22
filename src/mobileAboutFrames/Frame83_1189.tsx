@@ -1,9 +1,9 @@
-const imgEllipse7 = "http://localhost:3845/assets/908ec86422bbf6177acd1252a024395c17183a69.svg";
-const imgUnion = "http://localhost:3845/assets/d24958b979306eadc673c80d6aac358c9b7c8ba5.svg";
-const imgUnion1 = "http://localhost:3845/assets/9e84e84bab6ebcb17922d6a0427318b2d22958c7.svg";
-const imgUnion2 = "http://localhost:3845/assets/3501aaafcd06362d773fcf9e9c024e1e0b38479d.svg";
-const imgPolygon4 = "http://localhost:3845/assets/e60188c86846deba4f16519b69edaeb5485d697c.svg";
-const imgPolygon5 = "http://localhost:3845/assets/28f1a2630b88475233f7b1ae6ab8b8cb5e3fa0ca.svg";
+const imgEllipse7 = "/assets/908ec86422bbf6177acd1252a024395c17183a69.svg";
+const imgUnion = "/assets/d24958b979306eadc673c80d6aac358c9b7c8ba5.svg";
+const imgUnion1 = "/assets/9e84e84bab6ebcb17922d6a0427318b2d22958c7.svg";
+const imgUnion2 = "/assets/3501aaafcd06362d773fcf9e9c024e1e0b38479d.svg";
+const imgPolygon4 = "/assets/e60188c86846deba4f16519b69edaeb5485d697c.svg";
+const imgPolygon5 = "/assets/28f1a2630b88475233f7b1ae6ab8b8cb5e3fa0ca.svg";
 
 export default function Mobile() {
   return (

@@ -1,12 +1,12 @@
-const imgVector = "http://localhost:3845/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg";
-const imgVector1 = "http://localhost:3845/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg";
-const imgVector2 = "http://localhost:3845/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg";
-const imgGroup = "http://localhost:3845/assets/bb34f46e549aede313f3c93f3a143237a03c19aa.svg";
-const imgGroup1 = "http://localhost:3845/assets/70697ffe57de285ed6c96364f0bfea1ae94de6a3.svg";
-const imgGroup2 = "http://localhost:3845/assets/d8c03014984be064af769addfa533849a749797d.svg";
-const imgVector3 = "http://localhost:3845/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg";
-const imgFrame13 = "http://localhost:3845/assets/1b9e3d482619feaaaebcf5e44b5b6361cc1defcf.svg";
-const imgFrame1077243566 = "http://localhost:3845/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg";
+const imgVector = "/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg";
+const imgVector1 = "/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg";
+const imgVector2 = "/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg";
+const imgGroup = "/assets/bb34f46e549aede313f3c93f3a143237a03c19aa.svg";
+const imgGroup1 = "/assets/70697ffe57de285ed6c96364f0bfea1ae94de6a3.svg";
+const imgGroup2 = "/assets/d8c03014984be064af769addfa533849a749797d.svg";
+const imgVector3 = "/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg";
+const imgFrame13 = "/assets/1b9e3d482619feaaaebcf5e44b5b6361cc1defcf.svg";
+const imgFrame1077243566 = "/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg";
 
 export default function Mobile() {
   return (

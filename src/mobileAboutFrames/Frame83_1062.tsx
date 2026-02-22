@@ -1,9 +1,9 @@
-const imgPhoto1581847797580A3Ac8010D37C6 = "http://localhost:3845/assets/6826aba9ca6c5754507d0ace4c141b413a723ce2.png";
-const imgPhoto1581847797580A3Ac8010D37C4 = "http://localhost:3845/assets/4c40daade4fe15d923424347599abcd4494255dc.png";
-const imgPhoto1581847797580A3Ac8010D37C2 = "http://localhost:3845/assets/a3c6acf47334f080ede8b9f1d08b1c29979c7cb7.png";
-const imgPhoto1581847797580A3Ac8010D37C3 = "http://localhost:3845/assets/a2690544f5482e64438463611a054497557f0095.png";
-const imgPhoto1581847797580A3Ac8010D37C1 = "http://localhost:3845/assets/6e6dc8eaf9c066423b563fe491388fde30f273d3.png";
-const imgPhoto1581847797580A3Ac8010D37C5 = "http://localhost:3845/assets/fbe5431bf3142ec8a7e5c55acb501ebdc6476716.png";
+const imgPhoto1581847797580A3Ac8010D37C6 = "/assets/6826aba9ca6c5754507d0ace4c141b413a723ce2.png";
+const imgPhoto1581847797580A3Ac8010D37C4 = "/assets/4c40daade4fe15d923424347599abcd4494255dc.png";
+const imgPhoto1581847797580A3Ac8010D37C2 = "/assets/a3c6acf47334f080ede8b9f1d08b1c29979c7cb7.png";
+const imgPhoto1581847797580A3Ac8010D37C3 = "/assets/a2690544f5482e64438463611a054497557f0095.png";
+const imgPhoto1581847797580A3Ac8010D37C1 = "/assets/6e6dc8eaf9c066423b563fe491388fde30f273d3.png";
+const imgPhoto1581847797580A3Ac8010D37C5 = "/assets/fbe5431bf3142ec8a7e5c55acb501ebdc6476716.png";
 
 export default function Mobile() {
   return (

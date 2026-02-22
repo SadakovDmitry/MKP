@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { PAGE_LABELS, type SitePage } from '../navigation';
 
-const img21 = 'http://localhost:3845/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png';
-const imgVector = 'http://localhost:3845/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
-const imgVector1 = 'http://localhost:3845/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg';
-const imgVector2 = 'http://localhost:3845/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg';
-const imgGroup = 'http://localhost:3845/assets/3708100262517055cb967c2c7070d13fd25c600c.svg';
-const imgGroup1 = 'http://localhost:3845/assets/de0afd488f2abf5f902c9e00d18d746042bce3de.svg';
-const imgGroup2 = 'http://localhost:3845/assets/4f02ca83f54f5878ab3cd2c0e77e150e1818eead.svg';
-const imgVector3 = 'http://localhost:3845/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg';
-const imgFrame13 = 'http://localhost:3845/assets/d772172a110d44bbe912d9a42fe90a45867d191a.svg';
-const imgFrame1077243566 = 'http://localhost:3845/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg';
+const img21 = '/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png';
+const imgVector = '/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
+const imgVector1 = '/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg';
+const imgVector2 = '/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg';
+const imgGroup = '/assets/3708100262517055cb967c2c7070d13fd25c600c.svg';
+const imgGroup1 = '/assets/de0afd488f2abf5f902c9e00d18d746042bce3de.svg';
+const imgGroup2 = '/assets/4f02ca83f54f5878ab3cd2c0e77e150e1818eead.svg';
+const imgVector3 = '/assets/6a8d3c14ffe203976631a80c8f4b2fc718f0eba8.svg';
+const imgFrame13 = '/assets/d772172a110d44bbe912d9a42fe90a45867d191a.svg';
+const imgFrame1077243566 = '/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg';
 
 type MobileHeroProps = {
   currentPage: SitePage;
