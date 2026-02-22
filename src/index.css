@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Keep CTA text on one line in mobile hero */
+[data-node-id='83:327'] {
+  white-space: nowrap !important;
+}
+
+/* Use unified shared header across all Figma frames */
+[data-node-id='78:40'],
+[data-node-id='38:4'],
+[data-node-id='83:264'],
+[data-node-id='83:435'] {
+  display: none !important;
+}
+
+.about-adaptive-local-header {
+  display: none !important;
+}
