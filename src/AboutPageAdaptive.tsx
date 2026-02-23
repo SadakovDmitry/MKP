@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NAV_ORDER, PAGE_LABELS, type SitePage } from './navigation';
+import SharedFooter from './SharedFooter';
 
 const imgChatGptImage2020251203481 = '/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.png';
 const imgMkrIcons0003Layer4 = '/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png';
@@ -22,11 +23,6 @@ const imgGroup1 = '/assets/ab0b1a956333b2ca75e0ef7344df86b861e5a89b.svg';
 const imgGroup2 = '/assets/828b4e1b6f7560be0f6a9d2052198211695fdb93.svg';
 const imgVector4 = '/assets/92bd6b17994701895673ae98ac3d83d15acee971.svg';
 const imgFrame13 = '/assets/6470d4adf4a48499ba84260d97166147d9ba6e00.svg';
-const imgVector5 = '/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
-const imgExclude1 = '/assets/99014d703a291afdf234eb6f59fec6227c1f1c68.svg';
-const imgVector6 = '/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
-const imgExclude2 = '/assets/0b7d9152cdcc38abcd33a65b61632eab52d87fe3.svg';
-
 type AboutPageAdaptiveProps = {
   onNavigate: (page: SitePage) => void;
 };
@@ -296,31 +292,7 @@ export default function AboutPageAdaptive({ onNavigate }: AboutPageAdaptiveProps
         </section>
       </main>
 
-      <footer className="bg-[#313131] mt-8">
-        <div className="mx-auto max-w-[1200px] px-4 py-10 sm:px-6 lg:px-8 text-white">
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-[16px] sm:text-[19.22px] font-['Roboto:Medium',sans-serif]">
-            <button type="button" onClick={() => handleNavigate('about')} className="text-left hover:opacity-80">О компании</button>
-            <button type="button" onClick={() => handleNavigate('services')} className="text-left hover:opacity-80">Услуги</button>
-            <button type="button" onClick={() => handleNavigate('news')} className="text-left hover:opacity-80">Статьи</button>
-            <button type="button" onClick={() => handleNavigate('cases')} className="text-left hover:opacity-80">Кейсы</button>
-            <button type="button" onClick={() => handleNavigate('useful')} className="text-left hover:opacity-80">Полезное</button>
-            <button type="button" onClick={() => handleNavigate('contacts')} className="text-left hover:opacity-80">Контакты</button>
-          </div>
-
-          <div className="h-px bg-white/35 mt-8" />
-
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <img alt="" src={imgVector5} className="w-6 h-6" />
-            <img alt="" src={imgExclude1} className="w-7 h-7" />
-            <img alt="" src={imgVector6} className="w-6 h-6" />
-            <img alt="" src={imgExclude2} className="w-6 h-6" />
-          </div>
-
-          <p className="font-['Roboto:Light',sans-serif] text-[16px] leading-[0.9] mt-6">Консалтинговая компания МКР</p>
-          <p className="font-['Roboto:Light',sans-serif] text-[16px] leading-[0.9] mt-3">© МКР, 2025, All Rights Reserved | Политика Конфиденциальности</p>
-          <p className="font-['Roboto:Light',sans-serif] text-[16px] leading-[0.9] mt-3">г. Москва, Благовещенский пер., дом 3, стр. 1, пом. 1/6</p>
-        </div>
-      </footer>
+      <SharedFooter onNavigate={handleNavigate} />
     </div>
   );
 }

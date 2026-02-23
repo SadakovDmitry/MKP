@@ -4,6 +4,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
+import getViewportWidth from './getViewportWidth';
 
 const imgHero = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png';
 const imgSituation = '/assets/3cb062f04f739d8bdb43861c24a230efcc0960c3.png';
@@ -29,11 +30,13 @@ export default function CaseExpertisePage({ onNavigate, onOpenCase }: CaseExpert
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
     return () => {
       window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
     };
   }, []);
 
@@ -311,7 +314,7 @@ export default function CaseExpertisePage({ onNavigate, onOpenCase }: CaseExpert
           <MobileCaseExtraSection currentCaseId="case-expertise" onNavigate={onNavigate} onOpenCase={onOpenCase} />
         </main>
 
-        <SharedFooter onNavigate={onNavigate} />
+        <SharedFooter onNavigate={onNavigate} forceMobile />
       </div>
     );
   }

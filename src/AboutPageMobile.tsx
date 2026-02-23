@@ -7,7 +7,8 @@ import Frame83_916 from './mobileAboutFrames/Frame83_916';
 import Frame83_1027 from './mobileAboutFrames/Frame83_1027';
 import Frame83_1053 from './mobileAboutFrames/Frame83_1053';
 import Frame83_1062 from './mobileAboutFrames/Frame83_1062';
-import Frame177_219 from './mobileAboutFrames/Frame177_219';
+import SharedFooter from './SharedFooter';
+import type { SitePage } from './navigation';
 
 export const ABOUT_MOBILE_FRAME_WIDTH = 1080;
 export const ABOUT_MOBILE_FRAME_HEIGHT = 18840;
@@ -27,10 +28,13 @@ const SECTION_STACK: SectionFrame[] = [
   { key: '83:1027', height: 2080, Component: Frame83_1027 },
   { key: '83:1053', height: 960, Component: Frame83_1053 },
   { key: '83:1062', height: 4000, Component: Frame83_1062 },
-  { key: '177:219', height: 1600, Component: Frame177_219 },
 ];
 
-export default function AboutPageMobile() {
+type AboutPageMobileProps = {
+  onNavigate: (page: SitePage) => void;
+};
+
+export default function AboutPageMobile({ onNavigate }: AboutPageMobileProps) {
   return (
     <div className="content-stretch flex flex-col items-start relative size-full bg-white" data-node-id="83:1717">
       <div className="h-[100px] shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px` }} />
@@ -40,6 +44,10 @@ export default function AboutPageMobile() {
           <Component />
         </div>
       ))}
+
+      <div className="relative shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, height: '1600px' }}>
+        <SharedFooter onNavigate={onNavigate} mobileEmbedded />
+      </div>
 
       <div className="h-[100px] shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px` }} />
     </div>

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { CASE_DETAILS, CASE_ROUTE_ORDER, type CaseId } from './caseDetailsData';
 import type { SitePage } from './navigation';
 import './MobileCaseExtraSection.css';
+import getViewportWidth from './getViewportWidth';
 
 type MobileCaseExtraSectionProps = {
   currentCaseId: CaseId;
@@ -26,10 +27,14 @@ export default function MobileCaseExtraSection({ currentCaseId, onNavigate, onOp
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const isMobile = viewportWidth > 0 && viewportWidth < MOBILE_BREAKPOINT;
@@ -100,4 +105,3 @@ export default function MobileCaseExtraSection({ currentCaseId, onNavigate, onOp
     </section>
   );
 }
-

@@ -4,6 +4,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
+import getViewportWidth from './getViewportWidth';
 
 const heroImage = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png';
 const situationImage = '/assets/case-situation-warning-clean.png';
@@ -31,10 +32,14 @@ export default function CaseAutomationOpsPage({ onNavigate, onOpenCase }: CaseAu
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const scale = useMemo(() => {
@@ -290,7 +295,7 @@ export default function CaseAutomationOpsPage({ onNavigate, onOpenCase }: CaseAu
           <MobileCaseExtraSection currentCaseId="case-automation-1" onNavigate={onNavigate} onOpenCase={onOpenCase} />
         </main>
 
-        <SharedFooter onNavigate={onNavigate} />
+        <SharedFooter onNavigate={onNavigate} forceMobile />
       </div>
     );
   }

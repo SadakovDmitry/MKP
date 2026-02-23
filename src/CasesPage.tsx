@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CaseId } from './caseDetailsData';
+import getViewportWidth from './getViewportWidth';
 
 const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png';
 const imgShutterstock23294881251 = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png';
@@ -272,10 +273,14 @@ export default function CasesPage({ onNavigate, onOpenCase }: CasesPageProps) {
   ]);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const scale = viewportWidth > 0 ? viewportWidth / FRAME_WIDTH : 1;
@@ -348,7 +353,7 @@ export default function CasesPage({ onNavigate, onOpenCase }: CasesPageProps) {
           </section>
         </main>
 
-        <SharedFooter onNavigate={onNavigate} />
+        <SharedFooter onNavigate={onNavigate} forceMobile />
       </div>
     );
   }

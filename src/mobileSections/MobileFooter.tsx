@@ -1,3 +1,5 @@
+import type { SitePage } from '../navigation';
+
 const imgLine2 = "/assets/4834aefdbebadba1abb4eb0735aa739e6898607f.svg";
 const imgVector = "/assets/7e8e9a9a286797089b23f5287ad6ada1d4f97712.svg";
 const imgExclude = "/assets/57ae13d395948302f09cc38d65527798d9d70ee8.svg";
@@ -5,7 +7,11 @@ const imgExclude1 = "/assets/a2f96c9e39551efa4ca8df09dda7497031f49bf5.svg";
 const imgGroup = "/assets/1f493c18a22fbf614331ba02f6e28ba35fbae54c.svg";
 const imgVector1 = "/assets/3ec5538c32a262d9550a9627e987ff9e88203d0e.svg";
 
-export default function MobileFooter() {
+type MobileFooterProps = {
+  onNavigate: (page: SitePage) => void;
+};
+
+export default function MobileFooter({ onNavigate }: MobileFooterProps) {
   return (
     <div className="bg-[var(--color-3,#313131)] relative size-full" data-name="Mobile" data-node-id="83:1499">
       <div className="-translate-x-1/2 absolute h-0 left-1/2 top-[1346.93px] w-[897.763px]" data-node-id="83:1500">
@@ -31,27 +37,27 @@ export default function MobileFooter() {
       <p className="absolute font-['Roboto:Light',sans-serif] font-light inset-[91.96%_21.85%_6.35%_8.43%] leading-[0.9] text-[29.809px] text-[color:var(--color-4,white)]" data-node-id="83:1508" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         г. Москва, Благовещенский пер., дом 3, стр. 1, пом. 1/6
       </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[30.19%_53.43%_66.19%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1509" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      <button type="button" onClick={() => onNavigate('about')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[30.19%_53.43%_66.19%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] whitespace-nowrap border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1509" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         О компании
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[52.31%_68.15%_44.06%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1510" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('services')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[52.31%_68.15%_44.06%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1510" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Услуги
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[37.58%_20.83%_58.8%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1511" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('news')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[37.58%_20.83%_58.8%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1511" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Статьи
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[37.56%_68.89%_58.81%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1512" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('cases')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[37.56%_68.89%_58.81%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1512" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Кейсы
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[30.2%_13.06%_66.17%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1513" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('useful')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[30.2%_13.06%_66.17%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1513" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Полезное
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[44.95%_12.87%_51.42%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1514" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('contacts')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[44.95%_12.87%_51.42%_59.72%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1514" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Контакты
-      </p>
-      <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[44.94%_53.43%_51.44%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)]" data-node-id="83:1515" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      </button>
+      <button type="button" onClick={() => onNavigate('home')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[44.94%_53.43%_51.44%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] whitespace-nowrap border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1515" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Карта сайта
-      </p>
+      </button>
       <div className="absolute inset-[9.5%_28.06%_80.94%_28.09%]" data-name="Group" data-node-id="83:1516">
         <img alt="" className="absolute block max-w-none size-full" src={imgGroup} />
       </div>

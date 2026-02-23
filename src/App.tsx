@@ -16,6 +16,7 @@ import CaseRecoveryPage from './CaseRecoveryPage';
 import CaseInitiativePage from './CaseInitiativePage';
 import CaseAutomationOpsPage from './CaseAutomationOpsPage';
 import CaseAutomationFinancePage from './CaseAutomationFinancePage';
+import getViewportWidth from './getViewportWidth';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -32,10 +33,14 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<AppPage>('home');
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const handleNavigate = (page: SitePage) => {
@@ -97,7 +102,7 @@ export default function App() {
               className="absolute left-0 top-0"
               style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: 'top left' }}
             >
-              <AboutPageMobile />
+              <AboutPageMobile onNavigate={handleNavigate} />
             </div>
           </div>
         </div>,

@@ -135,7 +135,7 @@
 
 .case1-mobile-meta-down {
   display: block;
-  width: clamp(95px, 25vw, 140px);
+  width: max(95px, 25vw);
   margin: 6px 0 8px;
   text-align: center;
   font-family: 'Roboto', sans-serif;

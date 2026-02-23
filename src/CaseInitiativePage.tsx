@@ -4,6 +4,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
+import getViewportWidth from './getViewportWidth';
 
 const heroImage = '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.png';
 const problemImage = '/assets/case-situation-warning-clean.png';
@@ -31,10 +32,14 @@ export default function CaseInitiativePage({ onNavigate, onOpenCase }: CaseIniti
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const scale = useMemo(() => {
@@ -284,7 +289,7 @@ export default function CaseInitiativePage({ onNavigate, onOpenCase }: CaseIniti
           <MobileCaseExtraSection currentCaseId="case-initiative" onNavigate={onNavigate} onOpenCase={onOpenCase} />
         </main>
 
-        <SharedFooter onNavigate={onNavigate} />
+        <SharedFooter onNavigate={onNavigate} forceMobile />
       </div>
     );
   }

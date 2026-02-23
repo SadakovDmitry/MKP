@@ -4,6 +4,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
+import getViewportWidth from './getViewportWidth';
 
 const heroImage = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.png';
 const problemImage = '/assets/case-situation-warning-clean.png';
@@ -29,10 +30,14 @@ export default function CaseRecoveryPage({ onNavigate, onOpenCase }: CaseRecover
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
-    const updateViewport = () => setViewportWidth(window.innerWidth);
+    const updateViewport = () => setViewportWidth(getViewportWidth());
     updateViewport();
     window.addEventListener('resize', updateViewport);
-    return () => window.removeEventListener('resize', updateViewport);
+    window.visualViewport?.addEventListener('resize', updateViewport);
+    return () => {
+      window.removeEventListener('resize', updateViewport);
+      window.visualViewport?.removeEventListener('resize', updateViewport);
+    };
   }, []);
 
   const scale = useMemo(() => {
@@ -232,7 +237,7 @@ export default function CaseRecoveryPage({ onNavigate, onOpenCase }: CaseRecover
           <MobileCaseExtraSection currentCaseId="case-recovery" onNavigate={onNavigate} onOpenCase={onOpenCase} />
         </main>
 
-        <SharedFooter onNavigate={onNavigate} />
+        <SharedFooter onNavigate={onNavigate} forceMobile />
       </div>
     );
   }

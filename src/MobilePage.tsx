@@ -4,7 +4,7 @@ import MobileServices from './mobileSections/MobileServices';
 import MobileCases from './mobileSections/MobileCases';
 import MobileNews from './mobileSections/MobileNews';
 import MobileContact from './mobileSections/MobileContact';
-import MobileFooter from './mobileSections/MobileFooter';
+import SharedFooter from './SharedFooter';
 import type { SitePage } from './navigation';
 
 export const MOBILE_FRAME_WIDTH = 1080;
@@ -49,7 +49,7 @@ export default function MobilePage({ currentPage, onNavigate }: MobilePageProps)
       )}
 
       <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '1600px' }}>
-        <MobileFooter />
+        <SharedFooter onNavigate={onNavigate} mobileEmbedded />
       </div>
     </div>
   );
