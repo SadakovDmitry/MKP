@@ -56,7 +56,7 @@ export default function App() {
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_LAYOUT_BREAKPOINT;
 
   if (currentPage === 'case-expertise') {
-    return withHeader(<CaseExpertisePage onNavigate={handleNavigate} />);
+    return withHeader(<CaseExpertisePage onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);
   }
 
   if (isCaseId(currentPage)) {

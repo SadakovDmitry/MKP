@@ -1,6 +1,7 @@
 import './CaseDetailsPage.css';
 import type { SitePage } from './navigation';
 import { CASE_DETAILS, CASE_ROUTE_ORDER, type CaseId } from './caseDetailsData';
+import MobileCaseExtraSection from './MobileCaseExtraSection';
 
 type CaseDetailsPageProps = {
   caseId: CaseId;
@@ -100,6 +101,8 @@ export default function CaseDetailsPage({ caseId, onNavigate, onOpenCase }: Case
             ))}
           </div>
         </section>
+
+        <MobileCaseExtraSection currentCaseId={caseId} onNavigate={onNavigate} onOpenCase={onOpenCase} />
       </main>
     </div>
   );
