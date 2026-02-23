@@ -14,6 +14,7 @@ import { CASE_ROUTE_ORDER, type CaseId } from './caseDetailsData';
 import CaseExpertisePage from './CaseExpertisePage';
 import CaseRecoveryPage from './CaseRecoveryPage';
 import CaseInitiativePage from './CaseInitiativePage';
+import CaseAutomationOpsPage from './CaseAutomationOpsPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -67,6 +68,10 @@ export default function App() {
 
   if (currentPage === 'case-initiative') {
     return withHeader(<CaseInitiativePage onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);
+  }
+
+  if (currentPage === 'case-automation-1') {
+    return withHeader(<CaseAutomationOpsPage onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);
   }
 
   if (isCaseId(currentPage)) {
