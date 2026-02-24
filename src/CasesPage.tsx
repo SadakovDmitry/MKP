@@ -423,7 +423,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
         </div>
       </main>
 
-      <SharedFooter onNavigate={onNavigate} />
+      <SharedFooter onNavigate={onNavigate} desktopScale={scale} />
     </div>
   );
 }

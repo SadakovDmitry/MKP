@@ -19,9 +19,10 @@ type SharedFooterProps = {
   onNavigate: (page: SitePage) => void;
   forceMobile?: boolean;
   mobileEmbedded?: boolean;
+  desktopScale?: number;
 };
 
-export default function SharedFooter({ onNavigate, forceMobile = false, mobileEmbedded = false }: SharedFooterProps) {
+export default function SharedFooter({ onNavigate, forceMobile = false, mobileEmbedded = false, desktopScale = 1 }: SharedFooterProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
@@ -46,10 +47,9 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
     return Math.min(1, measuredViewportWidth / MOBILE_FRAME_WIDTH);
   }, [measuredViewportWidth]);
 
-  const desktopScale = 1;
-
-  const desktopScaledWidth = DESKTOP_FRAME_WIDTH * desktopScale;
-  const desktopScaledHeight = DESKTOP_FOOTER_HEIGHT * desktopScale;
+  const resolvedDesktopScale = desktopScale > 0 ? desktopScale : 1;
+  const desktopScaledWidth = DESKTOP_FRAME_WIDTH * resolvedDesktopScale;
+  const desktopScaledHeight = DESKTOP_FOOTER_HEIGHT * resolvedDesktopScale;
 
   if (isMobile) {
     if (mobileEmbedded) {
@@ -96,7 +96,7 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
           style={{
             width: `${DESKTOP_FRAME_WIDTH}px`,
             height: `${DESKTOP_FOOTER_HEIGHT}px`,
-            transform: `scale(${desktopScale})`,
+            transform: `scale(${resolvedDesktopScale})`,
             transformOrigin: 'top left',
           }}
         >

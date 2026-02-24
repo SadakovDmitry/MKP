@@ -24,6 +24,7 @@ const imgFrameMenu = '/assets/bbb160abed2f90fe13e575abf60e430a7897636f.svg';
 type FloatingHeaderProps = {
   currentPage: SitePage;
   onNavigate: (page: SitePage) => void;
+  desktopScale?: number;
 };
 
 function DesktopBrand({ onClick }: { onClick: () => void }) {
@@ -69,8 +70,11 @@ const MENU_ITEMS: Array<{ key: SitePage; label: string; width: string }> = [
   { key: 'contacts', label: 'Контакты', width: 'w-[91.567px]' },
 ];
 
-export default function FloatingHeader({ currentPage, onNavigate }: FloatingHeaderProps) {
+export default function FloatingHeader({ currentPage, onNavigate, desktopScale = 1 }: FloatingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const resolvedDesktopScale = Number.isFinite(desktopScale) && desktopScale > 1 ? desktopScale : 1;
+  const desktopShellWidth = 1160 * resolvedDesktopScale;
+  const desktopShellHeight = 47 * resolvedDesktopScale;
 
   const handleNavigate = (page: SitePage) => {
     onNavigate(page);
@@ -81,28 +85,40 @@ export default function FloatingHeader({ currentPage, onNavigate }: FloatingHead
     <header className="fixed top-4 left-0 right-0 z-[100] pointer-events-none">
       <div className="pointer-events-auto">
         <div className="hidden lg:block px-4">
-          <div className="mx-auto w-[1160px] max-w-[calc(100vw-32px)] bg-[var(--color-2,#44b1d2)] h-[47px] overflow-clip rounded-[50px] relative">
-            <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-1/2 -translate-x-1/2 top-[23.5px] w-[1150px] max-w-[calc(100vw-42px)]">
-              <DesktopBrand onClick={() => handleNavigate('home')} />
-              <div className="content-stretch flex gap-[14px] items-center relative shrink-0 w-[770px] max-w-[calc(100vw-230px)]">
-                {MENU_ITEMS.map((item) => (
+          <div className="mx-auto relative" style={{ width: `${desktopShellWidth}px`, height: `${desktopShellHeight}px` }}>
+            <div
+              className="absolute left-0 top-0"
+              style={{
+                width: '1160px',
+                height: '47px',
+                transform: `scale(${resolvedDesktopScale})`,
+                transformOrigin: 'top left',
+              }}
+            >
+              <div className="bg-[var(--color-2,#44b1d2)] h-[47px] overflow-clip rounded-[50px] relative w-[1160px]">
+                <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-1/2 -translate-x-1/2 top-[23.5px] w-[1150px]">
+                  <DesktopBrand onClick={() => handleNavigate('home')} />
+                  <div className="content-stretch flex gap-[14px] items-center relative shrink-0 w-[770px]">
+                    {MENU_ITEMS.map((item) => (
+                      <button
+                        key={item.key}
+                        type="button"
+                        onClick={() => handleNavigate(item.key)}
+                        className={`${item.width} ${item.key === currentPage ? 'bg-[var(--color,#1f556b)] text-white' : 'bg-white text-[color:var(--color,#1f556b)]'} border-0 cursor-pointer h-[26.056px] overflow-clip p-0 relative rounded-[38.823px] shrink-0 text-[14.175px] font-['Roboto:Medium',sans-serif]`}
+                      >
+                        <span className="absolute inset-[17.15%_7.45%_17.6%_6.84%] leading-[normal] text-center whitespace-nowrap">{item.label}</span>
+                      </button>
+                    ))}
+                  </div>
                   <button
-                    key={item.key}
                     type="button"
-                    onClick={() => handleNavigate(item.key)}
-                    className={`${item.width} ${item.key === currentPage ? 'bg-[var(--color,#1f556b)] text-white' : 'bg-white text-[color:var(--color,#1f556b)]'} border-0 cursor-pointer h-[26.056px] overflow-clip p-0 relative rounded-[38.823px] shrink-0 text-[14.175px] font-['Roboto:Medium',sans-serif]`}
+                    className="h-[37px] w-[37px] shrink-0 border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center"
+                    aria-label="Telegram"
                   >
-                    <span className="absolute inset-[17.15%_7.45%_17.6%_6.84%] leading-[normal] text-center whitespace-nowrap">{item.label}</span>
+                    <img alt="" className="block h-full w-full object-contain" src={imgFrame13Desktop} />
                   </button>
-                ))}
+                </div>
               </div>
-              <button
-                type="button"
-                className="h-[37px] w-[37px] shrink-0 border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center"
-                aria-label="Telegram"
-              >
-                <img alt="" className="block h-full w-full object-contain" src={imgFrame13Desktop} />
-              </button>
             </div>
           </div>
         </div>

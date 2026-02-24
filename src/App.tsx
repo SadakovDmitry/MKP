@@ -41,6 +41,10 @@ function isArticlePage(page: AppPage): page is ArticlePage {
   return ARTICLE_ROUTE_SET.has(page);
 }
 
+function shouldUseAppDesktopScale(page: AppPage) {
+  return page === 'news' || isArticlePage(page);
+}
+
 export default function App() {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState<AppPage>('home');
@@ -95,10 +99,20 @@ export default function App() {
 
     const measuredDesktopWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
     const desktopScale = measuredDesktopWidth > 0 ? measuredDesktopWidth / DESKTOP_BASE_WIDTH : 1;
+    const headerDesktopScale = shouldUseAppDesktopScale(currentPage) ? 1 : Math.max(1, desktopScale);
+
+    if (!shouldUseAppDesktopScale(currentPage)) {
+      return (
+        <div className="w-full overflow-x-hidden bg-white">
+          <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} desktopScale={headerDesktopScale} />
+          {content}
+        </div>
+      );
+    }
 
     return (
       <div className="w-full overflow-x-hidden bg-white">
-        <div className="mx-auto" style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale }}>
+        <div style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale }}>
           <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
           {content}
         </div>
