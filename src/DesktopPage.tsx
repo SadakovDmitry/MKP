@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { type SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
+import type { CasesFilterLabel } from './casesFilters';
 
 const img21 = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png";
 const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.png";
@@ -40,9 +41,10 @@ const FRAME_HEIGHT = 4367;
 
 type DesktopPageProps = {
   onNavigate: (page: SitePage) => void;
+  onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
 };
 
-export default function Frame({ onNavigate }: DesktopPageProps) {
+export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPageProps) {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
@@ -304,9 +306,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </p>
         <div className="absolute bg-[var(--color,#1f556b)] h-[258px] left-[120px] overflow-clip rounded-[38.689px] top-[154px] w-[373px]" data-node-id="78:573">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.48px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:574" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.43px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:575" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('Сельское хозяйство')}
+            className="absolute h-[54.314px] left-[25.48px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:575"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[134.13px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[93.38px] w-[212.854px]" data-node-id="78:576" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none whitespace-pre-wrap">Сельское хозяйство</p>
           </div>
@@ -318,9 +327,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </div>
         <div className="absolute bg-[var(--color,#1f556b)] h-[257px] left-[120px] overflow-clip rounded-[38.689px] top-[431px] w-[373px]" data-node-id="78:578">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.48px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:579" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.43px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:580" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('Финансы')}
+            className="absolute h-[54.314px] left-[25.48px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:580"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[134.13px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[93.38px] w-[212.854px]" data-node-id="78:581" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none whitespace-pre-wrap">Некоммерческие организации</p>
           </div>
@@ -332,9 +348,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </div>
         <div className="absolute bg-[var(--color,#1f556b)] h-[258px] left-[calc(33.33%+46.33px)] overflow-clip rounded-[38.689px] top-[154px] w-[374px]" data-node-id="78:583">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.48px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:584" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.42px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:585" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('Строительство')}
+            className="absolute h-[54.314px] left-[25.48px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:585"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[146.31px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[94.07px] whitespace-nowrap" data-node-id="78:586" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none">Строительство</p>
           </div>
@@ -346,9 +369,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </div>
         <div className="absolute bg-[var(--color,#1f556b)] h-[257px] left-[calc(33.33%+46.33px)] overflow-clip rounded-[38.689px] top-[431px] w-[374px]" data-node-id="78:588">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.48px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:589" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.42px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:590" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('Разработка ПО')}
+            className="absolute h-[54.314px] left-[25.48px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:590"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[146.31px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[94.07px] whitespace-nowrap" data-node-id="78:591" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none">Холдинги</p>
           </div>
@@ -358,9 +388,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </div>
         <div className="absolute bg-[var(--color,#1f556b)] h-[258px] left-[calc(66.67%-26.33px)] overflow-clip rounded-[38.689px] top-[154px] w-[373px]" data-node-id="78:593">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.49px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:594" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.44px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:595" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('HoReCa')}
+            className="absolute h-[54.314px] left-[25.49px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:595"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[146.32px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[94.07px] whitespace-nowrap" data-node-id="78:596" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none">Торговля</p>
           </div>
@@ -372,9 +409,16 @@ export default function Frame({ onNavigate }: DesktopPageProps) {
         </div>
         <div className="absolute bg-[var(--color,#1f556b)] h-[257px] left-[calc(66.67%-26.33px)] overflow-clip rounded-[38.689px] top-[431px] w-[373px]" data-node-id="78:598">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.49px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:599" />
-          <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[185.44px] text-[24.386px] text-[color:var(--color-4,white)] text-center top-[193.73px]" data-node-id="78:600" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Подробнее
-          </p>
+          <button
+            type="button"
+            onClick={() => onOpenCasesByFilter('Финансы')}
+            className="absolute h-[54.314px] left-[25.49px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+            data-node-id="78:600"
+          >
+            <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[24.386px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Подробнее
+            </span>
+          </button>
           <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[155px] not-italic text-[23.362px] text-[color:var(--color-4,white)] top-[94.07px] whitespace-nowrap" data-node-id="78:601" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             <p className="leading-none">Услуги</p>
           </div>

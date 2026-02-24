@@ -16,7 +16,9 @@ import CaseRecoveryPage from './CaseRecoveryPage';
 import CaseInitiativePage from './CaseInitiativePage';
 import CaseAutomationOpsPage from './CaseAutomationOpsPage';
 import CaseAutomationFinancePage from './CaseAutomationFinancePage';
+import NewsPage from './NewsPage';
 import getViewportWidth from './getViewportWidth';
+import type { CasesFilterLabel } from './casesFilters';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -31,6 +33,7 @@ function isCaseId(page: AppPage): page is CaseId {
 export default function App() {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState<AppPage>('home');
+  const [pendingCasesFilter, setPendingCasesFilter] = useState<CasesFilterLabel | null>(null);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());
@@ -44,7 +47,14 @@ export default function App() {
   }, []);
 
   const handleNavigate = (page: SitePage) => {
+    setPendingCasesFilter(null);
     setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const handleNavigateToCasesWithFilter = (filter: CasesFilterLabel) => {
+    setPendingCasesFilter(filter);
+    setCurrentPage('cases');
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
@@ -113,17 +123,25 @@ export default function App() {
     return withHeader(isDesktopAbout ? <AboutPage onNavigate={handleNavigate} /> : <AboutPageAdaptive onNavigate={handleNavigate} />);
   }
 
+  if (currentPage === 'news' && !isMobileLayout) {
+    return withHeader(<NewsPage onNavigate={handleNavigate} />);
+  }
+
   if (currentPage === 'useful') {
     return withHeader(<UsefulPage onNavigate={handleNavigate} />);
   }
 
   if (currentPage === 'cases') {
-    return withHeader(<CasesPage onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);
+    return withHeader(
+      <CasesPage onNavigate={handleNavigate} onOpenCase={handleOpenCase} initialFilter={pendingCasesFilter} />,
+    );
   }
 
   if (!isMobileLayout) {
     if (currentPage === 'home') {
-      return withHeader(<DesktopPage onNavigate={handleNavigate} />);
+      return withHeader(
+        <DesktopPage onNavigate={handleNavigate} onOpenCasesByFilter={handleNavigateToCasesWithFilter} />,
+      );
     }
 
     return withHeader(<DesktopConstructionPage currentPage={currentPage} onNavigate={handleNavigate} />);
@@ -142,7 +160,11 @@ export default function App() {
           className="absolute left-0 top-0"
           style={{ width: `${MOBILE_FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: 'top left' }}
         >
-          <MobilePage currentPage={currentPage} onNavigate={handleNavigate} />
+          <MobilePage
+            currentPage={currentPage}
+            onNavigate={handleNavigate}
+            onOpenCasesByFilter={handleNavigateToCasesWithFilter}
+          />
         </div>
       </div>
     </div>,

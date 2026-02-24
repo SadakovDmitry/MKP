@@ -6,6 +6,7 @@ import MobileNews from './mobileSections/MobileNews';
 import MobileContact from './mobileSections/MobileContact';
 import SharedFooter from './SharedFooter';
 import type { SitePage } from './navigation';
+import type { CasesFilterLabel } from './casesFilters';
 
 export const MOBILE_FRAME_WIDTH = 1080;
 export const MOBILE_HOME_FRAME_HEIGHT = 18160;
@@ -17,9 +18,10 @@ export const getMobileFrameHeight = (page: SitePage) =>
 type MobilePageProps = {
   currentPage: SitePage;
   onNavigate: (page: SitePage) => void;
+  onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
 };
 
-export default function MobilePage({ currentPage, onNavigate }: MobilePageProps) {
+export default function MobilePage({ currentPage, onNavigate, onOpenCasesByFilter }: MobilePageProps) {
   const isHome = currentPage === 'home';
 
   return (
@@ -37,7 +39,7 @@ export default function MobilePage({ currentPage, onNavigate }: MobilePageProps)
             <MobileServices />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '3840px' }}>
-            <MobileCases />
+            <MobileCases onOpenCasesByFilter={onOpenCasesByFilter} />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '3440px' }}>
             <MobileNews />

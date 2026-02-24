@@ -1,0 +1,358 @@
+.news-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  color: #313131;
+}
+
+.news-page__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.news-hero {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background: #fff;
+}
+
+.news-hero__pill {
+  position: absolute;
+  top: 352px;
+  height: 63px;
+  border-radius: 31.5px;
+}
+
+.news-hero__pill--left {
+  left: calc(50% - 265px);
+  width: 210px;
+  background: #44b1d2;
+}
+
+.news-hero__pill--right {
+  left: calc(50% + 6px);
+  width: 258px;
+  background: #1f556b;
+}
+
+.news-hero__title {
+  position: absolute;
+  top: 352px;
+  left: 0;
+  right: 0;
+  height: 63px;
+}
+
+.news-hero__title-left,
+.news-hero__title-middle,
+.news-hero__title-right {
+  position: absolute;
+  top: 0;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: 'Geologica:Medium', sans-serif;
+  font-size: 50.08px;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.news-hero__title-left {
+  left: calc(50% - 160px);
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.news-hero__title-middle {
+  left: calc(50% - 19px);
+  transform: translateX(-50%);
+  color: #313131;
+}
+
+.news-hero__title-right {
+  left: calc(50% + 135px);
+  transform: translateX(-50%);
+  color: #fff;
+}
+
+.news-hero__title-right,
+.news-hero__title-left {
+  width: max-content;
+}
+
+.news-hero__title-right {
+  min-width: 258px;
+}
+
+.news-hero__title-left {
+  min-width: 210px;
+}
+
+.news-hero__title-right,
+.news-hero__title-left,
+.news-hero__title-middle {
+  text-align: center;
+}
+
+.news-hero__title-right {
+  color: #fff;
+}
+
+.news-content {
+  width: 100%;
+  min-height: 1200px;
+  background: #e2f4fa;
+}
+
+.news-content__frame {
+  position: relative;
+  width: 1400px;
+  height: 1200px;
+  margin: 0 auto;
+}
+
+.news-content__section-title {
+  position: absolute;
+  margin: 0;
+  font-family: 'Geologica:Medium', sans-serif;
+  font-size: 36.65px;
+  line-height: 110%;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #313131;
+}
+
+.news-content__section-title--articles {
+  top: 95px;
+  left: 120px;
+}
+
+.news-content__section-title--news {
+  top: 763px;
+  left: 120px;
+}
+
+.news-content__article-card {
+  position: absolute;
+  width: 570px;
+  height: 250px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.news-content__article-card--left-top {
+  top: 162px;
+  left: 120px;
+}
+
+.news-content__article-card--left-bottom {
+  top: 432px;
+  left: 120px;
+}
+
+.news-content__article-card--right-top {
+  top: 162px;
+  left: 710px;
+}
+
+.news-content__article-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.news-content__article-image--outsource {
+  top: 0;
+  left: 0;
+}
+
+.news-content__article-image--tax {
+  top: 0;
+  left: 0;
+}
+
+.news-content__article-image--liability {
+  top: 0;
+  left: 0;
+}
+
+.news-content__article-overlay {
+  display: none;
+}
+
+.news-content__article-title {
+  position: absolute;
+  top: calc(50% - 95px);
+  left: calc(50% - 246px);
+  margin: 0;
+  width: 440px;
+  white-space: pre-line;
+  font-family: 'Geologica:Regular', sans-serif;
+  font-size: 28px;
+  line-height: 90%;
+  font-weight: 400;
+}
+
+.news-content__article-card--left-top .news-content__article-title {
+  width: 210px;
+}
+
+.news-content__article-card--left-bottom .news-content__article-title {
+  width: 346px;
+}
+
+.news-content__article-date {
+  position: absolute;
+  top: calc(50% + 64px);
+  left: calc(50% - 246px);
+  margin: 0;
+  font-family: 'Geologica:Regular', sans-serif;
+  font-size: 25px;
+  line-height: 90%;
+  font-weight: 400;
+}
+
+.news-content__article-more {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 225px;
+  height: 50px;
+  border: 1.5px solid #fff;
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px 0 22px;
+  overflow: hidden;
+  backdrop-filter: blur(0.5px);
+}
+
+.news-content__article-more-text {
+  position: relative;
+  z-index: 1;
+  font-family: 'Geologica:ExtraLight', sans-serif;
+  font-size: 20px;
+  line-height: 90%;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+}
+
+.news-content__article-more-icon {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+}
+
+.news-content__article-more-icon .news-content__arrow-svg {
+  opacity: 1;
+}
+
+.news-content__arrow-svg {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.news-content__news-card {
+  position: absolute;
+  width: 275px;
+  height: 275px;
+  border-radius: 40px;
+  overflow: hidden;
+  color: #fff;
+}
+
+.news-content__news-card--1 {
+  top: 830px;
+  left: 120px;
+}
+
+.news-content__news-card--2 {
+  top: 830px;
+  left: 415px;
+}
+
+.news-content__news-card--3 {
+  top: 830px;
+  left: 710px;
+}
+
+.news-content__news-card--4 {
+  top: 830px;
+  left: 1005px;
+}
+
+.news-content__news-card--blue {
+  background: #44b1d2;
+}
+
+.news-content__news-card--teal {
+  background: #1f556b;
+}
+
+.news-content__news-card--dark {
+  background: #313131;
+}
+
+.news-content__news-title {
+  position: absolute;
+  top: calc(50% - 104.5px);
+  left: calc(50% - 114.5px);
+  margin: 0;
+  width: 227px;
+  font-family: 'Geologica:Regular', sans-serif;
+  font-size: 21.14px;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+.news-content__news-card--1 .news-content__news-title {
+  width: 186px;
+}
+
+.news-content__news-card--4 .news-content__news-title {
+  width: 207px;
+}
+
+.news-content__news-more {
+  position: absolute;
+  right: 25px;
+  bottom: 28px;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+}
+
+.news-content__news-more-icon-image {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  pointer-events: none;
+}

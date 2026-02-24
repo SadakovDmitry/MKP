@@ -1,3 +1,5 @@
+import type { CasesFilterLabel } from '../casesFilters';
+
 const imgChatGptImage1320251735561 = "/assets/9a2ea7309518ee76a6b97175e1aa7477a7cfc0fc.png";
 const imgChatGptImage1320251802081 = "/assets/90ec21a8e07043728f8fdadfb5773adc70c3b66e.png";
 const imgChatGptImage1320251737291 = "/assets/4a99f27e97f28314170723b56e93bfdc867d868a.png";
@@ -5,7 +7,11 @@ const imgChatGptImage132025175029 = "/assets/a31d752484cb75bd4215525705c86961266
 const imgChatGptImage1320251738531 = "/assets/cb9636fa326937888360f117de63def7956a4533.png";
 const imgChatGptImage132025175238 = "/assets/061e136ba2bf5647e14f796954062344e97ad218.png";
 
-export default function MobileCases() {
+type MobileCasesProps = {
+  onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
+};
+
+export default function MobileCases({ onOpenCasesByFilter }: MobileCasesProps) {
   return (
     <div className="bg-[var(--color-4,white)] relative size-full" data-name="Mobile" data-node-id="83:1425">
       <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(50%-1px)] not-italic text-[60.78px] text-[color:var(--color-3,#313131)] text-center top-[calc(50%-1780px)] uppercase" data-node-id="83:1426" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
@@ -13,9 +19,16 @@ export default function MobileCases() {
       </p>
       <div className="absolute bg-[var(--color,#1f556b)] h-[501.513px] left-[177px] overflow-clip rounded-[75.206px] top-[319px] w-[725.056px]" data-node-id="83:1427">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.53px] rounded-[70.56px] top-[344.98px] w-[624.583px]" data-node-id="83:1428" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360.01px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.59px]" data-node-id="83:1429" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('Сельское хозяйство')}
+          className="absolute h-[105.578px] left-[49.53px] top-[344.98px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1429"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[260.72px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[181.8px] w-[413.757px]" data-node-id="83:1430" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none whitespace-pre-wrap">Сельское хозяйство</p>
         </div>
@@ -27,9 +40,16 @@ export default function MobileCases() {
       </div>
       <div className="absolute bg-[var(--color,#1f556b)] h-[499.57px] left-[177px] overflow-clip rounded-[75.206px] top-[2048.55px] w-[725.056px]" data-node-id="83:1432">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.53px] rounded-[70.56px] top-[344.99px] w-[624.583px]" data-node-id="83:1433" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360.01px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.58px]" data-node-id="83:1434" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('Финансы')}
+          className="absolute h-[105.578px] left-[49.53px] top-[344.99px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1434"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[260.72px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[181.8px] w-[413.757px]" data-node-id="83:1435" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none whitespace-pre-wrap">Некоммерческие организации</p>
         </div>
@@ -41,9 +61,16 @@ export default function MobileCases() {
       </div>
       <div className="absolute bg-[var(--color,#1f556b)] h-[501.513px] left-[177px] overflow-clip rounded-[75.206px] top-[895.52px] w-[727px]" data-node-id="83:1437">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.52px] rounded-[70.56px] top-[344.99px] w-[624.583px]" data-node-id="83:1438" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.59px]" data-node-id="83:1439" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('Строительство')}
+          className="absolute h-[105.578px] left-[49.52px] top-[344.99px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1439"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[284.41px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[183px] whitespace-nowrap" data-node-id="83:1440" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none">Строительство</p>
         </div>
@@ -55,9 +82,16 @@ export default function MobileCases() {
       </div>
       <div className="absolute bg-[var(--color,#1f556b)] h-[499.57px] left-[177px] overflow-clip rounded-[75.206px] top-[2623.12px] w-[727px]" data-node-id="83:1442">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.52px] rounded-[70.56px] top-[344.98px] w-[624.583px]" data-node-id="83:1443" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.57px]" data-node-id="83:1444" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('Разработка ПО')}
+          className="absolute h-[105.578px] left-[49.52px] top-[344.98px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1444"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[284.41px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[183px] whitespace-nowrap" data-node-id="83:1445" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none">Холдинги</p>
         </div>
@@ -67,9 +101,16 @@ export default function MobileCases() {
       </div>
       <div className="absolute bg-[var(--color,#1f556b)] h-[501.513px] left-[177px] overflow-clip rounded-[75.206px] top-[1472.03px] w-[725.056px]" data-node-id="83:1447">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.55px] rounded-[70.56px] top-[344.99px] w-[624.583px]" data-node-id="83:1448" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360.03px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.59px]" data-node-id="83:1449" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('HoReCa')}
+          className="absolute h-[105.578px] left-[49.55px] top-[344.99px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1449"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[284.42px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[183px] whitespace-nowrap" data-node-id="83:1450" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none">Торговля</p>
         </div>
@@ -81,9 +122,16 @@ export default function MobileCases() {
       </div>
       <div className="absolute bg-[var(--color,#1f556b)] h-[499.57px] left-[177px] overflow-clip rounded-[75.206px] top-[3197.69px] w-[725.056px]" data-node-id="83:1452">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.55px] rounded-[70.56px] top-[344.98px] w-[624.583px]" data-node-id="83:1453" />
-        <p className="-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[360.03px] text-[47.403px] text-[color:var(--color-4,white)] text-center top-[376.58px]" data-node-id="83:1454" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Подробнее
-        </p>
+        <button
+          type="button"
+          onClick={() => onOpenCasesByFilter('Финансы')}
+          className="absolute h-[105.578px] left-[49.55px] top-[344.98px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
+          data-node-id="83:1454"
+        >
+          <span className="relative z-10 font-['Roboto:Medium',sans-serif] font-medium leading-none text-[47.403px] text-[color:var(--color-4,white)] text-center transition-colors duration-200 group-hover:text-[#eefaff] group-active:text-white" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+            Подробнее
+          </span>
+        </button>
         <div className="-translate-y-1/2 absolute flex flex-col font-['Geologica:Bold',sans-serif] font-bold justify-center leading-[0] left-[301.3px] not-italic text-[45.412px] text-[color:var(--color-4,white)] top-[183.01px] whitespace-nowrap" data-node-id="83:1455" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           <p className="leading-none">Услуги</p>
         </div>

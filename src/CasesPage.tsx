@@ -3,6 +3,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
+import type { CasesFilterLabel } from './casesFilters';
 
 const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png';
 const imgShutterstock23294881251 = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png';
@@ -18,6 +19,7 @@ const MOBILE_BREAKPOINT = 1200;
 type CasesPageProps = {
   onNavigate: (page: SitePage) => void;
   onOpenCase: (caseId: CaseId) => void;
+  initialFilter?: CasesFilterLabel | null;
 };
 
 const FILTERS = [
@@ -26,7 +28,7 @@ const FILTERS = [
   { label: 'Сельское хозяйство', left: 862, width: 174 },
   { label: 'HoReCa', left: 1046, width: 86 },
   { label: 'Разработка ПО', left: 1142, width: 133 },
-] as const;
+] as const satisfies ReadonlyArray<{ label: CasesFilterLabel; left: number; width: number }>;
 
 const MOBILE_FILTER_WIDTHS: Record<FilterLabel, string> = {
   Финансы: 'w-[84px]',
@@ -36,7 +38,9 @@ const MOBILE_FILTER_WIDTHS: Record<FilterLabel, string> = {
   'Разработка ПО': 'w-[118px]',
 };
 
-type FilterLabel = (typeof FILTERS)[number]['label'];
+type FilterLabel = CasesFilterLabel;
+
+const DEFAULT_ACTIVE_FILTERS: FilterLabel[] = ['Финансы', 'Строительство', 'Сельское хозяйство', 'Разработка ПО'];
 
 type CaseCardData = {
   id: CaseId;
@@ -263,14 +267,9 @@ function MobileCasesTitleCard() {
   );
 }
 
-export default function CasesPage({ onNavigate, onOpenCase }: CasesPageProps) {
+export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null }: CasesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
-  const [activeFilters, setActiveFilters] = useState<FilterLabel[]>([
-    'Финансы',
-    'Строительство',
-    'Сельское хозяйство',
-    'Разработка ПО',
-  ]);
+  const [activeFilters, setActiveFilters] = useState<FilterLabel[]>(() => [...DEFAULT_ACTIVE_FILTERS]);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());
@@ -282,6 +281,15 @@ export default function CasesPage({ onNavigate, onOpenCase }: CasesPageProps) {
       window.visualViewport?.removeEventListener('resize', updateViewport);
     };
   }, []);
+
+  useEffect(() => {
+    if (initialFilter) {
+      setActiveFilters([initialFilter]);
+      return;
+    }
+
+    setActiveFilters([...DEFAULT_ACTIVE_FILTERS]);
+  }, [initialFilter]);
 
   const scale = viewportWidth > 0 ? viewportWidth / FRAME_WIDTH : 1;
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_BREAKPOINT;
