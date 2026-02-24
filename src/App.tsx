@@ -19,17 +19,26 @@ import CaseAutomationFinancePage from './CaseAutomationFinancePage';
 import NewsPage from './NewsPage';
 import getViewportWidth from './getViewportWidth';
 import type { CasesFilterLabel } from './casesFilters';
+import ArticleFirstPage from './ArticleFirstPage';
+import ArticleSecondPage from './ArticleSecondPage';
+import ArticleThirdPage from './ArticleThirdPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
 const DESKTOP_BASE_WIDTH = 1400;
-const DESKTOP_MAX_WIDTH = 1900;
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
+const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
+const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
 
-type AppPage = SitePage | CaseId;
+type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
+type AppPage = SitePage | CaseId | ArticlePage;
 
 function isCaseId(page: AppPage): page is CaseId {
   return CASE_ROUTE_SET.has(page);
+}
+
+function isArticlePage(page: AppPage): page is ArticlePage {
+  return ARTICLE_ROUTE_SET.has(page);
 }
 
 export default function App() {
@@ -65,7 +74,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
-  const headerPage: SitePage = isCaseId(currentPage) ? 'cases' : currentPage;
+  const handleOpenArticle = (articlePage: ArticlePage) => {
+    setCurrentPage(articlePage);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const headerPage: SitePage = isCaseId(currentPage) ? 'cases' : isArticlePage(currentPage) ? 'news' : currentPage;
 
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_LAYOUT_BREAKPOINT;
 
@@ -80,9 +94,7 @@ export default function App() {
     }
 
     const measuredDesktopWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
-    const desktopScale = measuredDesktopWidth > 0
-      ? Math.min(DESKTOP_MAX_WIDTH / DESKTOP_BASE_WIDTH, measuredDesktopWidth / DESKTOP_BASE_WIDTH)
-      : 1;
+    const desktopScale = measuredDesktopWidth > 0 ? measuredDesktopWidth / DESKTOP_BASE_WIDTH : 1;
 
     return (
       <div className="w-full overflow-x-hidden bg-white">
@@ -118,6 +130,18 @@ export default function App() {
     return withHeader(<CaseDetailsPage caseId={currentPage} onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);
   }
 
+  if (currentPage === 'article-1') {
+    return withHeader(<ArticleFirstPage onNavigate={handleNavigate} onOpenArticle={handleOpenArticle} />);
+  }
+
+  if (currentPage === 'article-2') {
+    return withHeader(<ArticleSecondPage onNavigate={handleNavigate} onOpenArticle={handleOpenArticle} />);
+  }
+
+  if (currentPage === 'article-3') {
+    return withHeader(<ArticleThirdPage onNavigate={handleNavigate} onOpenArticle={handleOpenArticle} />);
+  }
+
   if (currentPage === 'about') {
     if (isMobileLayout) {
       const scale = viewportWidth > 0 ? Math.min(1, viewportWidth / ABOUT_MOBILE_FRAME_WIDTH) : 1;
@@ -144,7 +168,14 @@ export default function App() {
   }
 
   if (currentPage === 'news' && !isMobileLayout) {
-    return withHeader(<NewsPage onNavigate={handleNavigate} />);
+    return withHeader(
+      <NewsPage
+        onNavigate={handleNavigate}
+        onOpenFirstArticle={() => handleOpenArticle('article-1')}
+        onOpenSecondArticle={() => handleOpenArticle('article-2')}
+        onOpenThirdArticle={() => handleOpenArticle('article-3')}
+      />,
+    );
   }
 
   if (currentPage === 'useful') {
@@ -184,6 +215,9 @@ export default function App() {
             currentPage={currentPage}
             onNavigate={handleNavigate}
             onOpenCasesByFilter={handleNavigateToCasesWithFilter}
+            onOpenFirstArticle={() => handleOpenArticle('article-1')}
+            onOpenSecondArticle={() => handleOpenArticle('article-2')}
+            onOpenThirdArticle={() => handleOpenArticle('article-3')}
           />
         </div>
       </div>

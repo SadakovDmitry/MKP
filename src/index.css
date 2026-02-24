@@ -2,6 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'RobotoLocal';
+  src: url('./Roboto/Roboto.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoLocal';
+  src: url('./Roboto/Roboto.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoLocal';
+  src: url('./Roboto/Roboto.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoLocal';
+  src: url('./Roboto/Roboto.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RobotoLocal';
+  src: url('./Roboto/Roboto-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

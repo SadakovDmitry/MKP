@@ -7,6 +7,12 @@ const imgMoreButtonBg = '/assets/news-figma-button-bg.png';
 const imgMoreArrow = '/assets/news-figma-icon-exclude.png';
 const imgNewsArrow = '/assets/news-figma-group-125.svg';
 
+type MobileNewsPageProps = {
+  onOpenFirstArticle: () => void;
+  onOpenSecondArticle: () => void;
+  onOpenThirdArticle: () => void;
+};
+
 type ArticleCard = {
   className: string;
   imageClassName: string;
@@ -73,9 +79,9 @@ const NEWS_CARDS: NewsCard[] = [
   },
 ];
 
-function MoreButton() {
+function MoreButton({ onClick }: { onClick?: () => void }) {
   return (
-    <button type="button" className="mobile-news-page__article-more" aria-label="Подробнее">
+    <button type="button" className="mobile-news-page__article-more" aria-label="Подробнее" onClick={onClick}>
       <img src={imgMoreButtonBg} alt="" className="mobile-news-page__article-more-bg" />
       <span className="mobile-news-page__article-more-text">Подробнее</span>
       <img src={imgMoreArrow} alt="" className="mobile-news-page__article-more-arrow" />
@@ -83,18 +89,18 @@ function MoreButton() {
   );
 }
 
-export default function MobileNewsPage() {
+export default function MobileNewsPage({ onOpenFirstArticle, onOpenSecondArticle, onOpenThirdArticle }: MobileNewsPageProps) {
   return (
     <section className="mobile-news-page">
       <h2 className="mobile-news-page__section-title mobile-news-page__section-title--articles">статьи</h2>
       <h2 className="mobile-news-page__section-title mobile-news-page__section-title--news">новости</h2>
 
-      {ARTICLE_CARDS.map((card) => (
+      {ARTICLE_CARDS.map((card, index) => (
         <article key={card.title} className={card.className}>
           <img src={card.image} alt="" className={card.imageClassName} />
           <h3 className="mobile-news-page__article-title">{card.title}</h3>
           <p className="mobile-news-page__article-date">{card.date}</p>
-          <MoreButton />
+          <MoreButton onClick={index === 0 ? onOpenFirstArticle : index === 1 ? onOpenThirdArticle : index === 2 ? onOpenSecondArticle : undefined} />
         </article>
       ))}
 

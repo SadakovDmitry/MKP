@@ -1,0 +1,435 @@
+.article-second-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+  color: #313131;
+}
+
+.article-second-page__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.article-second-hero {
+  position: relative;
+  height: 700px;
+  width: 100%;
+  overflow: hidden;
+  background: #1e1e1e;
+}
+
+.article-second-hero__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1);
+}
+
+.article-second-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(49, 49, 49, 0.45);
+}
+
+.article-second-hero__title {
+  position: absolute;
+  top: calc(50% - 48px);
+  left: 50%;
+  width: min(854px, calc(100% - 48px));
+  transform: translateX(-50%);
+  margin: 0;
+  text-align: center;
+  font-family: 'Geologica', sans-serif;
+  font-size: 50px;
+  line-height: 90%;
+  font-weight: 500;
+  color: #fff;
+}
+
+.article-second-hero__date {
+  position: absolute;
+  bottom: 92px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 50px;
+  line-height: 90%;
+  font-weight: 300;
+  color: #fff;
+}
+
+.article-second-content {
+  width: 100%;
+  background: #fff;
+  padding: 167px 0 120px;
+}
+
+.article-second-content__inner {
+  width: min(1160px, calc(100% - 80px));
+  margin: 0 auto;
+}
+
+.article-second-content__intro {
+  width: min(1104px, 100%);
+}
+
+.article-second-content__myths {
+  width: min(1058px, 100%);
+  margin-top: 78px;
+}
+
+.article-second-content__myth {
+  margin: 0 0 38px;
+}
+
+.article-second-content__myth-title {
+  margin: 0 0 22px;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 31.63px;
+  line-height: 100%;
+  font-weight: 700;
+  color: #313131;
+  overflow-wrap: anywhere;
+}
+
+.article-second-content__myth-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.article-second-content__paragraph {
+  margin: 0 0 26px;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 31.63px;
+  line-height: 100%;
+  font-weight: 400;
+  color: #313131;
+  overflow-wrap: anywhere;
+}
+
+.article-second-related {
+  width: 100%;
+  background: #e2f4fa;
+  padding: 90px 0 92px;
+}
+
+.article-second-related__title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Geologica', sans-serif;
+  font-size: 36.65px;
+  line-height: 110%;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #313131;
+}
+
+.article-second-related__cards {
+  margin: 58px auto 0;
+  width: min(766px, calc(100% - 80px));
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.article-second-related__card {
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  height: 275px;
+  background: #000;
+  color: #fff;
+}
+
+.article-second-related__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.78;
+  filter: brightness(1.28);
+}
+
+.article-second-related__image--first {
+  transform: translateX(-20px) scale(1.03);
+}
+
+.article-second-related__overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0.06;
+}
+
+.article-second-related__date {
+  position: absolute;
+  top: 28px;
+  left: 24px;
+  margin: 0;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 25.58px;
+  line-height: 90%;
+  font-weight: 300;
+}
+
+.article-second-related__card-title {
+  position: absolute;
+  top: 92px;
+  left: 24px;
+  width: 254px;
+  margin: 0;
+  white-space: pre-line;
+  font-family: 'Geologica', sans-serif;
+  font-size: 25px;
+  line-height: 90%;
+  font-weight: 400;
+}
+
+.article-second-related__card:first-child .article-second-related__card-title {
+  top: 100px;
+  width: 278px;
+}
+
+.article-second-related__more {
+  position: absolute;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  height: 50px;
+  border: 1.5px solid #fff;
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 7px 0 22px;
+  cursor: pointer;
+}
+
+.article-second-related__more-text {
+  font-family: 'Geologica', sans-serif;
+  font-size: 20px;
+  line-height: 90%;
+  font-weight: 200;
+  letter-spacing: 0.02em;
+}
+
+.article-second-related__more-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: #fff;
+  color: #000;
+  display: grid;
+  place-items: center;
+}
+
+.article-second-related__arrow-svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 1279px) {
+  .article-second-hero__title {
+    font-size: 42px;
+  }
+
+  .article-second-hero__date {
+    font-size: 40px;
+  }
+
+  .article-second-content {
+    padding-top: 130px;
+  }
+
+  .article-second-content__myth-title,
+  .article-second-content__paragraph {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 999px) {
+  .article-second-hero {
+    height: 520px;
+  }
+
+  .article-second-hero__title {
+    width: calc(100% - 64px);
+    font-size: 28px;
+  }
+
+  .article-second-hero__date {
+    bottom: 64px;
+    font-size: 24px;
+  }
+
+  .article-second-content {
+    padding: 90px 0;
+  }
+
+  .article-second-content__inner {
+    width: calc(100% - 64px);
+  }
+
+  .article-second-content__myth-title,
+  .article-second-content__paragraph {
+    font-size: 18px;
+  }
+
+  .article-second-content__myths {
+    margin-top: 56px;
+  }
+
+  .article-second-related {
+    padding: 70px 0;
+  }
+
+  .article-second-related__title {
+    font-size: 30px;
+  }
+
+  .article-second-related__cards {
+    width: calc(100% - 64px);
+    grid-template-columns: 1fr;
+  }
+
+  .article-second-related__card {
+    height: 245px;
+  }
+
+  .article-second-related__date {
+    top: 20px;
+    left: 20px;
+    font-size: 18px;
+  }
+
+  .article-second-related__card-title {
+    top: 70px;
+    left: 20px;
+    width: 210px;
+    font-size: 20px;
+  }
+
+  .article-second-related__card:first-child .article-second-related__card-title {
+    top: 78px;
+    width: 224px;
+  }
+
+  .article-second-related__more {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    height: 44px;
+    padding: 0 6px 0 18px;
+  }
+
+  .article-second-related__more-text {
+    font-size: 16px;
+  }
+
+  .article-second-related__more-icon {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 767px) {
+  .article-second-hero {
+    height: 460px;
+  }
+
+  .article-second-hero__title {
+    width: calc(100% - 64px);
+    font-size: 24px;
+    line-height: 95%;
+  }
+
+  .article-second-hero__date {
+    bottom: 52px;
+    font-size: 20px;
+  }
+
+  .article-second-content {
+    padding: 72px 0;
+  }
+
+  .article-second-content__inner {
+    width: calc(100% - 64px);
+  }
+
+  .article-second-content__myths {
+    margin-top: 44px;
+  }
+
+  .article-second-content__myth {
+    margin-bottom: 28px;
+  }
+
+  .article-second-content__myth-title,
+  .article-second-content__paragraph {
+    font-size: 16px;
+  }
+
+  .article-second-content__paragraph {
+    margin-bottom: 18px;
+  }
+
+  .article-second-related {
+    padding: 56px 0 62px;
+  }
+
+  .article-second-related__title {
+    font-size: 24px;
+  }
+
+  .article-second-related__cards {
+    width: calc(100% - 64px);
+    margin-top: 40px;
+  }
+
+  .article-second-related__card {
+    height: 220px;
+    border-radius: 30px;
+  }
+
+  .article-second-related__date {
+    top: 18px;
+    left: 18px;
+    font-size: 16px;
+  }
+
+  .article-second-related__card-title {
+    top: 62px;
+    left: 18px;
+    width: 180px;
+    font-size: 18px;
+  }
+
+  .article-second-related__card:first-child .article-second-related__card-title {
+    top: 68px;
+    width: 196px;
+  }
+
+  .article-second-related__more {
+    left: 18px;
+    right: 18px;
+    bottom: 16px;
+    height: 40px;
+    padding: 0 6px 0 14px;
+  }
+
+  .article-second-related__more-text {
+    font-size: 14px;
+  }
+
+  .article-second-related__more-icon {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -9,6 +9,9 @@ const imgNewsCardArrow = '/assets/news-figma-group-125.svg';
 
 type NewsPageProps = {
   onNavigate: (page: SitePage) => void;
+  onOpenFirstArticle: () => void;
+  onOpenSecondArticle: () => void;
+  onOpenThirdArticle: () => void;
 };
 
 type ArticleCard = {
@@ -81,9 +84,9 @@ function ArrowIcon({ className }: { className?: string }) {
   );
 }
 
-function MoreButton() {
+function MoreButton({ onClick }: { onClick?: () => void }) {
   return (
-    <button type="button" className="news-content__article-more">
+    <button type="button" className="news-content__article-more" onClick={onClick}>
       <span className="news-content__article-more-text">Подробнее</span>
       <span className="news-content__article-more-icon">
         <ArrowIcon className="news-content__arrow-svg" />
@@ -92,7 +95,7 @@ function MoreButton() {
   );
 }
 
-export default function NewsPage({ onNavigate }: NewsPageProps) {
+export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondArticle, onOpenThirdArticle }: NewsPageProps) {
   return (
     <div className="news-page">
       <main className="news-page__main">
@@ -112,13 +115,13 @@ export default function NewsPage({ onNavigate }: NewsPageProps) {
               <h2 className="news-content__section-title news-content__section-title--articles">Статьи</h2>
               <h2 className="news-content__section-title news-content__section-title--news">Новости</h2>
 
-              {ARTICLE_CARDS.map((card) => (
+              {ARTICLE_CARDS.map((card, index) => (
                 <article key={card.title} className={card.className}>
                   <img src={card.image} alt="" className={card.imageClassName} />
                   <div className="news-content__article-overlay" />
                   <h3 className="news-content__article-title">{card.title}</h3>
                   <p className="news-content__article-date">{card.date}</p>
-                  <MoreButton />
+                  <MoreButton onClick={index === 0 ? onOpenFirstArticle : index === 1 ? onOpenThirdArticle : index === 2 ? onOpenSecondArticle : undefined} />
                 </article>
               ))}
 

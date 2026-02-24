@@ -219,10 +219,10 @@
   top: calc(50% + 64px);
   left: calc(50% - 246px);
   margin: 0;
-  font-family: 'Geologica:Regular', sans-serif;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
   font-size: 25px;
   line-height: 90%;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .news-content__article-more {

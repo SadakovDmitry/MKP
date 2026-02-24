@@ -21,9 +21,19 @@ type MobilePageProps = {
   currentPage: SitePage;
   onNavigate: (page: SitePage) => void;
   onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
+  onOpenFirstArticle: () => void;
+  onOpenSecondArticle: () => void;
+  onOpenThirdArticle: () => void;
 };
 
-export default function MobilePage({ currentPage, onNavigate, onOpenCasesByFilter }: MobilePageProps) {
+export default function MobilePage({
+  currentPage,
+  onNavigate,
+  onOpenCasesByFilter,
+  onOpenFirstArticle,
+  onOpenSecondArticle,
+  onOpenThirdArticle,
+}: MobilePageProps) {
   const isHome = currentPage === 'home';
   const isNewsPage = currentPage === 'news';
 
@@ -55,7 +65,11 @@ export default function MobilePage({ currentPage, onNavigate, onOpenCasesByFilte
 
       {isNewsPage && (
         <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '2760px' }}>
-          <MobileNewsPage />
+          <MobileNewsPage
+            onOpenFirstArticle={onOpenFirstArticle}
+            onOpenSecondArticle={onOpenSecondArticle}
+            onOpenThirdArticle={onOpenThirdArticle}
+          />
         </div>
       )}
 
