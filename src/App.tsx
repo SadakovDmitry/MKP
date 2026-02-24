@@ -24,6 +24,7 @@ import ArticleSecondPage from './ArticleSecondPage';
 import ArticleThirdPage from './ArticleThirdPage';
 import ContactsPage from './ContactsPage';
 import ServicesPage from './ServicesPage';
+import ServiceAccountingPage from './ServiceAccountingPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -31,9 +32,12 @@ const DESKTOP_BASE_WIDTH = 1400;
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
 const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
+const SERVICE_ROUTE_ORDER = ['service-accounting'] as const;
+const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
-type AppPage = SitePage | CaseId | ArticlePage;
+type ServicePage = (typeof SERVICE_ROUTE_ORDER)[number];
+type AppPage = SitePage | CaseId | ArticlePage | ServicePage;
 
 function isCaseId(page: AppPage): page is CaseId {
   return CASE_ROUTE_SET.has(page);
@@ -41,6 +45,10 @@ function isCaseId(page: AppPage): page is CaseId {
 
 function isArticlePage(page: AppPage): page is ArticlePage {
   return ARTICLE_ROUTE_SET.has(page);
+}
+
+function isServicePage(page: AppPage): page is ServicePage {
+  return SERVICE_ROUTE_SET.has(page);
 }
 
 function shouldUseAppDesktopScale(page: AppPage) {
@@ -85,7 +93,18 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
-  const headerPage: SitePage = isCaseId(currentPage) ? 'cases' : isArticlePage(currentPage) ? 'news' : currentPage;
+  const handleOpenService = (servicePage: ServicePage) => {
+    setCurrentPage(servicePage);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const headerPage: SitePage = isCaseId(currentPage)
+    ? 'cases'
+    : isArticlePage(currentPage)
+      ? 'news'
+      : isServicePage(currentPage)
+        ? 'services'
+        : currentPage;
 
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_LAYOUT_BREAKPOINT;
 
@@ -158,6 +177,10 @@ export default function App() {
     return withHeader(<ArticleThirdPage onNavigate={handleNavigate} onOpenArticle={handleOpenArticle} />);
   }
 
+  if (currentPage === 'service-accounting') {
+    return withHeader(<ServiceAccountingPage onNavigate={handleNavigate} />);
+  }
+
   if (currentPage === 'about') {
     if (isMobileLayout) {
       const scale = viewportWidth > 0 ? Math.min(1, viewportWidth / ABOUT_MOBILE_FRAME_WIDTH) : 1;
@@ -199,7 +222,7 @@ export default function App() {
   }
 
   if (currentPage === 'services') {
-    return withHeader(<ServicesPage onNavigate={handleNavigate} />);
+    return withHeader(<ServicesPage onNavigate={handleNavigate} onOpenFirstService={() => handleOpenService('service-accounting')} />);
   }
 
   if (currentPage === 'contacts' && !isMobileLayout) {

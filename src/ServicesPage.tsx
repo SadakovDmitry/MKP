@@ -18,6 +18,7 @@ const imgChatGptImage70003Layer4 = '/assets/bfecad0c6eac05654a6d611c67a7eb884267
 
 type ServicesPageProps = {
   onNavigate: (page: SitePage) => void;
+  onOpenFirstService: () => void;
 };
 
 type ServiceCardProps = {
@@ -28,6 +29,7 @@ type ServiceCardProps = {
   actionClassName?: string;
   actionTextClassName?: string;
   iconClassName: string;
+  onMoreClick?: () => void;
 };
 
 function ActionArrowBadge() {
@@ -56,11 +58,12 @@ function ServiceCard({
   actionClassName = 'services-page__card-action',
   actionTextClassName = 'services-page__card-action-text',
   iconClassName,
+  onMoreClick,
 }: ServiceCardProps) {
   return (
     <article className={cardClassName}>
       <h2 className={titleClassName}>{title}</h2>
-      <button type="button" className={actionClassName} aria-label="Подробнее">
+      <button type="button" className={actionClassName} aria-label="Подробнее" onClick={onMoreClick}>
         <span className={actionTextClassName}>Подробнее</span>
         <ActionArrowBadge />
       </button>
@@ -69,7 +72,7 @@ function ServiceCard({
   );
 }
 
-export default function ServicesPage({ onNavigate }: ServicesPageProps) {
+export default function ServicesPage({ onNavigate, onOpenFirstService }: ServicesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
@@ -121,6 +124,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                 actionClassName="services-page__card-action services-page__card-action--mobile"
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--accounting"
+                onMoreClick={onOpenFirstService}
               />
 
               <ServiceCard
@@ -197,6 +201,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
               icon={imgChatGptImage70002Layer3}
               cardClassName="services-page__card services-page__card--accounting"
               iconClassName="services-page__card-icon services-page__card-icon--accounting"
+              onMoreClick={onOpenFirstService}
             />
 
             <ServiceCard
