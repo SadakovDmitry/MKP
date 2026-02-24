@@ -23,6 +23,7 @@ import ArticleFirstPage from './ArticleFirstPage';
 import ArticleSecondPage from './ArticleSecondPage';
 import ArticleThirdPage from './ArticleThirdPage';
 import ContactsPage from './ContactsPage';
+import ServicesPage from './ServicesPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -195,6 +196,10 @@ export default function App() {
 
   if (currentPage === 'useful') {
     return withHeader(<UsefulPage onNavigate={handleNavigate} />);
+  }
+
+  if (currentPage === 'services') {
+    return withHeader(<ServicesPage onNavigate={handleNavigate} />);
   }
 
   if (currentPage === 'contacts' && !isMobileLayout) {

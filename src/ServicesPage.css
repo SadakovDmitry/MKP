@@ -1,0 +1,414 @@
+@import url("https://fonts.googleapis.com/css2?family=Geologica:wght@200;400;500&family=Roboto:wght@300;500&display=swap");
+
+.services-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.services-page__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.services-page__scaled-wrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.services-page__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.services-page__consultation {
+  position: absolute;
+  top: 166px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 373px;
+  height: 58.6px;
+  border-radius: 45.05px;
+  border: 0;
+  background: #313131;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Geologica", sans-serif;
+  font-size: 19.91px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.services-page__title-card {
+  position: absolute;
+  top: 299px;
+  left: 120px;
+  width: 275px;
+  height: 400px;
+  border-radius: 40px;
+  background: #44b1d2;
+  overflow: hidden;
+}
+
+.services-page__title-card h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: 210px;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 32.66px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.services-page__card {
+  position: absolute;
+  width: 275px;
+  height: 400px;
+  border-radius: 40px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.services-page__card--accounting {
+  top: 299px;
+  left: 415px;
+}
+
+.services-page__card--management {
+  top: 721px;
+  left: 414px;
+}
+
+.services-page__card--hr {
+  top: 721px;
+  left: 415px;
+}
+
+.services-page__card--project {
+  top: 721px;
+  left: 710px;
+}
+
+.services-page__card--audit {
+  top: 299px;
+  left: 710px;
+}
+
+.services-page__card--legal {
+  top: 299px;
+  left: 1005px;
+}
+
+.services-page__card--hidden {
+  display: none;
+}
+
+.services-page__card-title {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 229px;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.services-page__card--legal .services-page__card-title {
+  width: 200px;
+}
+
+.services-page__card-action {
+  position: absolute;
+  left: 25px;
+  top: 325px;
+  width: 225px;
+  height: 50px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.services-page__card-action-text {
+  position: absolute;
+  top: 16px;
+  left: 22px;
+  margin: 0;
+  color: currentColor;
+  font-family: "Geologica", sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+.services-page__card-action-icon {
+  display: none;
+}
+
+.services-page__card-icon {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  height: 132px;
+  width: auto;
+  --icon-scale: 1;
+  transform: translate(-50%, -50%) scale(var(--icon-scale));
+  transform-origin: center center;
+  transition: transform 0.25s ease;
+}
+
+.services-page__card-action:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #1f556b;
+}
+
+.services-page__card-action:hover ~ .services-page__card-icon,
+.services-page__card-action:hover ~ .services-page__mobile-card-icon {
+  transform: translate(-50%, -50%) scale(calc(var(--icon-scale) * 1.08));
+}
+
+.services-page__card-action-badge {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #44b1d2;
+  color: #1f556b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.services-page__card-action-arrow {
+  display: block;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+}
+
+.services-page__card-action:hover .services-page__card-action-badge {
+  background: #1f556b;
+  color: #ffffff;
+}
+
+.services-page__card-icon--accounting {
+  object-fit: contain;
+  --icon-scale: 1.03;
+}
+
+.services-page__card-icon--management {
+  object-fit: contain;
+  --icon-scale: 1.14;
+}
+
+.services-page__card-icon--hr {
+  object-fit: contain;
+  --icon-scale: 1.08;
+}
+
+.services-page__card-icon--project {
+  object-fit: contain;
+  --icon-scale: 1.12;
+}
+
+.services-page__card-icon--audit {
+  object-fit: contain;
+  --icon-scale: 0.96;
+}
+
+.services-page__card-icon--legal {
+  object-fit: contain;
+  --icon-scale: 1.08;
+}
+
+.services-page__mobile-shell {
+  position: relative;
+  margin: 0 auto;
+}
+
+.services-page__mobile-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.services-page__mobile-consultation {
+  position: absolute;
+  top: 269.28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 535px;
+  height: 84px;
+  border-radius: 64.61px;
+  border: 0;
+  background: #313131;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Geologica", sans-serif;
+  font-size: 28.56px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.services-page__mobile-title-card {
+  position: absolute;
+  top: 432px;
+  left: 50px;
+  width: 472.8px;
+  height: 687.7px;
+  border-radius: 68.77px;
+  background: #44b1d2;
+  overflow: hidden;
+}
+
+.services-page__mobile-title-card h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: 360px;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 56.15px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.services-page__mobile-card {
+  position: absolute;
+  width: 472.8px;
+  height: 687.7px;
+  border-radius: 68.77px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.services-page__mobile-card--accounting {
+  top: 432px;
+  left: 557.2px;
+}
+
+.services-page__mobile-card--audit {
+  top: 1162.7px;
+  left: 50px;
+}
+
+.services-page__mobile-card--legal {
+  top: 1162.7px;
+  left: 557.2px;
+}
+
+.services-page__mobile-card--management {
+  top: 1893.41px;
+  left: 50px;
+}
+
+.services-page__mobile-card--project {
+  top: 1893px;
+  left: 558px;
+}
+
+.services-page__mobile-card-title {
+  position: absolute;
+  top: 43px;
+  left: 39px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 42.98px;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.services-page__mobile-card-title--accounting {
+  width: 335.3px;
+}
+
+.services-page__mobile-card-title--audit {
+  width: 354.2px;
+}
+
+.services-page__mobile-card-title--legal {
+  width: 343.9px;
+}
+
+.services-page__mobile-card-title--management {
+  width: 364.5px;
+}
+
+.services-page__mobile-card-title--project {
+  width: 345.6px;
+}
+
+.services-page__card-action--mobile {
+  left: 9.09%;
+  top: 81.25%;
+  width: 81.81%;
+  height: 12.51%;
+  border-radius: 85.96px;
+  border-width: 2px;
+}
+
+.services-page__card-action-text--mobile {
+  top: 50%;
+  left: 17.09%;
+  transform: translateY(-50%);
+  font-size: 34.39px;
+}
+
+.services-page__card-action--mobile .services-page__card-action-badge {
+  right: 10px;
+  width: 68px;
+  height: 68px;
+}
+
+.services-page__card-action--mobile .services-page__card-action-arrow {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+}
+
+.services-page__mobile-card-icon {
+  position: absolute;
+  top: 344px;
+  left: 50%;
+  height: 188px;
+  width: auto;
+  transform: translate(-50%, -50%) scale(var(--icon-scale));
+  transform-origin: center center;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
