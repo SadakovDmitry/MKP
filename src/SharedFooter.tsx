@@ -12,6 +12,8 @@ const imgVector6 = '/assets/5f3e8aeb6fb2d09565f9912b7518955388199956.svg';
 const MOBILE_BREAKPOINT = 1200;
 const MOBILE_FRAME_WIDTH = 1080;
 const MOBILE_FOOTER_HEIGHT = 1600;
+const DESKTOP_FRAME_WIDTH = 1400;
+const DESKTOP_FOOTER_HEIGHT = 250;
 
 type SharedFooterProps = {
   onNavigate: (page: SitePage) => void;
@@ -43,6 +45,11 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
     }
     return Math.min(1, measuredViewportWidth / MOBILE_FRAME_WIDTH);
   }, [measuredViewportWidth]);
+
+  const desktopScale = 1;
+
+  const desktopScaledWidth = DESKTOP_FRAME_WIDTH * desktopScale;
+  const desktopScaledHeight = DESKTOP_FOOTER_HEIGHT * desktopScale;
 
   if (isMobile) {
     if (mobileEmbedded) {
@@ -82,8 +89,18 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
   }
 
   return (
-    <footer className="w-full bg-[var(--color-3,#313131)]">
-      <div className="relative h-[250px] overflow-clip w-[1400px] mx-auto">
+    <footer className="w-full bg-[var(--color-3,#313131)] overflow-hidden" style={{ height: `${desktopScaledHeight}px` }}>
+      <div className="relative mx-auto" style={{ width: `${desktopScaledWidth}px`, height: `${desktopScaledHeight}px` }}>
+        <div
+          className="absolute left-0 top-0"
+          style={{
+            width: `${DESKTOP_FRAME_WIDTH}px`,
+            height: `${DESKTOP_FOOTER_HEIGHT}px`,
+            transform: `scale(${desktopScale})`,
+            transformOrigin: 'top left',
+          }}
+        >
+          <div className="relative h-[250px] overflow-clip w-[1400px]">
         <div className="absolute h-0 left-[120px] top-[157px] w-[1160px]">
           <div className="absolute inset-[-1px_0_0_0]">
             <img alt="" className="block max-w-none size-full" src={imgLine1} />
@@ -174,6 +191,8 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
         </div>
         <div className="absolute inset-[18%_27.79%_62.8%_68.64%]">
           <img alt="" className="absolute block max-w-none size-full" src={imgVector6} />
+        </div>
+          </div>
         </div>
       </div>
     </footer>

@@ -103,15 +103,20 @@
 
 .news-content {
   width: 100%;
-  min-height: 1200px;
   background: #e2f4fa;
+}
+
+.news-content__scale-wrap {
+  position: relative;
+  width: 1400px;
+  height: 1200px;
+  margin: 0 auto;
 }
 
 .news-content__frame {
   position: relative;
   width: 1400px;
   height: 1200px;
-  margin: 0 auto;
 }
 
 .news-content__section-title {

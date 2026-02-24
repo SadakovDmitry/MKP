@@ -4,6 +4,7 @@ import MobileServices from './mobileSections/MobileServices';
 import MobileCases from './mobileSections/MobileCases';
 import MobileNews from './mobileSections/MobileNews';
 import MobileContact from './mobileSections/MobileContact';
+import MobileNewsPage from './mobileSections/MobileNewsPage';
 import SharedFooter from './SharedFooter';
 import type { SitePage } from './navigation';
 import type { CasesFilterLabel } from './casesFilters';
@@ -11,9 +12,10 @@ import type { CasesFilterLabel } from './casesFilters';
 export const MOBILE_FRAME_WIDTH = 1080;
 export const MOBILE_HOME_FRAME_HEIGHT = 18160;
 export const MOBILE_CONSTRUCTION_FRAME_HEIGHT = 3520;
+export const MOBILE_NEWS_FRAME_HEIGHT = 5440;
 
 export const getMobileFrameHeight = (page: SitePage) =>
-  page === 'home' ? MOBILE_HOME_FRAME_HEIGHT : MOBILE_CONSTRUCTION_FRAME_HEIGHT;
+  page === 'home' ? MOBILE_HOME_FRAME_HEIGHT : page === 'news' ? MOBILE_NEWS_FRAME_HEIGHT : MOBILE_CONSTRUCTION_FRAME_HEIGHT;
 
 type MobilePageProps = {
   currentPage: SitePage;
@@ -23,10 +25,11 @@ type MobilePageProps = {
 
 export default function MobilePage({ currentPage, onNavigate, onOpenCasesByFilter }: MobilePageProps) {
   const isHome = currentPage === 'home';
+  const isNewsPage = currentPage === 'news';
 
   return (
     <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="83:1716">
-      <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '1920px' }}>
+      <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: isNewsPage ? '1080px' : '1920px' }}>
         <MobileHero currentPage={currentPage} onNavigate={onNavigate} />
       </div>
 
@@ -48,6 +51,12 @@ export default function MobilePage({ currentPage, onNavigate, onOpenCasesByFilte
             <MobileContact />
           </div>
         </>
+      )}
+
+      {isNewsPage && (
+        <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '2760px' }}>
+          <MobileNewsPage />
+        </div>
       )}
 
       <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '1600px' }}>

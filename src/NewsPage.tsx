@@ -107,28 +107,30 @@ export default function NewsPage({ onNavigate }: NewsPageProps) {
         </section>
 
         <section className="news-content">
-          <div className="news-content__frame">
-            <h2 className="news-content__section-title news-content__section-title--articles">Статьи</h2>
-            <h2 className="news-content__section-title news-content__section-title--news">Новости</h2>
+          <div className="news-content__scale-wrap">
+            <div className="news-content__frame">
+              <h2 className="news-content__section-title news-content__section-title--articles">Статьи</h2>
+              <h2 className="news-content__section-title news-content__section-title--news">Новости</h2>
 
-            {ARTICLE_CARDS.map((card) => (
-              <article key={card.title} className={card.className}>
-                <img src={card.image} alt="" className={card.imageClassName} />
-                <div className="news-content__article-overlay" />
-                <h3 className="news-content__article-title">{card.title}</h3>
-                <p className="news-content__article-date">{card.date}</p>
-                <MoreButton />
-              </article>
-            ))}
+              {ARTICLE_CARDS.map((card) => (
+                <article key={card.title} className={card.className}>
+                  <img src={card.image} alt="" className={card.imageClassName} />
+                  <div className="news-content__article-overlay" />
+                  <h3 className="news-content__article-title">{card.title}</h3>
+                  <p className="news-content__article-date">{card.date}</p>
+                  <MoreButton />
+                </article>
+              ))}
 
-            {NEWS_CARDS.map((card) => (
-              <article key={card.title} className={`${card.className} news-content__news-card--${card.color}`}>
-                <h3 className="news-content__news-title">{card.title}</h3>
-                <button type="button" className="news-content__news-more" aria-label="Подробнее">
-                  <img src={imgNewsCardArrow} alt="" className="news-content__news-more-icon-image" />
-                </button>
-              </article>
-            ))}
+              {NEWS_CARDS.map((card) => (
+                <article key={card.title} className={`${card.className} news-content__news-card--${card.color}`}>
+                  <h3 className="news-content__news-title">{card.title}</h3>
+                  <button type="button" className="news-content__news-more" aria-label="Подробнее">
+                    <img src={imgNewsCardArrow} alt="" className="news-content__news-more-icon-image" />
+                  </button>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </main>

@@ -1,0 +1,246 @@
+.mobile-news-page {
+  width: 1080px;
+  height: 2760px;
+  position: relative;
+  background: #e2f4fa;
+  overflow: hidden;
+  text-align: left;
+  font-size: 26.96px;
+  color: #fff;
+  font-family: 'Geologica:Regular', sans-serif;
+}
+
+.mobile-news-page__section-title {
+  position: absolute;
+  left: calc(50% - 270px);
+  margin: 0;
+  width: 539px;
+  font-family: 'Geologica:Medium', sans-serif;
+  font-size: 60.78px;
+  line-height: 110%;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1f556b;
+  text-align: center;
+}
+
+.mobile-news-page__section-title--articles {
+  top: calc(50% - 1191px);
+}
+
+.mobile-news-page__section-title--news {
+  top: calc(50% + 218px);
+}
+
+.mobile-news-page__article-card {
+  position: absolute;
+  left: 177px;
+  border-radius: 51.02px;
+  background: #000;
+  width: 727px;
+  height: 318.9px;
+  overflow: hidden;
+  font-size: 35.71px;
+}
+
+.mobile-news-page__article-card--1 {
+  top: 352px;
+}
+
+.mobile-news-page__article-card--3 {
+  top: 706.57px;
+}
+
+.mobile-news-page__article-card--2 {
+  top: 1061.14px;
+}
+
+.mobile-news-page__article-image {
+  position: absolute;
+  width: 727px;
+  object-fit: cover;
+  opacity: 0.62;
+}
+
+.mobile-news-page__article-image--1 {
+  top: -82.91px;
+  left: 0;
+  height: 484.7px;
+}
+
+.mobile-news-page__article-image--2 {
+  top: -43px;
+  left: 0;
+  height: 388px;
+}
+
+.mobile-news-page__article-image--3 {
+  top: -56.12px;
+  left: 0;
+  height: 374.9px;
+}
+
+.mobile-news-page__article-title {
+  position: absolute;
+  top: calc(50% - 121.18px);
+  left: calc(50% - 313.76px);
+  margin: 0;
+  line-height: 90%;
+  white-space: pre-line;
+}
+
+.mobile-news-page__article-card--1 .mobile-news-page__article-title {
+  width: 268.3px;
+  top: calc(50% - 120.66px);
+}
+
+.mobile-news-page__article-card--2 .mobile-news-page__article-title {
+  width: 441.3px;
+}
+
+.mobile-news-page__article-card--3 .mobile-news-page__article-title {
+  width: 561.2px;
+}
+
+.mobile-news-page__article-date {
+  position: absolute;
+  top: calc(50% + 81.61px);
+  left: calc(50% - 313.76px);
+  margin: 0;
+  font-size: 31.89px;
+  line-height: 90%;
+}
+
+.mobile-news-page__article-card--1 .mobile-news-page__article-date {
+  top: calc(50% + 81.6px);
+}
+
+.mobile-news-page__article-more {
+  position: absolute;
+  height: 20.01%;
+  width: 39.48%;
+  top: 69.99%;
+  right: 4.38%;
+  bottom: 10%;
+  left: 56.14%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.mobile-news-page__article-more-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 63.77px;
+}
+
+.mobile-news-page__article-more-text {
+  position: absolute;
+  top: 31.98%;
+  left: 9.78%;
+  letter-spacing: 0.02em;
+  line-height: 90%;
+  font-family: 'Geologica:ExtraLight', sans-serif;
+  font-size: 25.51px;
+  font-weight: 200;
+  color: #fff;
+}
+
+.mobile-news-page__article-more-arrow {
+  position: absolute;
+  height: 79.15%;
+  width: 17.6%;
+  top: 10%;
+  right: 2.41%;
+  bottom: 10.84%;
+  left: 79.99%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mobile-news-page__news-card {
+  position: absolute;
+  border-radius: 51.02px;
+  width: 350.7px;
+  height: 350.7px;
+  overflow: hidden;
+}
+
+.mobile-news-page__news-card--1 {
+  top: 1752px;
+  left: 177px;
+}
+
+.mobile-news-page__news-card--2 {
+  top: 1752px;
+  left: 553.26px;
+}
+
+.mobile-news-page__news-card--3 {
+  top: 2133.36px;
+  left: 177px;
+}
+
+.mobile-news-page__news-card--4 {
+  top: 2133.36px;
+  left: 553.26px;
+}
+
+.mobile-news-page__news-card--blue {
+  background: #44b1d2;
+}
+
+.mobile-news-page__news-card--teal {
+  background: #1f556b;
+}
+
+.mobile-news-page__news-card--dark {
+  background: #313131;
+}
+
+.mobile-news-page__news-title {
+  position: absolute;
+  top: calc(50% - 133.26px);
+  left: calc(50% - 146.02px);
+  margin: 0;
+  width: 289.5px;
+  line-height: 100%;
+  font-size: 26.96px;
+  font-weight: 400;
+  white-space: pre-line;
+}
+
+.mobile-news-page__news-title--1 {
+  left: calc(50% - 146.01px);
+  width: 237.2px;
+}
+
+.mobile-news-page__news-title--4 {
+  width: 264px;
+}
+
+.mobile-news-page__news-more {
+  position: absolute;
+  height: 18.19%;
+  width: 18.19%;
+  top: 71.65%;
+  right: 9.07%;
+  bottom: 10.16%;
+  left: 72.74%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.mobile-news-page__news-arrow {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}

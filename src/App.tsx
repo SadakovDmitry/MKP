@@ -22,6 +22,8 @@ import type { CasesFilterLabel } from './casesFilters';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
+const DESKTOP_BASE_WIDTH = 1400;
+const DESKTOP_MAX_WIDTH = 1900;
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 
 type AppPage = SitePage | CaseId;
@@ -65,14 +67,32 @@ export default function App() {
 
   const headerPage: SitePage = isCaseId(currentPage) ? 'cases' : currentPage;
 
-  const withHeader = (content: ReactNode) => (
-    <>
-      <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
-      {content}
-    </>
-  );
-
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_LAYOUT_BREAKPOINT;
+
+  const withHeader = (content: ReactNode) => {
+    if (isMobileLayout) {
+      return (
+        <>
+          <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
+          {content}
+        </>
+      );
+    }
+
+    const measuredDesktopWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
+    const desktopScale = measuredDesktopWidth > 0
+      ? Math.min(DESKTOP_MAX_WIDTH / DESKTOP_BASE_WIDTH, measuredDesktopWidth / DESKTOP_BASE_WIDTH)
+      : 1;
+
+    return (
+      <div className="w-full overflow-x-hidden bg-white">
+        <div className="mx-auto" style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale }}>
+          <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
+          {content}
+        </div>
+      </div>
+    );
+  };
 
   if (currentPage === 'case-expertise') {
     return withHeader(<CaseExpertisePage onNavigate={handleNavigate} onOpenCase={handleOpenCase} />);

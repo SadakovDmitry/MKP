@@ -20,12 +20,27 @@ type MobileHeroProps = {
 export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isHome = currentPage === 'home';
+  const isNewsPage = currentPage === 'news';
   const pageLabel = PAGE_LABELS[currentPage];
 
   const handleNavigate = (page: SitePage) => {
     onNavigate(page);
     setMenuOpen(false);
   };
+
+  if (isNewsPage) {
+    return (
+      <div className="bg-[var(--color-4,white)] relative size-full">
+        <div className="absolute bg-[var(--color-2,#44b1d2)] h-[84.9px] left-[184px] rounded-[42.46px] top-[542.7px] w-[283px]" />
+        <div className="absolute bg-[var(--color,#1f556b)] h-[84.9px] left-[549.26px] rounded-[42.46px] top-[542.7px] w-[347.7px]" />
+        <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.2] left-[calc(50%-330.39px)] m-0 text-[67.5px] text-[color:var(--color-4,white)] top-[540px]">
+          <span>Статьи</span>
+          <span className="text-[var(--color-3,#313131)] whitespace-pre-wrap">{'   и   '}</span>
+          <span>Новости</span>
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[var(--color-4,white)] relative size-full" data-name="Mobile" data-node-id="83:262">
