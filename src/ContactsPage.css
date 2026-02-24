@@ -1,0 +1,262 @@
+.contacts-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #fff;
+}
+
+.contacts-page__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.contacts-page__scaled-wrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.contacts-page__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  background: #fff;
+}
+
+.contacts-page__title {
+  position: absolute;
+  top: 160px;
+  left: 120px;
+  margin: 0;
+  font-family: "Geologica:Medium", "Geologica", sans-serif;
+  font-weight: 500;
+  font-size: 50.08px;
+  line-height: 120%;
+  color: #313131;
+}
+
+.contacts-page__city {
+  position: absolute;
+  top: 350px;
+  left: 120px;
+  margin: 0;
+  font-family: "Geologica:ExtraBold", "Geologica", sans-serif;
+  font-weight: 800;
+  font-size: 42px;
+  line-height: 90%;
+  color: #44b1d2;
+}
+
+.contacts-page__address {
+  position: absolute;
+  top: 392px;
+  left: 120px;
+  margin: 0;
+  font-family: "RobotoLocal", "Roboto", sans-serif;
+  font-size: 30.96px;
+  line-height: 90%;
+  font-weight: 700;
+  color: #313131;
+}
+
+.contacts-page__email {
+  position: absolute;
+  top: 292px;
+  right: 120px;
+  margin: 0;
+  text-align: right;
+  font-family: "Geologica:ExtraBold", "Geologica", sans-serif;
+  font-size: 37.81px;
+  line-height: 130%;
+  font-weight: 800;
+  color: #1f556b;
+}
+
+.contacts-page__phones {
+  position: absolute;
+  top: 380px;
+  right: 120px;
+  margin: 0;
+  text-align: right;
+  font-family: "Geologica:Medium", "Geologica", sans-serif;
+  font-size: 37.81px;
+  line-height: 130%;
+  font-weight: 500;
+  color: #313131;
+}
+
+.contacts-page__map {
+  position: absolute;
+  top: 511px;
+  left: 120px;
+  width: 1160px;
+  height: 548px;
+  border-radius: 40px;
+  overflow: hidden;
+  background: #d7ebf3;
+}
+
+.contacts-map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.contacts-map__canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.contacts-map__iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.contacts-map__status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(226, 244, 250, 0.95);
+  color: #1f556b;
+  font-family: "RobotoLocal", "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.contacts-map__status p {
+  margin: 0;
+}
+
+.contacts-map__error-details {
+  font-size: 14px;
+  line-height: 1.2;
+  color: #313131;
+}
+
+.contacts-map__status a {
+  color: #1f556b;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.contacts-map__status--error {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+.contacts-page__decor {
+  position: absolute;
+  top: 665px;
+  left: 663px;
+  width: 169px;
+  height: 79px;
+  overflow: hidden;
+}
+
+.contacts-page__decor img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contacts-page__form {
+  position: absolute;
+  left: 120px;
+  top: 1123px;
+  width: 472px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contacts-page__input-shell {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #313131;
+  border-radius: 50px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+}
+
+.contacts-page__input-shell input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #313131;
+  font-family: "RobotoLocal", "Roboto", sans-serif;
+  font-size: 22.42px;
+  line-height: 90%;
+  font-weight: 300;
+}
+
+.contacts-page__input-shell input::placeholder {
+  color: rgba(49, 49, 49, 0.35);
+}
+
+.contacts-page__submit {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: 0;
+  border-radius: 50px;
+  background: #a9c35c;
+  display: block;
+  cursor: pointer;
+}
+
+.contacts-page__submit span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "RobotoLocal", "Roboto", sans-serif;
+  font-size: 22.42px;
+  line-height: 90%;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: #313131;
+}
+
+.contacts-page__submit img {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.contacts-page__socials {
+  position: absolute;
+  right: 120px;
+  top: 1277px;
+  display: flex;
+  gap: 0px;
+}
+
+.contacts-page__social-btn {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  text-decoration: none;
+}
+
+.contacts-page__social-btn img {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  display: block;
+}

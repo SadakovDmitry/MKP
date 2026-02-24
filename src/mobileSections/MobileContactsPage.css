@@ -1,0 +1,233 @@
+.mobile-contacts-page {
+  width: 1080px;
+  height: 3280px;
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  color: #313131;
+}
+
+.mobile-contacts-page__title {
+  position: absolute;
+  top: 196px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  font-family: 'Geologica:Medium', sans-serif;
+  font-size: 69.53px;
+  line-height: 120%;
+  font-weight: 500;
+  color: #313131;
+}
+
+.mobile-contacts-page__city {
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'Geologica:ExtraBold', sans-serif;
+  font-size: 78.97px;
+  line-height: 90%;
+  font-weight: 800;
+  color: #44b1d2;
+}
+
+.mobile-contacts-page__address {
+  position: absolute;
+  top: 484px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  width: 864px;
+  font-size: 58.21px;
+  line-height: 90%;
+  font-weight: 700;
+}
+
+.mobile-contacts-page__email {
+  position: absolute;
+  top: 748px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'Geologica:ExtraBold', sans-serif;
+  font-size: 43.23px;
+  line-height: 130%;
+  font-weight: 800;
+  color: #1f556b;
+}
+
+.mobile-contacts-page__phones {
+  position: absolute;
+  top: 832px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'Geologica:Medium', sans-serif;
+  font-size: 43.23px;
+  line-height: 130%;
+  font-weight: 500;
+}
+
+.mobile-contacts-page__map-wrap {
+  position: absolute;
+  top: 1123px;
+  left: 50px;
+  width: 980px;
+  height: 1133px;
+  border-radius: 82.7px;
+  overflow: hidden;
+  background: #e2f4fa;
+}
+
+.mobile-contacts-page__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.mobile-contacts-page__envelope {
+  position: absolute;
+  top: 1441px;
+  left: 464px;
+  width: 349px;
+  height: 164px;
+  overflow: hidden;
+}
+
+.mobile-contacts-page__envelope img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mobile-contacts-page__form {
+  position: absolute;
+  left: 176px;
+  top: 2406px;
+  width: 726px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-contacts-page__input-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mobile-contacts-page__input-shell {
+  width: calc(100% - 28px);
+  height: 76px;
+  border: 1.5px solid #313131;
+  border-radius: 76.42px;
+  padding: 0 44px;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-contacts-page__input-shell input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 34.27px;
+  line-height: 90%;
+  font-weight: 300;
+  color: #313131;
+}
+
+.mobile-contacts-page__required {
+  width: 16px;
+  text-align: center;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  color: #44b1d2;
+}
+
+.mobile-contacts-page__input-shell input::placeholder {
+  color: rgba(49, 49, 49, 0.25);
+}
+
+.mobile-contacts-page__submit {
+  position: relative;
+  width: 100%;
+  height: 76px;
+  border: 0;
+  border-radius: 76.42px;
+  background: #a9c35c;
+  cursor: pointer;
+}
+
+.mobile-contacts-page__submit span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 34.27px;
+  line-height: 90%;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #313131;
+}
+
+.mobile-contacts-page__submit img {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.mobile-contacts-page__socials {
+  position: absolute;
+  left: 176px;
+  top: 2966px;
+  width: 726px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-contacts-page__required-note {
+  position: absolute;
+  left: 176px;
+  top: 2852px;
+  margin: 0;
+  width: 726px;
+  text-align: left;
+  font-family: 'RobotoLocal', 'Roboto', sans-serif;
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 400;
+  color: #313131;
+}
+
+.mobile-contacts-page__social-link {
+  width: 124px;
+  height: 124px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.mobile-contacts-page__social-link img {
+  width: 124px;
+  height: 124px;
+  object-fit: contain;
+  display: block;
+}
