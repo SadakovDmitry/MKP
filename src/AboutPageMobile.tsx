@@ -35,15 +35,31 @@ type AboutPageMobileProps = {
 };
 
 export default function AboutPageMobile({ onNavigate }: AboutPageMobileProps) {
+  const handleWriteToUs = () => {
+    window.location.hash = 'home-contact-section';
+    onNavigate('home');
+  };
+
   return (
     <div className="content-stretch flex flex-col items-start relative size-full bg-white" data-node-id="83:1717">
       <div className="h-[100px] shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px` }} />
 
-      {SECTION_STACK.map(({ key, height, Component }) => (
-        <div key={key} className="relative shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, height: `${height}px` }}>
-          <Component />
-        </div>
-      ))}
+      {SECTION_STACK.map(({ key, height, Component }) => {
+        if (key === '83:1027') {
+          const WriteToUsFrame = Component as ComponentType<{ onWriteToUs?: () => void }>;
+          return (
+            <div key={key} className="relative shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, height: `${height}px` }}>
+              <WriteToUsFrame onWriteToUs={handleWriteToUs} />
+            </div>
+          );
+        }
+
+        return (
+          <div key={key} className="relative shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, height: `${height}px` }}>
+            <Component />
+          </div>
+        );
+      })}
 
       <div className="relative shrink-0" style={{ width: `${ABOUT_MOBILE_FRAME_WIDTH}px`, height: '1600px' }}>
         <SharedFooter onNavigate={onNavigate} mobileEmbedded />

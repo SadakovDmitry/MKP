@@ -14,7 +14,9 @@ const MOBILE_BASE_HEIGHT = 6400;
 const heroIcon = '/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.png';
 
 type ServiceLegalPageProps = {
-  onNavigate: (page: SitePage) => void;
+  onNavigate: (
+    page: SitePage | 'service-accounting' | 'service-audit' | 'service-legal' | 'service-management' | 'service-projects',
+  ) => void;
 };
 
 function AuditMoreArrow() {
@@ -197,7 +199,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                   <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">
                     Управленческий и финансовый консалтинг
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-management')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -207,7 +209,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                   <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--audit">
                     Аудит компании и анализ деятельности предприятия
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-audit')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -218,7 +220,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                     Управление
                     <br />и сопровождение проектов
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-projects')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -229,7 +231,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                     Бухгалтерский
                     <br />и налоговый консалтинг
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -344,7 +346,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--default">
                   Управленческий и финансовый консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-management')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -354,7 +356,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--audit">
                   Аудит компании и анализ деятельности предприятия
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-audit')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -364,7 +366,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--staffing">
                   Кадровый и организационный консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-management')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -375,7 +377,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                   Управление
                   <br />и сопровождение проектов
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-projects')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -386,7 +388,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
                   Бухгалтерский
                   <br />и налоговый консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>

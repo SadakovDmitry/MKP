@@ -45,6 +45,11 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
     return () => window.removeEventListener('resize', updateScale);
   }, []);
 
+  const handleWriteToUs = () => {
+    window.location.hash = 'home-contact-section';
+    onNavigate('home');
+  };
+
   return (
     <div className="w-full overflow-x-hidden bg-white">
       <div className="mx-auto relative" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
@@ -264,7 +269,12 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         <p className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[43.38%_54.2%_48.62%_18.27%] leading-none text-[21.923px] text-[color:var(--color-4,white)] whitespace-pre-wrap" data-node-id="38:195" style={{ fontVariationSettings: "\'wdth\' 100" }}>
           Сопровождаем любые коммерческие проекты от стартапа до выхода на региональный, федеральный или мировой уровень.
         </p>
-        <div className="-translate-x-1/2 absolute h-[64.642px] left-[calc(50%-0.5px)] top-[944px] w-[415px]" data-node-id="38:196">
+        <button
+          type="button"
+          onClick={handleWriteToUs}
+          className="-translate-x-1/2 absolute h-[64.642px] left-[calc(50%-0.5px)] top-[944px] w-[415px] border-0 bg-transparent p-0 cursor-pointer"
+          data-node-id="38:196"
+        >
           <div className="absolute bg-[var(--color-4,white)] inset-0 rounded-[64.642px]" data-node-id="38:197" />
           <p className="absolute font-['Geologica:Light',sans-serif] font-light inset-[29.56%_44.02%_30.22%_7.79%] leading-[0.9] not-italic text-[28.987px] text-[color:var(--color,#1f556b)] tracking-[0.5797px]" data-node-id="38:198" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Написать нам
@@ -272,7 +282,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="absolute inset-[10.01%_1.69%_10.83%_85.98%]" data-name="Exclude" data-node-id="38:199">
             <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
           </div>
-        </div>
+        </button>
       </div>
       <div className="bg-[var(--color-4,white)] h-[1800px] overflow-clip relative shrink-0 w-full" data-name="8" data-node-id="38:211">
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(20.83%-171.67px)] not-italic text-[36.648px] text-[color:var(--color-3,#313131)] top-[calc(50%-784px)] uppercase" data-node-id="38:212" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>

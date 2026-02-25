@@ -42,10 +42,30 @@ const FRAME_HEIGHT = 4367;
 type DesktopPageProps = {
   onNavigate: (page: SitePage) => void;
   onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
+  onOpenFirstService: () => void;
+  onOpenSecondService: () => void;
+  onOpenThirdService: () => void;
+  onOpenFourthService: () => void;
+  onOpenFifthService: () => void;
+  onOpenFirstArticle: () => void;
+  onOpenSecondArticle: () => void;
+  onOpenThirdArticle: () => void;
 };
 
-export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPageProps) {
+export default function Frame({
+  onNavigate,
+  onOpenCasesByFilter,
+  onOpenFirstService,
+  onOpenSecondService,
+  onOpenThirdService,
+  onOpenFourthService,
+  onOpenFifthService,
+  onOpenFirstArticle,
+  onOpenSecondArticle,
+  onOpenThirdArticle,
+}: DesktopPageProps) {
   const [scale, setScale] = useState(1);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
   useEffect(() => {
     const updateScale = () => {
@@ -73,11 +93,17 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(25%-230px)] not-italic text-[50.081px] text-[color:var(--color-3,#313131)] top-[calc(50%-111px)] w-[567px] whitespace-pre-wrap" data-node-id="78:4" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           Мы помогаем сделать бизнес эффективным
         </p>
-        <div className="-translate-x-1/2 absolute border-[1.802px] border-[var(--color,#1f556b)] border-solid h-[58.563px] left-[calc(16.67%+73.17px)] overflow-clip rounded-[45.048px] top-[399px] w-[373px]" data-node-id="78:5">
-          <p className="-translate-x-1/2 absolute font-['Geologica:Regular',sans-serif] font-normal leading-[normal] left-1/2 not-italic text-[19.911px] text-[color:var(--color,#1f556b)] text-center top-[15.2px] uppercase whitespace-nowrap" data-node-id="78:6" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+        <button
+          type="button"
+          onClick={() => setIsConsultationModalOpen(true)}
+          className="-translate-x-1/2 absolute border-[1.802px] border-[var(--color,#1f556b)] border-solid h-[58.563px] left-[calc(16.67%+73.17px)] overflow-clip rounded-[45.048px] top-[399px] w-[373px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+          data-node-id="78:5"
+          aria-label="Получить консультацию"
+        >
+          <p className="-translate-x-1/2 absolute font-['Geologica:Regular',sans-serif] font-normal leading-[normal] left-1/2 not-italic text-[19.911px] text-[color:var(--color,#1f556b)] text-center top-[15.2px] uppercase whitespace-nowrap transition-colors duration-200 group-hover:text-white" data-node-id="78:6" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Получить консультацию
           </p>
-        </div>
+        </button>
         <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--color-2,#44b1d2)] h-[47px] left-1/2 overflow-clip rounded-[50px] top-[calc(50%-281.5px)] w-[1160px]" data-node-id="78:40">
           <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-[5px] right-[4.69px] top-1/2" data-node-id="78:41">
             <div className="bg-[var(--color-4,white)] h-[36px] overflow-clip relative rounded-[38.823px] shrink-0 w-[100px]" data-node-id="78:42">
@@ -210,17 +236,24 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
       </div>
       <div className="bg-[var(--color,#1f556b)] h-[700px] overflow-clip relative shrink-0 w-full" data-name="21" data-node-id="78:521">
         <div className="absolute bg-[var(--color-4,white)] h-[230px] left-[120px] overflow-clip rounded-[40px] top-[156px] w-[373px]" data-node-id="78:522">
-          <div className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px]" data-node-id="78:523" />
+          <button
+            type="button"
+            onClick={onOpenFirstService}
+            className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+            aria-label="Подробнее о бухгалтерском и налоговом консалтинге"
+          >
+            <p className="absolute left-[7.5%] top-1/2 -translate-y-1/2 font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-white" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-1/2 -translate-y-1/2 h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude1} />
+            </span>
+          </button>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium inset-[11.3%_46.38%_62.61%_6.97%] leading-[0.9] not-italic text-[22.706px] text-[color:var(--color,#1f556b)] whitespace-pre-wrap" data-node-id="78:524" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Бухгалтерский
             <br aria-hidden="true" />и налоговый консалтинг
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[73.38%_52.01%_17.92%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px]" data-node-id="78:525" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[69.13%_8.42%_13.66%_80.97%]" data-name="Exclude" data-node-id="78:526">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-          </div>
           <div className="absolute h-[79px] right-[27px] top-[22px] w-[73px]" data-name="ChatGPT-Image-7-окт_0002_Layer-3" data-node-id="78:529">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img alt="" className="absolute h-[133.33%] left-[-19.68%] max-w-none top-[-19.35%] w-[126.45%]" src={imgChatGptImage70002Layer3} />
@@ -228,16 +261,23 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           </div>
         </div>
         <div className="absolute bg-[var(--color-4,white)] h-[230px] left-[calc(16.67%+93.67px)] overflow-clip rounded-[40px] top-[407px] w-[373px]" data-node-id="78:530">
-          <div className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px]" data-node-id="78:531" />
+          <button
+            type="button"
+            onClick={onOpenThirdService}
+            className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+            aria-label="Подробнее о юридических услугах"
+          >
+            <p className="absolute left-[7.5%] top-1/2 -translate-y-1/2 font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-white" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-1/2 -translate-y-1/2 h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude1} />
+            </span>
+          </button>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium inset-[11.3%_46.92%_71.3%_6.97%] leading-[0.9] not-italic text-[22.706px] text-[color:var(--color,#1f556b)] whitespace-pre-wrap" data-node-id="78:532" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Юридические услуги
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[73.38%_52.01%_17.92%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px]" data-node-id="78:533" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[69.13%_8.42%_13.66%_80.97%]" data-name="Exclude" data-node-id="78:534">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-          </div>
           <div className="absolute h-[70px] right-[26px] top-[22px] w-[76px]" data-name="ChatGPT-Image-7-окт_0003_Layer-4" data-node-id="78:537">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img alt="" className="absolute h-[141.08%] left-[-12%] max-w-none top-[-16.5%] w-[130.15%]" src={imgChatGptImage70003Layer4} />
@@ -245,16 +285,23 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           </div>
         </div>
         <div className="absolute bg-[var(--color-4,white)] h-[230px] left-[calc(33.33%+47.33px)] overflow-clip rounded-[40px] top-[156px] w-[373px]" data-node-id="78:538">
-          <div className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px]" data-node-id="78:539" />
+          <button
+            type="button"
+            onClick={onOpenSecondService}
+            className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+            aria-label="Подробнее об аудите"
+          >
+            <p className="absolute left-[7.5%] top-1/2 -translate-y-1/2 font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-white" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-1/2 -translate-y-1/2 h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude1} />
+            </span>
+          </button>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium inset-[11.3%_47.45%_80%_6.97%] leading-[0.9] not-italic text-[22.706px] text-[color:var(--color,#1f556b)] whitespace-pre-wrap" data-node-id="78:540" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Аудит
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[73.38%_52.01%_17.92%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px]" data-node-id="78:541" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[69.13%_8.42%_13.66%_80.97%]" data-name="Exclude" data-node-id="78:542">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-          </div>
           <div className="absolute h-[92px] right-[26px] top-[22px] w-[85px]" data-name="ChatGPT-Image-7-окт_0001_Layer-2" data-node-id="78:545">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img alt="" className="absolute h-[105.12%] left-[-3.6%] max-w-none top-0 w-[125.48%]" src={imgChatGptImage70001Layer2} />
@@ -262,17 +309,24 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           </div>
         </div>
         <div className="absolute bg-[var(--color-4,white)] h-[230px] left-[calc(66.67%-25.33px)] overflow-clip rounded-[40px] top-[156px] w-[373px]" data-node-id="78:554">
-          <div className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px]" data-node-id="78:555" />
+          <button
+            type="button"
+            onClick={onOpenFourthService}
+            className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+            aria-label="Подробнее об управленческом и финансовом консалтинге"
+          >
+            <p className="absolute left-[7.5%] top-1/2 -translate-y-1/2 font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-white" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-1/2 -translate-y-1/2 h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude1} />
+            </span>
+          </button>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium inset-[11.3%_41.29%_62.61%_6.97%] leading-[0.9] not-italic text-[22.706px] text-[color:var(--color,#1f556b)] whitespace-pre-wrap" data-node-id="78:556" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Управленческий
             <br aria-hidden="true" />и финансовый консалтинг
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[73.38%_52.01%_17.92%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px]" data-node-id="78:557" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[69.13%_8.42%_13.66%_80.97%]" data-name="Exclude" data-node-id="78:558">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-          </div>
           <div className="absolute h-[74px] right-[26px] top-[22px] w-[68px]" data-name="ChatGPT-Image-7-окт_0000_Layer-1" data-node-id="78:561">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img alt="" className="absolute h-[123.42%] left-[-3.42%] max-w-none top-[-13.61%] w-[110.96%]" src={imgChatGptImage70000Layer1} />
@@ -280,16 +334,23 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           </div>
         </div>
         <div className="absolute bg-[var(--color-4,white)] h-[230px] left-[calc(50%+21px)] overflow-clip rounded-[40px] top-[407px] w-[373px]" data-node-id="78:562">
-          <div className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px]" data-node-id="78:563" />
+          <button
+            type="button"
+            onClick={onOpenFifthService}
+            className="absolute border border-[var(--color,#1f556b)] border-solid inset-[66.96%_6.97%_11.3%_6.97%] rounded-[50px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+            aria-label="Подробнее об управлении проектами"
+          >
+            <p className="absolute left-[7.5%] top-1/2 -translate-y-1/2 font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-white" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-1/2 -translate-y-1/2 h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude1} />
+            </span>
+          </button>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium inset-[11.3%_47.45%_71.3%_6.97%] leading-[0.9] not-italic text-[22.706px] text-[color:var(--color,#1f556b)] whitespace-pre-wrap" data-node-id="78:564" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Управление проектами
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[73.38%_52.01%_17.92%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color,#1f556b)] tracking-[0.4484px]" data-node-id="78:565" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[69.13%_8.42%_13.66%_80.97%]" data-name="Exclude" data-node-id="78:566">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-          </div>
           <div className="absolute h-[71px] right-[26px] top-[22px] w-[79px]" data-name="ChatGPT-Image-7-окт_0004_Layer-5" data-node-id="78:569">
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img alt="" className="absolute h-[138.54%] left-[-28.74%] max-w-none top-[-15.28%] w-[130.24%]" src={imgChatGptImage70004Layer5} />
@@ -432,16 +493,24 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[471px] left-[calc(50%+135.5px)] opacity-15 top-1/2 w-[838px]" data-name="image 30" data-node-id="78:605">
             <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage30} />
           </div>
-          <div className="absolute bg-[var(--color-3,#313131)] inset-[83.86%_6.97%_5.52%_6.97%] rounded-[50px]" data-node-id="78:606" />
+          <button
+            type="button"
+            onClick={() => window.open('https://www.consultant.ru/document/cons_doc_LAW_27572/', '_blank', 'noopener,noreferrer')}
+            className="absolute bg-[var(--color-3,#313131)] border border-[var(--color-3,#313131)] inset-[83.86%_6.97%_5.52%_6.97%] rounded-[50px] p-0 cursor-pointer group transition-colors duration-200 hover:bg-white"
+            data-node-id="78:606"
+            aria-label="Перейти к закону"
+          >
+            <p className="absolute left-[25px] top-[14.8px] whitespace-nowrap font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-[var(--color-3,#313131)]" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Перейти к закону
+            </p>
+            <span className="absolute right-[5.4px] top-[5px] h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude1} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude} />
+            </span>
+          </button>
           <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[6.17%_38.34%_86.61%_6.97%] leading-[0.9] text-[19.22px] text-[color:var(--color-3,#313131)] whitespace-pre-wrap" data-node-id="78:607" style={{ fontVariationSettings: "\'wdth\' 100" }}>
             Федеральный закон от 19.06.2000 N 82-ФЗ
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[87%_33.78%_8.75%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px]" data-node-id="78:608" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Перейти к закону
-          </p>
-          <div className="absolute inset-[84.93%_8.42%_6.67%_80.97%]" data-name="Exclude" data-node-id="78:609">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-          </div>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[0.9] left-[6.97%] not-italic right-[21.18%] text-[32.069px] text-[color:var(--color-3,#313131)] top-[calc(50%-49.5px)] whitespace-pre-wrap" data-node-id="78:612" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             О минимальном размере оплаты труда
           </p>
@@ -450,16 +519,24 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           <div className="absolute h-[471px] left-[-168px] opacity-15 top-0 w-[710px]" data-name="image 32" data-node-id="78:614">
             <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage32} />
           </div>
-          <div className="absolute bg-[var(--color-3,#313131)] inset-[83.86%_6.97%_5.52%_6.97%] rounded-[50px]" data-node-id="78:615" />
+          <button
+            type="button"
+            onClick={onOpenThirdArticle}
+            className="absolute bg-[var(--color-3,#313131)] border border-[var(--color-3,#313131)] inset-[83.86%_6.97%_5.52%_6.97%] rounded-[50px] p-0 cursor-pointer group transition-colors duration-200 hover:bg-white"
+            data-node-id="78:615"
+            aria-label="Читать статью"
+          >
+            <p className="absolute left-[25px] top-[14.8px] whitespace-nowrap font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-[var(--color-3,#313131)]" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Читать статью
+            </p>
+            <span className="absolute right-[5.4px] top-[5px] h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude1} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude} />
+            </span>
+          </button>
           <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[6.17%_66.49%_90.22%_6.97%] leading-[0.9] text-[19.22px] text-[color:var(--color-3,#313131)]" data-node-id="78:616" style={{ fontVariationSettings: "\'wdth\' 100" }}>
             27.11.2025
           </p>
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[87%_43.7%_8.75%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px]" data-node-id="78:617" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Читать статью
-          </p>
-          <div className="absolute inset-[84.93%_8.42%_6.67%_80.97%]" data-name="Exclude" data-node-id="78:618">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-          </div>
           <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[0.9] left-[6.97%] not-italic right-[6.97%] text-[32.069px] text-[color:var(--color-3,#313131)] top-[calc(50%-49.5px)] whitespace-pre-wrap" data-node-id="78:621" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Оптимизация налоговой нагрузки компании
           </p>
@@ -468,13 +545,21 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           <div className="-translate-x-1/2 absolute h-[236px] left-[calc(50%-0.5px)] opacity-15 top-[-5px] w-[374px]" data-name="image 31" data-node-id="78:623">
             <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage31} />
           </div>
-          <div className="absolute bg-[var(--color-3,#313131)] inset-[66.22%_6.97%_11.56%_6.97%] rounded-[50px]" data-node-id="78:624" />
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[72.79%_52.01%_18.32%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px]" data-node-id="78:625" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[68.44%_8.42%_13.96%_80.97%]" data-name="Exclude" data-node-id="78:626">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-          </div>
+          <button
+            type="button"
+            onClick={onOpenFirstArticle}
+            className="absolute bg-[var(--color-3,#313131)] border border-[var(--color-3,#313131)] inset-[66.22%_6.97%_11.56%_6.97%] rounded-[50px] p-0 cursor-pointer group transition-colors duration-200 hover:bg-white"
+            data-node-id="78:624"
+            aria-label="Подробнее"
+          >
+            <p className="absolute left-[25px] top-[14.8px] whitespace-nowrap font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-[var(--color-3,#313131)]" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-[5px] h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude1} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude} />
+            </span>
+          </button>
           <p className="-translate-x-1/2 absolute font-['Geologica:Regular',sans-serif] font-normal leading-[0.9] left-1/2 not-italic text-[27.654px] text-[color:var(--color-3,#313131)] text-center top-[calc(50%-61.5px)] w-[209px] whitespace-pre-wrap" data-node-id="78:629" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Бухгалтерия на аутсорсинге
           </p>
@@ -483,13 +568,21 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           <div className="-translate-x-1/2 absolute h-[236px] left-[calc(50%-0.5px)] opacity-15 top-[-5px] w-[374px]" data-name="image 31" data-node-id="78:631">
             <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgImage33} />
           </div>
-          <div className="absolute bg-[var(--color-3,#313131)] inset-[66.22%_6.97%_11.56%_6.97%] rounded-[50px]" data-node-id="78:632" />
-          <p className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight inset-[72.79%_52.01%_18.32%_13.67%] leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px]" data-node-id="78:633" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
-            Подробнее
-          </p>
-          <div className="absolute inset-[68.44%_8.42%_13.96%_80.97%]" data-name="Exclude" data-node-id="78:634">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-          </div>
+          <button
+            type="button"
+            onClick={onOpenSecondArticle}
+            className="absolute bg-[var(--color-3,#313131)] border border-[var(--color-3,#313131)] inset-[66.22%_6.97%_11.56%_6.97%] rounded-[50px] p-0 cursor-pointer group transition-colors duration-200 hover:bg-white"
+            data-node-id="78:632"
+            aria-label="Подробнее"
+          >
+            <p className="absolute left-[25px] top-[14.8px] whitespace-nowrap font-['Geologica:ExtraLight',sans-serif] font-extralight leading-[0.9] not-italic text-[22.421px] text-[color:var(--color-4,white)] tracking-[0.4484px] transition-colors duration-200 group-hover:text-[var(--color-3,#313131)]" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+              Подробнее
+            </p>
+            <span className="absolute right-[5.4px] top-[5px] h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full opacity-100 transition-opacity duration-200 group-hover:opacity-0" src={imgExclude1} />
+              <img alt="" className="absolute block max-w-none size-full opacity-0 transition-opacity duration-200 group-hover:opacity-100" src={imgExclude} />
+            </span>
+          </button>
           <p className="-translate-x-1/2 absolute font-['Geologica:Regular',sans-serif] font-normal leading-[0.9] left-1/2 not-italic text-[27.654px] text-[color:var(--color-3,#313131)] text-center top-[calc(50%-77.51px)] w-[285.437px] whitespace-pre-wrap" data-node-id="78:637" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
             Субсидиарная ответственность: мифы и реальность
           </p>
@@ -498,56 +591,69 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           Новости и статьи
         </p>
       </div>
-      <div className="bg-white h-[570px] overflow-clip relative shrink-0 w-full" data-name="19" data-node-id="78:450">
+      <div id="home-contact-section" className="bg-white h-[570px] overflow-clip relative shrink-0 w-full" data-name="19" data-node-id="78:450">
         <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(50%+0.5px)] not-italic text-[36.648px] text-[color:var(--color-3,#313131)] text-center top-[calc(50%-176px)] uppercase" data-node-id="78:451" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           Напишите нам
         </p>
-        <div className="absolute border border-[var(--color-3,#313131)] border-solid inset-[34.74%_12.86%_19.12%_49.29%] rounded-[25px]" data-node-id="78:452" />
-        <div className="absolute bottom-[13.86%] contents left-[180px] top-[32.81%]" data-node-id="78:453">
-          <div className="absolute border border-[var(--color-3,#313131)] border-solid inset-[34.74%_52.14%_56.49%_12.86%] rounded-[50px]" data-node-id="78:454" />
-          <p className="absolute bottom-[59.12%] font-['Roboto:ExtraLight',sans-serif] font-extralight leading-[0.9] left-[calc(12.5%+36px)] opacity-25 text-[22.421px] text-[color:var(--color-3,#313131)] top-[37.37%] tracking-[0.4484px]" data-node-id="78:455" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Имя
-          </p>
-          <p className="absolute bottom-[63.68%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[32.81%] tracking-[0.4484px]" data-node-id="139:3" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            *
-          </p>
-          <p className="absolute bottom-[51.23%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[45.26%] tracking-[0.4484px]" data-node-id="139:4" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            *
-          </p>
-          <p className="absolute bottom-[38.77%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[57.72%] tracking-[0.4484px]" data-node-id="139:5" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            *
-          </p>
-          <p className="absolute bottom-[13.86%] font-['Roboto:Regular',sans-serif] font-normal leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[82.63%] tracking-[0.4484px]" data-node-id="139:6" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            *
-          </p>
-          <p className="absolute bottom-[14.91%] font-['Roboto:Regular',sans-serif] font-normal leading-[0.9] left-[calc(20.83%-95.67px)] text-[14px] text-[color:var(--color-3,#313131)] top-[82.81%] tracking-[0.28px]" data-node-id="139:7" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            — Поля обязательные для заполнения
-          </p>
-        </div>
-        <p className="-translate-x-1/2 absolute bottom-[59.12%] font-['Roboto:ExtraLight',sans-serif] font-extralight leading-[0.9] left-[calc(58.33%-26.17px)] opacity-25 text-[22.421px] text-[color:var(--color-3,#313131)] text-center top-[37.37%] tracking-[0.4484px]" data-node-id="78:456" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-          Комментарий
+        <form
+          className="absolute inset-0"
+          onSubmit={(event) => {
+            event.preventDefault();
+          }}
+        >
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Имя"
+            className="absolute border border-[var(--color-3,#313131)] border-solid inset-[34.74%_52.14%_56.49%_12.86%] rounded-[50px] bg-transparent px-[36px] font-['Roboto:ExtraLight',sans-serif] text-[22.421px] leading-[0.9] tracking-[0.4484px] text-[color:var(--color-3,#313131)] placeholder:opacity-25 placeholder:text-[color:var(--color-3,#313131)] outline-none"
+          />
+          <input
+            type="tel"
+            name="phone"
+            required
+            placeholder="Телефон"
+            className="absolute border border-[var(--color-3,#313131)] border-solid inset-[47.19%_52.14%_44.04%_12.86%] rounded-[50px] bg-transparent px-[36px] font-['Roboto:ExtraLight',sans-serif] text-[22.421px] leading-[0.9] tracking-[0.4484px] text-[color:var(--color-3,#313131)] placeholder:opacity-25 placeholder:text-[color:var(--color-3,#313131)] outline-none"
+          />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="E-mail"
+            className="absolute border border-[var(--color-3,#313131)] border-solid inset-[59.65%_52.14%_31.58%_12.86%] rounded-[50px] bg-transparent px-[36px] font-['Roboto:ExtraLight',sans-serif] text-[22.421px] leading-[0.9] tracking-[0.4484px] text-[color:var(--color-3,#313131)] placeholder:opacity-25 placeholder:text-[color:var(--color-3,#313131)] outline-none"
+          />
+          <textarea
+            name="message"
+            placeholder="Комментарий"
+            className="absolute border border-[var(--color-3,#313131)] border-solid inset-[34.74%_12.86%_19.12%_49.29%] rounded-[25px] bg-transparent px-[24px] py-[18px] resize-none font-['Roboto:ExtraLight',sans-serif] text-[22.421px] leading-[0.9] tracking-[0.4484px] text-[color:var(--color-3,#313131)] placeholder:opacity-25 placeholder:text-[color:var(--color-3,#313131)] outline-none"
+          />
+          <button
+            type="submit"
+            className="absolute bg-[var(--color-5,#a9c35c)] border border-[var(--color-5,#a9c35c)] inset-[72.11%_52.14%_19.12%_12.86%] rounded-[50px] p-0 cursor-pointer group transition-colors duration-200 hover:bg-white"
+          >
+            <p className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap font-['Roboto:Medium',sans-serif] font-medium leading-[0.9] text-[22.421px] tracking-[0.4484px] text-[color:var(--color-3,#313131)] transition-colors duration-200 group-hover:text-[var(--color-5,#a9c35c)]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+              Отправить
+            </p>
+            <span className="absolute right-[5.4px] top-[5px] h-[39.581px] w-[39.581px]">
+              <img alt="" className="absolute block max-w-none size-full" src={imgExclude2} />
+            </span>
+          </button>
+        </form>
+        <p className="absolute bottom-[63.68%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[32.81%] tracking-[0.4484px]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+          *
         </p>
-        <div className="absolute bottom-[44.04%] contents left-[180px] top-[47.19%]" data-node-id="78:457">
-          <div className="absolute border border-[var(--color-3,#313131)] border-solid inset-[47.19%_52.14%_44.04%_12.86%] rounded-[50px]" data-node-id="78:458" />
-          <p className="absolute bottom-[46.67%] font-['Roboto:ExtraLight',sans-serif] font-extralight leading-[0.9] left-[calc(12.5%+36px)] opacity-25 text-[22.421px] text-[color:var(--color-3,#313131)] top-[49.82%] tracking-[0.4484px]" data-node-id="78:459" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Телефон
-          </p>
-        </div>
-        <div className="absolute bottom-[31.58%] contents left-[180px] top-[59.65%]" data-node-id="78:460">
-          <div className="absolute border border-[var(--color-3,#313131)] border-solid inset-[59.65%_52.14%_31.58%_12.86%] rounded-[50px]" data-node-id="78:461" />
-          <p className="absolute bottom-[34.21%] font-['Roboto:ExtraLight',sans-serif] font-extralight leading-[0.9] left-[calc(12.5%+36px)] opacity-25 text-[22.421px] text-[color:var(--color-3,#313131)] top-[62.28%] tracking-[0.4484px]" data-node-id="78:462" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            E-mail
-          </p>
-        </div>
-        <div className="absolute bottom-[19.12%] contents left-[180px] top-[72.11%]" data-node-id="78:463">
-          <div className="absolute bg-[var(--color-5,#a9c35c)] inset-[72.11%_52.14%_19.12%_12.86%] rounded-[50px]" data-node-id="78:464" />
-          <p className="absolute bottom-[21.75%] font-['Roboto:SemiBold',sans-serif] font-semibold leading-[0.9] left-[calc(29.17%-41.33px)] text-[22.421px] text-[color:var(--color-3,#313131)] top-[74.74%] tracking-[0.4484px]" data-node-id="78:465" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            Отправить
-          </p>
-          <div className="absolute inset-[72.98%_52.53%_20.07%_44.64%]" data-name="Exclude" data-node-id="78:466">
-            <img alt="" className="absolute block max-w-none size-full" src={imgExclude2} />
-          </div>
-        </div>
+        <p className="absolute bottom-[51.23%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[45.26%] tracking-[0.4484px]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+          *
+        </p>
+        <p className="absolute bottom-[38.77%] font-['Roboto:Black',sans-serif] font-black leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[57.72%] tracking-[0.4484px]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+          *
+        </p>
+        <p className="absolute bottom-[13.86%] font-['Roboto:Regular',sans-serif] font-normal leading-[0.9] left-[calc(4.17%+121.67px)] text-[22.421px] text-[color:var(--color-2,#44b1d2)] top-[82.63%] tracking-[0.4484px]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+          *
+        </p>
+        <p className="absolute bottom-[14.91%] font-['Roboto:Regular',sans-serif] font-normal leading-[0.9] left-[calc(20.83%-95.67px)] text-[14px] text-[color:var(--color-3,#313131)] top-[82.81%] tracking-[0.28px]" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+          — Поля обязательные для заполнения
+        </p>
         <div className="absolute h-[101px] left-[calc(83.33%-15.67px)] top-[149px] w-[139px]" data-name="3d-rendered-silver-envelope-icon-symbol-shiny-metallic-email-illustration-isolated-on-transparent-background-for-messaging-and-communication-design-png 1" data-node-id="78:469">
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <img alt="" className="absolute h-[152.09%] left-[-28.33%] max-w-none top-[-27.38%] w-[166.67%]" src={img3DRenderedSilverEnvelopeIconSymbolShinyMetallicEmailIllustrationIsolatedOnTransparentBackgroundForMessagingAndCommunicationDesignPng1} />
@@ -558,6 +664,62 @@ export default function Frame({ onNavigate, onOpenCasesByFilter }: DesktopPagePr
           </div>
         </div>
       </div>
+      {isConsultationModalOpen && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#1f556b]/35 px-4">
+          <div className="relative w-full max-w-[620px] rounded-[32px] border-2 border-[var(--color,#1f556b)] bg-white p-8 shadow-[0_20px_55px_rgba(31,85,107,0.22)]">
+            <button
+              type="button"
+              onClick={() => setIsConsultationModalOpen(false)}
+              className="absolute right-5 top-5 h-9 w-9 rounded-full border border-[var(--color,#1f556b)] bg-transparent text-[var(--color,#1f556b)] text-xl leading-none cursor-pointer transition-colors duration-200 hover:bg-[var(--color,#1f556b)] hover:text-white"
+              aria-label="Закрыть форму"
+            >
+              ×
+            </button>
+            <p className="m-0 pr-12 font-['Geologica:Medium',sans-serif] text-[30px] leading-[1.05] uppercase text-[var(--color,#1f556b)]">
+              Запись на консультацию
+            </p>
+            <p className="mb-0 mt-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[#4f4f4f]">
+              Оставьте контакты и мы свяжемся с вами в ближайшее время.
+            </p>
+            <form
+              className="mt-6 flex flex-col gap-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+                setIsConsultationModalOpen(false);
+              }}
+            >
+              <input
+                type="text"
+                required
+                placeholder="Имя"
+                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <input
+                type="tel"
+                required
+                placeholder="Телефон"
+                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <input
+                type="email"
+                placeholder="E-mail"
+                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <textarea
+                rows={4}
+                placeholder="Комментарий"
+                className="resize-none rounded-[24px] border border-[#97b6c2] px-5 py-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <button
+                type="submit"
+                className="mt-1 h-[56px] rounded-[30px] border border-[var(--color,#1f556b)] bg-[var(--color,#1f556b)] font-['Geologica:Medium',sans-serif] text-[20px] uppercase tracking-[0.02em] text-white cursor-pointer transition-colors duration-200 hover:bg-white hover:text-[var(--color,#1f556b)]"
+              >
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

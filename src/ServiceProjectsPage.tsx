@@ -3,16 +3,17 @@ import getViewportWidth from './getViewportWidth';
 import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import './ServiceAuditPage.css';
+import './ServiceProjectsPage.css';
 
 const FRAME_WIDTH = 1400;
-const FRAME_HEIGHT = 4746;
+const FRAME_HEIGHT = 4412;
 const MOBILE_BREAKPOINT = 1200;
 const MOBILE_FRAME_WIDTH = 1080;
 const MOBILE_BASE_HEIGHT = 6680;
 
-const heroIcon = '/assets/b375f28bf7f11fb12e7b9b5c52811e656d947049.png';
+const heroIcon = '/assets/6970dcca3d53861e581296f70514cacb37f69779.png';
 
-type ServiceAuditPageProps = {
+type ServiceProjectsPageProps = {
   onNavigate: (
     page: SitePage | 'service-accounting' | 'service-audit' | 'service-legal' | 'service-management' | 'service-projects',
   ) => void;
@@ -66,7 +67,7 @@ function OtherMoreArrow() {
   );
 }
 
-export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) {
+export default function ServiceProjectsPage({ onNavigate }: ServiceProjectsPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
@@ -87,7 +88,7 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
 
   if (isMobileLayout) {
     return (
-      <div className="service-audit-mobile">
+      <div className="service-audit-mobile service-projects-mobile">
         <main className="service-audit-mobile__main">
           <div
             className="service-audit-mobile__shell"
@@ -104,15 +105,18 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
             >
               <section className="service-audit-mobile__hero">
                 <img src={heroIcon} alt="" className="service-audit-mobile__hero-icon" />
-                <h1>Аудит и анализ деятельности компаний</h1>
+                <h1>Управление и сопровождение проектов</h1>
               </section>
 
               <section className="service-audit-mobile__cards">
                 <AuditCard
                   className="service-audit-mobile__card service-audit-mobile__card--left"
-                  title="Проведение инициативного аудита предприятия и организации"
+                  title="Консультирование действующих проектов"
                 />
-                <AuditCard className="service-audit-mobile__card service-audit-mobile__card--middle" title="Экспресс-аудит" />
+                <AuditCard
+                  className="service-audit-mobile__card service-audit-mobile__card--middle"
+                  title="Услуги по сопровождение проектов и стартапов: разработка организации проекта, юридическое сопровождение"
+                />
                 <AuditCard
                   className="service-audit-mobile__card service-audit-mobile__card--right"
                   title="Анализ и диагностика финансово хозяйственной деятельности предприятия, организации"
@@ -120,47 +124,43 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
               </section>
 
               <section className="service-audit-mobile__details">
-                <h2>Проведение инициативного аудита предприятия и организации</h2>
+                <h2>Консультирование действующих проектов</h2>
                 <div className="service-audit-mobile__text service-audit-mobile__text--first">
-                  Один из наиболее верных способов получения объективной информации о положении дел компании является инициативный аудит. Как
-                  правило это услуга, адресована собственникам предприятия, по экспертизе состояния бухгалтерского учета и налогового учета, а
-                  также оценке эффективности управления Компанией.
-                  <br />
-                  <br />
-                  Аудиторская проверка осуществляется по инициативе учредителей или руководящего состава организации по запросу за любой отрезок
-                  времени. С его помощью можно проверить финансовое положение определённого подразделения или Компании в целом.
-                  <br />
-                  <br />
-                  Аудит по инициативе руководства позволяет досконально проверить работу всех подразделений организации, выявить возможные риски и
-                  срытые проблемы, которые могут привести к ухудшению финансового состояния компании.
+                  <ul>
+                    <li>анализ и бизнес-моделирование;</li>
+                    <li>разработка стратегии развития компании;</li>
+                    <li>рекомендации по реструктуризации компании, бизнеса (разработка концепции холдинговой структуры);</li>
+                    <li>создание единого информационного пространства компании, группы компаний;</li>
+                    <li>разработка бизнес-планов, технико-экономического обоснования (ТЭО) проекта;</li>
+                    <li>контроль затрат по проекту.</li>
+                  </ul>
                 </div>
 
                 <OrderServiceButton className="service-audit-mobile__order service-audit-mobile__order--first" onClick={() => onNavigate('contacts')} />
 
-                <h2 className="service-audit-mobile__subtitle">Экспресс-аудиТ</h2>
+                <h2 className="service-audit-mobile__subtitle">
+                  Услуги по сопровождение проектов
+                  <br />и стартапов: разработка организации проекта, юридическое сопровождение
+                </h2>
                 <div className="service-audit-mobile__text service-audit-mobile__text--second">
                   <p>
-                    Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из
-                    вариантов инициативного аудита.
+                    Услуга по юридическому сопровождению бизнеса будет полезна не только для компаний, которые не имеют собственного юриста, но и
+                    для тех компаний, у которых в штате уже есть юрист.
                   </p>
                   <p>
-                    Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный
-                    анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в
-                    данном случае экспресс-аудит имеет ряд безусловных плюсов:
+                    Уровень одного, даже очень хорошего юриста, всегда проигрывает по сравнению с квалификацией целой команды профессионалов,
+                    специализирующихся в разных областях юридического права.
                   </p>
+                  <p>Мы предлагаем следующие юридические услуги.</p>
                   <ul>
-                    <li>
-                      Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих
-                      сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).
-                    </li>
-                    <li>
-                      Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной
-                      информацией по интересующим его вопросам.
-                    </li>
-                    <li>
-                      В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий
-                      ритм.
-                    </li>
+                    <li>Корпоративное право:</li>
+                    <li>оформление решений органов управления,</li>
+                    <li>формирование органов управления,</li>
+                    <li>разработка и реализация концепций объединения групп компаний (формирование холдингов);</li>
+                    <li>Регистрация юрлиц, ИП, внесение изменений;</li>
+                    <li>Ликвидация компаний (добровольная и альтернативная);</li>
+                    <li>Банкротство все стадии:</li>
+                    <li>Регистрация товарных знаков;</li>
                   </ul>
                 </div>
 
@@ -179,6 +179,7 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
                     анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в
                     данном случае экспресс-аудит имеет ряд безусловных плюсов:
                   </p>
+                  <p>&nbsp;</p>
                   <ul>
                     <li>
                       Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих
@@ -193,6 +194,10 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
                       ритм.
                     </li>
                   </ul>
+                  <p>&nbsp;</p>
+                  <p>
+                    Ценность данных и информацию, которые оперативно получает руководитель организации, существенна для принятия ключевых решений.
+                  </p>
                 </div>
                 <OrderServiceButton className="service-audit-mobile__order service-audit-mobile__order--third" onClick={() => onNavigate('contacts')} />
               </section>
@@ -222,10 +227,10 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
 
                 <article className="service-audit-mobile__other-card service-audit-mobile__other-card--projects">
                   <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">
-                    Управление
-                    <br />и сопровождение проектов
+                    Бухгалтерский
+                    <br />и налоговый консалтинг
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-projects')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -249,7 +254,7 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
   }
 
   return (
-    <div className="service-audit-page">
+    <div className="service-audit-page service-projects-page">
       <main className="service-audit-page__main">
         <div className="service-audit-page__shell" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <div
@@ -263,15 +268,15 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
           >
             <section className="service-audit-page__hero">
               <img src={heroIcon} alt="" className="service-audit-page__hero-icon" />
-              <h1>Аудит и анализ деятельности компаний</h1>
+              <h1>Управление и сопровождение проектов</h1>
             </section>
 
             <section className="service-audit-page__cards-section">
+              <AuditCard className="service-audit-page__card--left" title="Консультирование действующих проектов" />
               <AuditCard
-                className="service-audit-page__card--left"
-                title="Проведение инициативного аудита предприятия и организации"
+                className="service-audit-page__card--middle"
+                title="Услуги по сопровождение проектов и стартапов: разработка организации проекта, юридическое сопровождение"
               />
-              <AuditCard className="service-audit-page__card--middle" title="Экспресс-аудит" />
               <AuditCard
                 className="service-audit-page__card--right"
                 title="Анализ и диагностика финансово хозяйственной деятельности предприятия, организации"
@@ -279,52 +284,77 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
             </section>
 
             <section className="service-audit-page__details">
-              <h2 className="service-audit-page__details-title service-audit-page__details-title--first">
-                Проведение инициативного аудита предприятия и организации
+              <h2 className="service-audit-page__details-title service-audit-page__details-title--first">Консультирование действующих проектов</h2>
+              <h2 className="service-audit-page__details-title service-audit-page__details-title--second">
+                Услуги по сопровождение проектов
+                <br />и стартапов: разработка организации проекта, юридическое сопровождение
               </h2>
-              <h2 className="service-audit-page__details-title service-audit-page__details-title--second">Экспресс-аудиТ</h2>
               <h2 className="service-audit-page__details-title service-audit-page__details-title--third">
                 Анализ и диагностика финансово хозяйственной деятельности предприятия, организации
               </h2>
 
               <div className="service-audit-page__details-text service-audit-page__details-text--first">
-                Один из наиболее верных способов получения объективной информации о положении дел компании является инициативный аудит. Как
-                правило это услуга, адресована собственникам предприятия, по экспертизе состояния бухгалтерского учета и налогового учета, а
-                также оценке эффективности управления Компанией.
-                <br />
-                <br />
-                Аудиторская проверка осуществляется по инициативе учредителей или руководящего состава организации по запросу за любой отрезок
-                времени. С его помощью можно проверить финансовое положение определённого подразделения или Компании в целом.
-                <br />
-                <br />
-                Аудит по инициативе руководства позволяет досконально проверить работу всех подразделений организации, выявить возможные риски
-                и срытые проблемы, которые могут привести к ухудшению финансового состояния компании.
+                <ul>
+                  <li>анализ и бизнес-моделирование;</li>
+                  <li>разработка стратегии развития компании;</li>
+                  <li>рекомендации по реструктуризации компании, бизнеса (разработка концепции холдинговой структуры);</li>
+                  <li>создание единого информационного пространства компании, группы компаний;</li>
+                  <li>разработка бизнес-планов, технико-экономического обоснования (ТЭО) проекта;</li>
+                  <li>контроль затрат по проекту.</li>
+                </ul>
               </div>
 
               <div className="service-audit-page__details-text service-audit-page__details-text--second">
-                <p>Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из вариантов инициативного аудита.</p>
-                <p>Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в данном случае экспресс-аудит имеет ряд безусловных плюсов:</p>
-                <p>&nbsp;</p>
+                <p>
+                  Услуга по юридическому сопровождению бизнеса будет полезна не только для компаний, которые не имеют собственного юриста, но и
+                  для тех компаний, у которых в штате уже есть юрист.
+                </p>
+                <p>
+                  Уровень одного, даже очень хорошего юриста, всегда проигрывает по сравнению с квалификацией целой команды профессионалов,
+                  специализирующихся в разных областях юридического права.
+                </p>
+                <p>Мы предлагаем следующие юридические услуги.</p>
                 <ul>
-                  <li>Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).</li>
-                  <li>Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной информацией по интересующим его вопросам.</li>
-                  <li>В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий ритм.</li>
+                  <li>Корпоративное право:</li>
+                  <li>оформление решений органов управления,</li>
+                  <li>формирование органов управления,</li>
+                  <li>разработка и реализация концепций объединения групп компаний (формирование холдингов);</li>
+                  <li>Регистрация юрлиц, ИП, внесение изменений;</li>
+                  <li>Ликвидация компаний (добровольная и альтернативная);</li>
+                  <li>Банкротство все стадии:</li>
+                  <li>Регистрация товарных знаков;</li>
                 </ul>
-                <p>&nbsp;</p>
-                <p>Ценность данных и информацию, которые оперативно получает руководитель организации, существенна для принятия ключевых решений.</p>
               </div>
 
               <div className="service-audit-page__details-text service-audit-page__details-text--third">
-                <p>Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из вариантов инициативного аудита.</p>
-                <p>Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в данном случае экспресс-аудит имеет ряд безусловных плюсов:</p>
+                <p>
+                  Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из
+                  вариантов инициативного аудита.
+                </p>
+                <p>
+                  Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный
+                  анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в
+                  данном случае экспресс-аудит имеет ряд безусловных плюсов:
+                </p>
                 <p>&nbsp;</p>
                 <ul>
-                  <li>Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).</li>
-                  <li>Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной информацией по интересующим его вопросам.</li>
-                  <li>В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий ритм.</li>
+                  <li>
+                    Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих
+                    сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).
+                  </li>
+                  <li>
+                    Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной
+                    информацией по интересующим его вопросам.
+                  </li>
+                  <li>
+                    В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий
+                    ритм.
+                  </li>
                 </ul>
                 <p>&nbsp;</p>
-                <p>Ценность данных и информацию, которые оперативно получает руководитель организации, существенна для принятия ключевых решений.</p>
+                <p>
+                  Ценность данных и информацию, которые оперативно получает руководитель организации, существенна для принятия ключевых решений.
+                </p>
               </div>
 
               <OrderServiceButton className="service-audit-page__order--first" onClick={() => onNavigate('contacts')} />
@@ -355,22 +385,12 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
                 </button>
               </article>
 
-              <article className="service-audit-page__other-card service-audit-page__other-card--staffing">
-                <h3 className="service-audit-page__other-title service-audit-page__other-title--staffing">
-                  Кадровый и организационный консалтинг
-                </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-management')}>
-                  <span>Подробнее</span>
-                  <OtherMoreArrow />
-                </button>
-              </article>
-
               <article className="service-audit-page__other-card service-audit-page__other-card--projects">
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--default">
-                  Управление
-                  <br />и сопровождение проектов
+                  Бухгалтерский
+                  <br />и налоговый консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-projects')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>

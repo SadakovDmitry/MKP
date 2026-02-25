@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { SitePage } from './navigation';
 import MobileFooter from './mobileSections/MobileFooter';
 import getViewportWidth from './getViewportWidth';
+import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from './socialLinks';
 
 const imgLine1 = '/assets/7918af23ed3296b8e767190c8279c0139f0ec990.svg';
 const imgVector5 = '/assets/720c778192c904fd60a1289ac484a6c657cac233.svg';
@@ -180,18 +181,23 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
         >
           г. Москва, Благовещенский пер., дом 3, стр. 1, пом. 1/6
         </p>
-        <div className="absolute inset-[18%_8.57%_62.8%_85.86%]">
+        <a href={SOCIAL_LINKS.whatsapp} {...SOCIAL_LINK_PROPS} aria-label="WhatsApp" className="absolute inset-[18%_8.57%_62.8%_85.86%]">
           <img alt="" className="absolute block max-w-none size-full" src={imgVector5} />
-        </div>
-        <div className="absolute h-[48px] left-[calc(83.33%-51.67px)] top-[45px] w-[53px]">
+        </a>
+        <a
+          href={SOCIAL_LINKS.telegram}
+          {...SOCIAL_LINK_PROPS}
+          aria-label="Telegram"
+          className="absolute h-[48px] left-[calc(83.33%-51.67px)] top-[45px] w-[53px]"
+        >
           <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-        </div>
-        <div className="absolute inset-[18%_22.36%_62.8%_74.21%]">
+        </a>
+        <a href={SOCIAL_LINKS.vk} {...SOCIAL_LINK_PROPS} aria-label="VK" className="absolute inset-[18%_22.36%_62.8%_74.21%]">
           <img alt="" className="absolute block max-w-none size-full" src={imgExclude2} />
-        </div>
-        <div className="absolute inset-[18%_27.79%_62.8%_68.64%]">
+        </a>
+        <a href={SOCIAL_LINKS.max} {...SOCIAL_LINK_PROPS} aria-label="MAX" className="absolute inset-[18%_27.79%_62.8%_68.64%]">
           <img alt="" className="absolute block max-w-none size-full" src={imgVector6} />
-        </div>
+        </a>
           </div>
         </div>
       </div>

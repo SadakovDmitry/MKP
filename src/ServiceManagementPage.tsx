@@ -14,7 +14,9 @@ const MOBILE_BASE_HEIGHT = 6680;
 const heroIcon = '/assets/e8463afe767ac9cfe505ca2c0a7aec9317a62958.png';
 
 type ServiceManagementPageProps = {
-  onNavigate: (page: SitePage) => void;
+  onNavigate: (
+    page: SitePage | 'service-accounting' | 'service-audit' | 'service-legal' | 'service-management' | 'service-projects',
+  ) => void;
 };
 
 function AuditMoreArrow() {
@@ -183,7 +185,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                     Бухгалтерский
                     <br />и налоговый консалтинг
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -193,7 +195,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                   <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--audit">
                     Аудит компании и анализ деятельности предприятия
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-audit')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -204,7 +206,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                     Управление
                     <br />и сопровождение проектов
                   </h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-projects')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -212,7 +214,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
 
                 <article className="service-audit-mobile__other-card service-audit-mobile__other-card--legal">
                   <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">Юридические услуги</h3>
-                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('service-legal')}>
                     <span>Подробнее</span>
                     <OtherMoreArrow />
                   </button>
@@ -322,7 +324,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                   Бухгалтерский
                   <br />и налоговый консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-accounting')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -332,7 +334,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--audit">
                   Аудит компании и анализ деятельности предприятия
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-audit')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -342,7 +344,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--staffing">
                   Кадровый и организационный консалтинг
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-management')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -353,7 +355,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
                   Управление
                   <br />и сопровождение проектов
                 </h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-projects')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>
@@ -361,7 +363,7 @@ export default function ServiceManagementPage({ onNavigate }: ServiceManagementP
 
               <article className="service-audit-page__other-card service-audit-page__other-card--legal">
                 <h3 className="service-audit-page__other-title service-audit-page__other-title--default">Юридические услуги</h3>
-                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-audit-page__other-more-btn" onClick={() => onNavigate('service-legal')}>
                   <span>Подробнее</span>
                   <OtherMoreArrow />
                 </button>

@@ -1,4 +1,5 @@
 import type { SitePage } from '../navigation';
+import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from '../socialLinks';
 
 const imgLine2 = "/assets/4834aefdbebadba1abb4eb0735aa739e6898607f.svg";
 const imgVector = "/assets/7e8e9a9a286797089b23f5287ad6ada1d4f97712.svg";
@@ -19,15 +20,36 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
           <img alt="" className="block max-w-none size-full" src={imgLine2} />
         </div>
       </div>
-      <div className="absolute inset-[66.27%_35.09%_27.86%_50.74%]" data-name="Vector" data-node-id="83:1501">
+      <a
+        href={SOCIAL_LINKS.telegram}
+        {...SOCIAL_LINK_PROPS}
+        aria-label="Telegram"
+        className="absolute inset-[66.27%_35.09%_27.86%_50.74%]"
+        data-name="Vector"
+        data-node-id="83:1501"
+      >
         <img alt="" className="absolute block max-w-none size-full" src={imgVector} />
-      </div>
-      <div className="absolute h-[94px] left-[calc(25%+106px)] top-[1060.3px] w-[104px]" data-name="Exclude" data-node-id="83:1502">
+      </a>
+      <a
+        href={SOCIAL_LINKS.vk}
+        {...SOCIAL_LINK_PROPS}
+        aria-label="VK"
+        className="absolute h-[94px] left-[calc(25%+106px)] top-[1060.3px] w-[104px]"
+        data-name="Exclude"
+        data-node-id="83:1502"
+      >
         <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
-      </div>
-      <div className="absolute inset-[66.25%_70.31%_27.84%_20.93%]" data-name="Exclude" data-node-id="83:1503">
+      </a>
+      <a
+        href={SOCIAL_LINKS.max}
+        {...SOCIAL_LINK_PROPS}
+        aria-label="MAX"
+        className="absolute inset-[66.25%_70.31%_27.84%_20.93%]"
+        data-name="Exclude"
+        data-node-id="83:1503"
+      >
         <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-      </div>
+      </a>
       <p className="absolute font-['Roboto:Light',sans-serif] font-light inset-[89.75%_50.83%_8.56%_8.43%] leading-[0.9] text-[29.809px] text-[color:var(--color-4,white)]" data-node-id="83:1506" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Консалтинговая компания МКР
       </p>
@@ -61,9 +83,16 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
       <div className="absolute inset-[9.5%_28.06%_80.94%_28.09%]" data-name="Group" data-node-id="83:1516">
         <img alt="" className="absolute block max-w-none size-full" src={imgGroup} />
       </div>
-      <div className="absolute inset-[66.25%_20.93%_27.81%_70%]" data-name="Vector" data-node-id="177:217">
+      <a
+        href={SOCIAL_LINKS.whatsapp}
+        {...SOCIAL_LINK_PROPS}
+        aria-label="WhatsApp"
+        className="absolute inset-[66.25%_20.93%_27.81%_70%]"
+        data-name="Vector"
+        data-node-id="177:217"
+      >
         <img alt="" className="absolute block max-w-none size-full" src={imgVector1} />
-      </div>
+      </a>
     </div>
   );
 }

@@ -22,6 +22,7 @@ type ServicesPageProps = {
   onOpenSecondService: () => void;
   onOpenThirdService: () => void;
   onOpenFourthService: () => void;
+  onOpenFifthService: () => void;
 };
 
 type ServiceCardProps = {
@@ -81,6 +82,7 @@ export default function ServicesPage({
   onOpenSecondService,
   onOpenThirdService,
   onOpenFourthService,
+  onOpenFifthService,
 }: ServicesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
@@ -177,6 +179,7 @@ export default function ServicesPage({
                 actionClassName="services-page__card-action services-page__card-action--mobile"
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--project"
+                onMoreClick={onOpenFifthService}
               />
             </section>
           </div>
@@ -236,6 +239,7 @@ export default function ServicesPage({
               icon={imgChatGptImage70004Layer5}
               cardClassName="services-page__card services-page__card--project"
               iconClassName="services-page__card-icon services-page__card-icon--project"
+              onMoreClick={onOpenFifthService}
             />
 
             <ServiceCard

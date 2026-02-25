@@ -3,6 +3,7 @@ import SharedFooter from './SharedFooter';
 import getViewportWidth from './getViewportWidth';
 import type { SitePage } from './navigation';
 import ContactsMap from './ContactsMap';
+import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from './socialLinks';
 import './ContactsPage.css';
 
 const FRAME_WIDTH = 1400;
@@ -91,16 +92,16 @@ export default function ContactsPage({ onNavigate }: ContactsPageProps) {
             </form>
 
             <div className="contacts-page__socials" aria-label="Социальные сети">
-              <a href="#" aria-label="MAX" className="contacts-page__social-btn">
+              <a href={SOCIAL_LINKS.max} {...SOCIAL_LINK_PROPS} aria-label="MAX" className="contacts-page__social-btn">
                 <img src={imgMax} alt="" />
               </a>
-              <a href="#" aria-label="VK" className="contacts-page__social-btn">
+              <a href={SOCIAL_LINKS.vk} {...SOCIAL_LINK_PROPS} aria-label="VK" className="contacts-page__social-btn">
                 <img src={imgVk} alt="" />
               </a>
-              <a href="#" aria-label="Telegram" className="contacts-page__social-btn">
+              <a href={SOCIAL_LINKS.telegram} {...SOCIAL_LINK_PROPS} aria-label="Telegram" className="contacts-page__social-btn">
                 <img src={imgTelegram} alt="" />
               </a>
-              <a href="#" aria-label="WhatsApp" className="contacts-page__social-btn">
+              <a href={SOCIAL_LINKS.whatsapp} {...SOCIAL_LINK_PROPS} aria-label="WhatsApp" className="contacts-page__social-btn">
                 <img src={imgWhatsapp} alt="" />
               </a>
             </div>

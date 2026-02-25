@@ -1,4 +1,5 @@
 import './MobileContactsPage.css';
+import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from '../socialLinks';
 
 const imgMapIframeUrl =
   'https://yandex.ru/map-widget/v1/?um=constructor%3A20cb4256f96c8e4067adbf9e3b7a2a8bb0d7c718f89d077eef88c4c21785e74d&source=constructor';
@@ -65,16 +66,16 @@ export default function MobileContactsPage() {
       <p className="mobile-contacts-page__required-note">*— Поля обязательные для заполнения</p>
 
       <div className="mobile-contacts-page__socials" aria-label="Социальные сети">
-        <a href="#" className="mobile-contacts-page__social-link" aria-label="MAX">
+        <a href={SOCIAL_LINKS.max} {...SOCIAL_LINK_PROPS} className="mobile-contacts-page__social-link" aria-label="MAX">
           <img src={imgMax} alt="" />
         </a>
-        <a href="#" className="mobile-contacts-page__social-link" aria-label="VK">
+        <a href={SOCIAL_LINKS.vk} {...SOCIAL_LINK_PROPS} className="mobile-contacts-page__social-link" aria-label="VK">
           <img src={imgVk} alt="" />
         </a>
-        <a href="#" className="mobile-contacts-page__social-link" aria-label="Telegram">
+        <a href={SOCIAL_LINKS.telegram} {...SOCIAL_LINK_PROPS} className="mobile-contacts-page__social-link" aria-label="Telegram">
           <img src={imgTelegram} alt="" />
         </a>
-        <a href="#" className="mobile-contacts-page__social-link" aria-label="WhatsApp">
+        <a href={SOCIAL_LINKS.whatsapp} {...SOCIAL_LINK_PROPS} className="mobile-contacts-page__social-link" aria-label="WhatsApp">
           <img src={imgWhatsapp} alt="" />
         </a>
       </div>

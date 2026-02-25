@@ -28,14 +28,22 @@ import ServiceAccountingPage from './ServiceAccountingPage';
 import ServiceAuditPage from './ServiceAuditPage';
 import ServiceLegalPage from './ServiceLegalPage';
 import ServiceManagementPage from './ServiceManagementPage';
+import ServiceProjectsPage from './ServiceProjectsPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
 const DESKTOP_BASE_WIDTH = 1400;
+const HOME_CONTACT_SECTION_ID = 'home-contact-section';
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
 const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
-const SERVICE_ROUTE_ORDER = ['service-accounting', 'service-audit', 'service-legal', 'service-management'] as const;
+const SERVICE_ROUTE_ORDER = [
+  'service-accounting',
+  'service-audit',
+  'service-legal',
+  'service-management',
+  'service-projects',
+] as const;
 const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
@@ -74,10 +82,37 @@ export default function App() {
     };
   }, []);
 
-  const handleNavigate = (page: SitePage) => {
+  useEffect(() => {
+    if (currentPage !== 'home') {
+      return;
+    }
+
+    if (window.location.hash !== `#${HOME_CONTACT_SECTION_ID}`) {
+      return;
+    }
+
+    const scrollToContactSection = () => {
+      const target = document.getElementById(HOME_CONTACT_SECTION_ID);
+      if (!target) {
+        return;
+      }
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(scrollToContactSection);
+    });
+  }, [currentPage]);
+
+  const handleNavigateToAppPage = (page: AppPage) => {
     setPendingCasesFilter(null);
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'auto' });
+  };
+
+  const handleNavigate = (page: SitePage) => {
+    handleNavigateToAppPage(page);
   };
 
   const handleNavigateToCasesWithFilter = (filter: CasesFilterLabel) => {
@@ -87,18 +122,15 @@ export default function App() {
   };
 
   const handleOpenCase = (caseId: CaseId) => {
-    setCurrentPage(caseId);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    handleNavigateToAppPage(caseId);
   };
 
   const handleOpenArticle = (articlePage: ArticlePage) => {
-    setCurrentPage(articlePage);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    handleNavigateToAppPage(articlePage);
   };
 
   const handleOpenService = (servicePage: ServicePage) => {
-    setCurrentPage(servicePage);
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    handleNavigateToAppPage(servicePage);
   };
 
   const headerPage: SitePage = isCaseId(currentPage)
@@ -181,19 +213,23 @@ export default function App() {
   }
 
   if (currentPage === 'service-accounting') {
-    return withHeader(<ServiceAccountingPage onNavigate={handleNavigate} />);
+    return withHeader(<ServiceAccountingPage onNavigate={handleNavigateToAppPage} />);
   }
 
   if (currentPage === 'service-audit') {
-    return withHeader(<ServiceAuditPage onNavigate={handleNavigate} />);
+    return withHeader(<ServiceAuditPage onNavigate={handleNavigateToAppPage} />);
   }
 
   if (currentPage === 'service-legal') {
-    return withHeader(<ServiceLegalPage onNavigate={handleNavigate} />);
+    return withHeader(<ServiceLegalPage onNavigate={handleNavigateToAppPage} />);
   }
 
   if (currentPage === 'service-management') {
-    return withHeader(<ServiceManagementPage onNavigate={handleNavigate} />);
+    return withHeader(<ServiceManagementPage onNavigate={handleNavigateToAppPage} />);
+  }
+
+  if (currentPage === 'service-projects') {
+    return withHeader(<ServiceProjectsPage onNavigate={handleNavigateToAppPage} />);
   }
 
   if (currentPage === 'about') {
@@ -244,6 +280,7 @@ export default function App() {
         onOpenSecondService={() => handleOpenService('service-audit')}
         onOpenThirdService={() => handleOpenService('service-legal')}
         onOpenFourthService={() => handleOpenService('service-management')}
+        onOpenFifthService={() => handleOpenService('service-projects')}
       />,
     );
   }
@@ -261,7 +298,18 @@ export default function App() {
   if (!isMobileLayout) {
     if (currentPage === 'home') {
       return withHeader(
-        <DesktopPage onNavigate={handleNavigate} onOpenCasesByFilter={handleNavigateToCasesWithFilter} />,
+        <DesktopPage
+          onNavigate={handleNavigate}
+          onOpenCasesByFilter={handleNavigateToCasesWithFilter}
+          onOpenFirstService={() => handleOpenService('service-accounting')}
+          onOpenSecondService={() => handleOpenService('service-audit')}
+          onOpenThirdService={() => handleOpenService('service-legal')}
+          onOpenFourthService={() => handleOpenService('service-management')}
+          onOpenFifthService={() => handleOpenService('service-projects')}
+          onOpenFirstArticle={() => handleOpenArticle('article-1')}
+          onOpenSecondArticle={() => handleOpenArticle('article-2')}
+          onOpenThirdArticle={() => handleOpenArticle('article-3')}
+        />,
       );
     }
 
@@ -285,6 +333,11 @@ export default function App() {
             currentPage={currentPage}
             onNavigate={handleNavigate}
             onOpenCasesByFilter={handleNavigateToCasesWithFilter}
+            onOpenFirstService={() => handleOpenService('service-accounting')}
+            onOpenSecondService={() => handleOpenService('service-audit')}
+            onOpenThirdService={() => handleOpenService('service-legal')}
+            onOpenFourthService={() => handleOpenService('service-management')}
+            onOpenFifthService={() => handleOpenService('service-projects')}
             onOpenFirstArticle={() => handleOpenArticle('article-1')}
             onOpenSecondArticle={() => handleOpenArticle('article-2')}
             onOpenThirdArticle={() => handleOpenArticle('article-3')}

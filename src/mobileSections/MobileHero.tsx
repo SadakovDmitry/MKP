@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { PAGE_LABELS, type SitePage } from '../navigation';
 
 const img21 = '/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png';
@@ -19,6 +20,7 @@ type MobileHeroProps = {
 
 export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const isHome = currentPage === 'home';
   const isNewsPage = currentPage === 'news';
   const pageLabel = PAGE_LABELS[currentPage];
@@ -181,11 +183,17 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
           <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(50%-0.5px)] not-italic text-[70.926px] text-[color:var(--color-3,#313131)] text-center top-[calc(50%+496px)] w-[803px] whitespace-pre-wrap" data-node-id="83:325" style={{ fontVariationSettings: "'CRSV' 0, 'SHRP' 0" }}>
             Мы помогаем сделать бизнес эффективным
           </p>
-          <div className="-translate-x-1/2 absolute border-[2.585px] border-[var(--color,#1f556b)] border-solid h-[83.998px] left-[calc(50%-0.5px)] overflow-clip rounded-[64.614px] top-[1677.28px] w-[535px]" data-node-id="83:326">
-            <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(50%-0.19px)] not-italic text-[28.558px] text-[color:var(--color,#1f556b)] text-center top-[21.8px] uppercase" data-node-id="83:327" style={{ fontVariationSettings: "'CRSV' 0, 'SHRP' 0" }}>
+          <button
+            type="button"
+            onClick={() => setIsConsultationModalOpen(true)}
+            className="-translate-x-1/2 absolute border-[2.585px] border-[var(--color,#1f556b)] border-solid h-[83.998px] left-[calc(50%-0.5px)] overflow-clip rounded-[64.614px] top-[1677.28px] w-[535px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)] active:scale-[0.99]"
+            data-node-id="83:326"
+            aria-label="Получить консультацию"
+          >
+            <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(50%-0.19px)] not-italic text-[28.558px] text-[color:var(--color,#1f556b)] text-center top-[21.8px] uppercase transition-colors duration-200 group-hover:text-white" data-node-id="83:327" style={{ fontVariationSettings: "'CRSV' 0, 'SHRP' 0" }}>
               Получить консультацию
             </p>
-          </div>
+          </button>
         </>
       ) : (
         <div className="absolute inset-x-0 top-[760px] flex flex-col items-center gap-8">
@@ -196,6 +204,65 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
             Страница в разработке
           </p>
         </div>
+      )}
+
+      {isConsultationModalOpen &&
+        createPortal(
+        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-[#1f556b]/40 px-3 py-4">
+          <div className="relative w-full max-w-[360px] max-h-[calc(100dvh-32px)] overflow-y-auto rounded-[28px] border border-[var(--color,#1f556b)] bg-white px-4 pb-4 pt-5 shadow-[0_20px_55px_rgba(31,85,107,0.22)]">
+            <button
+              type="button"
+              onClick={() => setIsConsultationModalOpen(false)}
+              className="absolute right-3 top-3 h-10 w-10 rounded-full border border-[var(--color,#1f556b)] bg-transparent text-[30px] leading-none text-[var(--color,#1f556b)] cursor-pointer transition-colors duration-200 hover:bg-[var(--color,#1f556b)] hover:text-white"
+              aria-label="Закрыть форму"
+            >
+              ×
+            </button>
+            <p className="m-0 pr-10 font-['Geologica:Medium',sans-serif] text-[30px] leading-[1] uppercase text-[var(--color,#1f556b)]">
+              Запись на консультацию
+            </p>
+            <p className="mb-0 mt-2 font-['Roboto:Regular',sans-serif] text-[17px] leading-[1.2] text-[#4f4f4f]">
+              Оставьте контакты и мы свяжемся с вами в ближайшее время.
+            </p>
+            <form
+              className="mt-4 flex flex-col gap-2.5"
+              onSubmit={(event) => {
+                event.preventDefault();
+                setIsConsultationModalOpen(false);
+              }}
+            >
+              <input
+                type="text"
+                required
+                placeholder="Имя"
+                className="h-[46px] rounded-[24px] border border-[#97b6c2] px-4 font-['Roboto:Regular',sans-serif] text-[15px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <input
+                type="tel"
+                required
+                placeholder="Телефон"
+                className="h-[46px] rounded-[24px] border border-[#97b6c2] px-4 font-['Roboto:Regular',sans-serif] text-[15px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <input
+                type="email"
+                placeholder="E-mail"
+                className="h-[46px] rounded-[24px] border border-[#97b6c2] px-4 font-['Roboto:Regular',sans-serif] text-[15px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <textarea
+                rows={3}
+                placeholder="Комментарий"
+                className="resize-none rounded-[16px] border border-[#97b6c2] px-4 py-3 font-['Roboto:Regular',sans-serif] text-[15px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+              />
+              <button
+                type="submit"
+                className="mt-1 h-[46px] rounded-[24px] border border-[var(--color,#1f556b)] bg-[var(--color,#1f556b)] font-['Geologica:Medium',sans-serif] text-[20px] uppercase tracking-[0.02em] text-white cursor-pointer transition-colors duration-200 hover:bg-white hover:text-[var(--color,#1f556b)] active:scale-[0.99]"
+              >
+                Отправить
+              </button>
+            </form>
+          </div>
+        </div>,
+        document.body,
       )}
     </div>
   );

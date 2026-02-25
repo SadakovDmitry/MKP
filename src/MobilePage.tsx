@@ -29,6 +29,11 @@ type MobilePageProps = {
   currentPage: SitePage;
   onNavigate: (page: SitePage) => void;
   onOpenCasesByFilter: (filter: CasesFilterLabel) => void;
+  onOpenFirstService: () => void;
+  onOpenSecondService: () => void;
+  onOpenThirdService: () => void;
+  onOpenFourthService: () => void;
+  onOpenFifthService: () => void;
   onOpenFirstArticle: () => void;
   onOpenSecondArticle: () => void;
   onOpenThirdArticle: () => void;
@@ -38,6 +43,11 @@ export default function MobilePage({
   currentPage,
   onNavigate,
   onOpenCasesByFilter,
+  onOpenFirstService,
+  onOpenSecondService,
+  onOpenThirdService,
+  onOpenFourthService,
+  onOpenFifthService,
   onOpenFirstArticle,
   onOpenSecondArticle,
   onOpenThirdArticle,
@@ -60,13 +70,23 @@ export default function MobilePage({
             <MobileAdvantages />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '3640px' }}>
-            <MobileServices />
+            <MobileServices
+              onOpenFirstService={onOpenFirstService}
+              onOpenSecondService={onOpenSecondService}
+              onOpenThirdService={onOpenThirdService}
+              onOpenFourthService={onOpenFourthService}
+              onOpenFifthService={onOpenFifthService}
+            />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '3840px' }}>
             <MobileCases onOpenCasesByFilter={onOpenCasesByFilter} />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '3440px' }}>
-            <MobileNews />
+            <MobileNews
+              onOpenFirstArticle={onOpenFirstArticle}
+              onOpenSecondArticle={onOpenSecondArticle}
+              onOpenThirdArticle={onOpenThirdArticle}
+            />
           </div>
           <div className="relative shrink-0" style={{ width: `${MOBILE_FRAME_WIDTH}px`, height: '1600px' }}>
             <MobileContact />

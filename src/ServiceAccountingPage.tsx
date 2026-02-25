@@ -63,7 +63,9 @@ const MOBILE_FAQ_ANSWER =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
 type ServiceAccountingPageProps = {
-  onNavigate: (page: SitePage) => void;
+  onNavigate: (
+    page: SitePage | 'service-accounting' | 'service-audit' | 'service-legal' | 'service-management' | 'service-projects',
+  ) => void;
 };
 
 function MoreArrow() {
@@ -279,7 +281,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
 
                 <article className="service-accounting-mobile__other-card service-accounting-mobile__other-card--audit">
                   <h3>Аудит компании и анализ деятельности предприятия</h3>
-                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('service-audit')}>
                     <span>Подробнее</span>
                     <MoreArrow />
                   </button>
@@ -290,7 +292,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                     Управление
                     <br />и сопровождение проектов
                   </h3>
-                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('service-projects')}>
                     <span>Подробнее</span>
                     <MoreArrow />
                   </button>
@@ -298,7 +300,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
 
                 <article className="service-accounting-mobile__other-card service-accounting-mobile__other-card--management">
                   <h3>Управленческий и финансовый консалтинг</h3>
-                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('service-management')}>
                     <span>Подробнее</span>
                     <MoreArrow />
                   </button>
@@ -306,7 +308,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
 
                 <article className="service-accounting-mobile__other-card service-accounting-mobile__other-card--legal">
                   <h3>Юридические услуги</h3>
-                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('services')}>
+                  <button type="button" className="service-accounting-mobile__other-btn" onClick={() => onNavigate('service-legal')}>
                     <span>Подробнее</span>
                     <MoreArrow />
                   </button>
@@ -410,7 +412,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                 <h3 className="service-accounting-exact__other-title service-accounting-exact__other-title--default">
                   Управленческий и финансовый консалтинг
                 </h3>
-                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('service-management')}>
                   <span>Подробнее</span>
                   <MoreArrow />
                 </button>
@@ -420,7 +422,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                 <h3 className="service-accounting-exact__other-title service-accounting-exact__other-title--audit">
                   Аудит компании и анализ деятельности предприятия
                 </h3>
-                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('service-audit')}>
                   <span>Подробнее</span>
                   <MoreArrow />
                 </button>
@@ -430,7 +432,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                 <h3 className="service-accounting-exact__other-title service-accounting-exact__other-title--staffing">
                   Кадровый и организационный консалтинг
                 </h3>
-                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('service-management')}>
                   <span>Подробнее</span>
                   <MoreArrow />
                 </button>
@@ -441,7 +443,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                   Управление
                   <br />и сопровождение проектов
                 </h3>
-                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('service-projects')}>
                   <span>Подробнее</span>
                   <MoreArrow />
                 </button>
@@ -451,7 +453,7 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
                 <h3 className="service-accounting-exact__other-title service-accounting-exact__other-title--default">
                   Юридические услуги
                 </h3>
-                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('services')}>
+                <button type="button" className="service-accounting-exact__more-btn" onClick={() => onNavigate('service-legal')}>
                   <span>Подробнее</span>
                   <MoreArrow />
                 </button>

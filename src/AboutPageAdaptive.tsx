@@ -115,6 +115,11 @@ export default function AboutPageAdaptive({ onNavigate }: AboutPageAdaptiveProps
     setMenuOpen(false);
   };
 
+  const handleWriteToUs = () => {
+    window.location.hash = 'home-contact-section';
+    handleNavigate('home');
+  };
+
   return (
     <div className="bg-white min-h-screen text-[#313131]">
       <header className="about-adaptive-local-header sticky top-0 z-40 px-4 pt-4 sm:px-6 lg:px-8">
@@ -260,6 +265,7 @@ export default function AboutPageAdaptive({ onNavigate }: AboutPageAdaptiveProps
 
             <button
               type="button"
+              onClick={handleWriteToUs}
               className="mx-auto mt-8 h-[64.642px] px-8 bg-white rounded-[64.642px] text-[#1f556b] font-['Geologica:Light',sans-serif] text-[22px] lg:text-[28.987px] tracking-[0.5797px] active:scale-[0.98] transition-transform duration-150"
             >
               Написать нам

@@ -5,7 +5,11 @@ const imgMkrIcons0001Layer2 = "/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.
 const imgMkrIcons0000Layer1 = "/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png";
 const imgExclude = "/assets/5b1e24b337d2c82bcf513937d48509498b8d98da.svg";
 
-export default function Mobile() {
+type Frame83_1027Props = {
+  onWriteToUs?: () => void;
+};
+
+export default function Mobile({ onWriteToUs }: Frame83_1027Props) {
   return (
     <div className="bg-[var(--color,#1f556b)] relative size-full" data-name="Mobile" data-node-id="83:1027">
       <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(50%-0.5px)] not-italic text-[60.78px] text-[color:var(--color-4,white)] text-center top-[calc(50%-851px)] uppercase w-[539px] whitespace-pre-wrap" data-node-id="83:1028" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
@@ -63,7 +67,12 @@ export default function Mobile() {
       <p className="-translate-x-1/2 absolute bottom-[14.81%] font-['Roboto:Bold',sans-serif] font-bold leading-none left-[calc(50%-1px)] text-[34.15px] text-[color:var(--color-4,white)] text-center top-[81.92%] uppercase w-[588px] whitespace-pre-wrap" data-node-id="83:1046" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         Для нас нет проблем — у нас есть оптимальные решения.
       </p>
-      <div className="-translate-x-1/2 absolute h-[83.333px] left-[calc(50%-0.5px)] top-[1847.66px] w-[535px]" data-node-id="83:1047">
+      <button
+        type="button"
+        onClick={onWriteToUs}
+        className="-translate-x-1/2 absolute h-[83.333px] left-[calc(50%-0.5px)] top-[1847.66px] w-[535px] border-0 bg-transparent p-0"
+        data-node-id="83:1047"
+      >
         <div className="absolute bg-[var(--color-4,white)] inset-0 rounded-[83.333px]" data-node-id="83:1048" />
         <p className="absolute font-['Geologica:Light',sans-serif] font-light inset-[29.56%_43.99%_29.64%_7.79%] leading-[0.9] not-italic text-[37.369px] text-[color:var(--color,#1f556b)] tracking-[0.7474px]" data-node-id="83:1049" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           Написать нам
@@ -71,7 +80,7 @@ export default function Mobile() {
         <div className="absolute inset-[10.01%_1.69%_10.83%_85.98%]" data-name="Exclude" data-node-id="83:1050">
           <img alt="" className="absolute block max-w-none size-full" src={imgExclude} />
         </div>
-      </div>
+      </button>
     </div>
   );
 }

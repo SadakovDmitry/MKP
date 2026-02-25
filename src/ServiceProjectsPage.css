@@ -1,0 +1,77 @@
+.service-projects-page .service-audit-page__details {
+  height: 2692px;
+  text-align: left;
+  font-size: 36.65px;
+  color: #313131;
+  font-family: 'Geologica', sans-serif;
+}
+
+.service-projects-page .service-audit-page__details-title {
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.service-projects-page .service-audit-page__details-title--first {
+  top: 128px;
+  width: 950px;
+}
+
+.service-projects-page .service-audit-page__details-title--second {
+  top: 677px;
+  width: 874px;
+}
+
+.service-projects-page .service-audit-page__details-title--third {
+  top: 1607px;
+  width: 791px;
+}
+
+.service-projects-page .service-audit-page__details-text {
+  font-size: 31.63px;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+}
+
+.service-projects-page .service-audit-page__details-text--first {
+  top: 191px;
+  width: 1120px;
+}
+
+.service-projects-page .service-audit-page__details-text--second {
+  top: 821px;
+  width: 1040px;
+}
+
+.service-projects-page .service-audit-page__details-text--third {
+  top: 1765px;
+  width: 1040px;
+}
+
+.service-projects-page .service-audit-page__details-text ul {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: 42px;
+}
+
+.service-projects-page .service-audit-page__details-text li {
+  margin-bottom: 0;
+}
+
+.service-projects-page .service-audit-page__order {
+  font-size: 31.59px;
+  color: #fff;
+}
+
+.service-projects-page .service-audit-page__order--first {
+  top: 517.15px;
+}
+
+.service-projects-page .service-audit-page__order--second {
+  top: 1434.03px;
+}
+
+.service-projects-page .service-audit-page__order--third {
+  top: 2539.09px;
+}
