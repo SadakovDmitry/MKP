@@ -21,6 +21,7 @@ type ServicesPageProps = {
   onOpenFirstService: () => void;
   onOpenSecondService: () => void;
   onOpenThirdService: () => void;
+  onOpenFourthService: () => void;
 };
 
 type ServiceCardProps = {
@@ -74,7 +75,13 @@ function ServiceCard({
   );
 }
 
-export default function ServicesPage({ onNavigate, onOpenFirstService, onOpenSecondService, onOpenThirdService }: ServicesPageProps) {
+export default function ServicesPage({
+  onNavigate,
+  onOpenFirstService,
+  onOpenSecondService,
+  onOpenThirdService,
+  onOpenFourthService,
+}: ServicesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
@@ -159,6 +166,7 @@ export default function ServicesPage({ onNavigate, onOpenFirstService, onOpenSec
                 actionClassName="services-page__card-action services-page__card-action--mobile"
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--management"
+                onMoreClick={onOpenFourthService}
               />
 
               <ServiceCard
@@ -213,6 +221,7 @@ export default function ServicesPage({ onNavigate, onOpenFirstService, onOpenSec
               icon={imgChatGptImage70000Layer1}
               cardClassName="services-page__card services-page__card--management"
               iconClassName="services-page__card-icon services-page__card-icon--management"
+              onMoreClick={onOpenFourthService}
             />
 
             <ServiceCard

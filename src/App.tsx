@@ -27,6 +27,7 @@ import ServicesPage from './ServicesPage';
 import ServiceAccountingPage from './ServiceAccountingPage';
 import ServiceAuditPage from './ServiceAuditPage';
 import ServiceLegalPage from './ServiceLegalPage';
+import ServiceManagementPage from './ServiceManagementPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -34,7 +35,7 @@ const DESKTOP_BASE_WIDTH = 1400;
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
 const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
-const SERVICE_ROUTE_ORDER = ['service-accounting', 'service-audit', 'service-legal'] as const;
+const SERVICE_ROUTE_ORDER = ['service-accounting', 'service-audit', 'service-legal', 'service-management'] as const;
 const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
@@ -191,6 +192,10 @@ export default function App() {
     return withHeader(<ServiceLegalPage onNavigate={handleNavigate} />);
   }
 
+  if (currentPage === 'service-management') {
+    return withHeader(<ServiceManagementPage onNavigate={handleNavigate} />);
+  }
+
   if (currentPage === 'about') {
     if (isMobileLayout) {
       const scale = viewportWidth > 0 ? Math.min(1, viewportWidth / ABOUT_MOBILE_FRAME_WIDTH) : 1;
@@ -238,6 +243,7 @@ export default function App() {
         onOpenFirstService={() => handleOpenService('service-accounting')}
         onOpenSecondService={() => handleOpenService('service-audit')}
         onOpenThirdService={() => handleOpenService('service-legal')}
+        onOpenFourthService={() => handleOpenService('service-management')}
       />,
     );
   }

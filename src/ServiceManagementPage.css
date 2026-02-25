@@ -1,0 +1,53 @@
+.service-management-page .service-audit-page__details {
+  height: 2096px;
+}
+
+.service-management-page .service-audit-page__details-title--first {
+  top: 93px;
+  width: 791px;
+}
+
+.service-management-page .service-audit-page__details-title--second {
+  top: 953px;
+  width: 791px;
+}
+
+.service-management-page .service-audit-page__details-title--third {
+  top: 1696px;
+  width: 791px;
+}
+
+.service-management-page .service-audit-page__details-text--first {
+  top: 241px;
+  width: 1120px;
+}
+
+.service-management-page .service-audit-page__details-text--second {
+  top: 1102px;
+  width: 1040px;
+}
+
+.service-management-page .service-audit-page__details-text--third {
+  top: 1764px;
+  width: 1040px;
+}
+
+.service-management-page .service-audit-page__order--first {
+  top: 787px;
+}
+
+.service-management-page .service-audit-page__order--second {
+  top: 1530px;
+}
+
+.service-management-page .service-audit-page__order--third {
+  top: 1933px;
+}
+
+.service-management-mobile .service-audit-mobile__details {
+  min-height: 2520px;
+}
+
+.service-management-mobile .service-audit-mobile__other {
+  top: 4480px;
+}
