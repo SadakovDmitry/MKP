@@ -47,7 +47,12 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
   return (
     <div className="bg-[var(--color-4,white)] relative size-full" data-name="Mobile" data-node-id="83:262">
       <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[1080px] top-[calc(50%-86px)]" data-name="2имидж 1" data-node-id="83:263">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img21} />
+        <img
+          alt=""
+          className="absolute inset-0 max-w-none object-cover pointer-events-none size-full parallax-media"
+          style={{ ['--parallax-depth' as string]: '0.23' }}
+          src={img21}
+        />
       </div>
       <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--color-2,#44b1d2)] h-[130.49px] left-[calc(50%-1px)] overflow-clip rounded-[138.774px] top-[calc(50%-834.76px)] w-[978px]" data-node-id="83:264">
         <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-[13.88px] right-[13.02px] top-[calc(50%+1.32px)]" data-node-id="83:265">
@@ -186,7 +191,7 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
           <button
             type="button"
             onClick={() => setIsConsultationModalOpen(true)}
-            className="-translate-x-1/2 absolute border-[2.585px] border-[var(--color,#1f556b)] border-solid h-[83.998px] left-[calc(50%-0.5px)] overflow-clip rounded-[64.614px] top-[1677.28px] w-[535px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)] active:scale-[0.99]"
+            className="-translate-x-1/2 absolute border-[2.585px] border-[var(--color,#1f556b)] border-solid h-[83.998px] left-[calc(50%-0.5px)] overflow-clip rounded-[64.614px] top-[1677.28px] w-[535px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)] active:scale-[0.99] premium-cta-shimmer"
             data-node-id="83:326"
             aria-label="Получить консультацию"
           >
@@ -208,8 +213,8 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
 
       {isConsultationModalOpen &&
         createPortal(
-        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-[#1f556b]/40 px-3 py-4">
-          <div className="relative w-full max-w-[360px] max-h-[calc(100dvh-32px)] overflow-y-auto rounded-[28px] border border-[var(--color,#1f556b)] bg-white px-4 pb-4 pt-5 shadow-[0_20px_55px_rgba(31,85,107,0.22)]">
+        <div className="fixed inset-0 z-[300] flex items-center justify-center bg-[#1f556b]/40 px-3 py-4 premium-modal-overlay">
+          <div className="relative w-full max-w-[360px] max-h-[calc(100dvh-32px)] overflow-y-auto rounded-[28px] border border-[var(--color,#1f556b)] bg-white px-4 pb-4 pt-5 shadow-[0_20px_55px_rgba(31,85,107,0.22)] premium-modal-panel">
             <button
               type="button"
               onClick={() => setIsConsultationModalOpen(false)}

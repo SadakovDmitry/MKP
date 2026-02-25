@@ -1,3 +1,5 @@
+import AnimatedCounter from '../AnimatedCounter';
+
 const imgShutterstock2474508323Converted012 = "/assets/a721360e788c5c8db3a22e6abc8d2bd83fdd4248.png";
 const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.png";
 const imgChatGptImage720251251291 = "/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.png";
@@ -12,7 +14,7 @@ export default function MobileAdvantages() {
       <div className="absolute contents left-[50px] top-[433px]" data-node-id="83:900">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[397.273px] left-[50px] overflow-clip rounded-[69.091px] top-[559.09px] w-[475px]" data-node-id="83:901">
           <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[67.83%_9.22%_18.08%_9.09%] leading-[0.9] text-[62.367px] text-[color:var(--color-4,white)] text-center" data-node-id="83:902" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            10 лет опыта
+            <AnimatedCounter to={10} suffix=" лет опыта" />
           </p>
         </div>
         <div className="-translate-x-1/2 absolute h-[343.727px] left-[calc(25%+15.77px)] top-[433px] w-[326.455px]" data-name="shutterstock_2474508323 [Converted]-01 2" data-node-id="83:903">
@@ -34,7 +36,7 @@ export default function MobileAdvantages() {
       <div className="absolute contents left-[50px] top-[1056px]" data-node-id="83:908">
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[397.273px] left-[50px] overflow-clip rounded-[69.091px] top-[1182.09px] w-[475px]" data-node-id="83:909">
           <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[64.78%_11.64%_15.58%_11.64%] leading-[0.9] text-[43.719px] text-[color:var(--color-4,white)] text-center whitespace-pre-wrap" data-node-id="83:910" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-            80% проектов — аутсорсинг
+            <AnimatedCounter to={80} suffix="% проектов — аутсорсинг" />
           </p>
         </div>
         <div className="absolute aspect-[1024/1024] flex items-center justify-center left-[10.23%] right-[57.31%] top-[1056px]">

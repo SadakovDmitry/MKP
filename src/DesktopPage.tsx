@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { type SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CasesFilterLabel } from './casesFilters';
+import AnimatedCounter from './AnimatedCounter';
 
 const img21 = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png";
 const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.png";
@@ -88,7 +89,12 @@ export default function Frame({
           <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="78:640">
       <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
         <div className="-translate-y-1/2 absolute left-[calc(58.33%-18.67px)] size-[448px] top-1/2" data-name="2имидж 1" data-node-id="78:3">
-          <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={img21} />
+          <img
+            alt=""
+            className="absolute inset-0 max-w-none object-cover pointer-events-none size-full parallax-media"
+            style={{ ['--parallax-depth' as string]: '0.2' }}
+            src={img21}
+          />
         </div>
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(25%-230px)] not-italic text-[50.081px] text-[color:var(--color-3,#313131)] top-[calc(50%-111px)] w-[567px] whitespace-pre-wrap" data-node-id="78:4" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           Мы помогаем сделать бизнес эффективным
@@ -96,7 +102,7 @@ export default function Frame({
         <button
           type="button"
           onClick={() => setIsConsultationModalOpen(true)}
-          className="-translate-x-1/2 absolute border-[1.802px] border-[var(--color,#1f556b)] border-solid h-[58.563px] left-[calc(16.67%+73.17px)] overflow-clip rounded-[45.048px] top-[399px] w-[373px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)]"
+          className="-translate-x-1/2 absolute border-[1.802px] border-[var(--color,#1f556b)] border-solid h-[58.563px] left-[calc(16.67%+73.17px)] overflow-clip rounded-[45.048px] top-[399px] w-[373px] bg-transparent p-0 cursor-pointer group transition-colors duration-200 hover:bg-[var(--color,#1f556b)] premium-cta-shimmer"
           data-node-id="78:5"
           aria-label="Получить консультацию"
         >
@@ -210,7 +216,7 @@ export default function Frame({
         <div className="absolute contents left-[calc(50%+10px)] top-[174px]" data-node-id="78:442">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[230px] left-[calc(50%+10px)] overflow-clip rounded-[40px] top-[247px] w-[275px]" data-node-id="78:443">
             <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[64.78%_11.64%_15.22%_11.64%] leading-[0.9] text-[25.311px] text-[color:var(--color-4,white)] text-center whitespace-pre-wrap" data-node-id="78:444" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-              80% проектов — аутсорсинг
+              <AnimatedCounter to={80} suffix="% проектов — аутсорсинг" />
             </p>
           </div>
           <div className="absolute aspect-[1024/1024] flex items-center justify-center left-[53.21%] right-[32.29%] top-[174px]">
@@ -224,7 +230,7 @@ export default function Frame({
         <div className="absolute contents left-[120px] top-[274px]" data-node-id="78:446">
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[230px] left-[120px] overflow-clip rounded-[40px] top-[347px] w-[275px]" data-node-id="78:447">
             <p className="absolute font-['Roboto:Medium',sans-serif] font-medium inset-[67.83%_9.09%_18.26%_9.09%] leading-[0.9] text-[36.107px] text-[color:var(--color-4,white)] text-center" data-node-id="78:448" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-              10 лет опыта
+              <AnimatedCounter to={10} suffix=" лет опыта" />
             </p>
           </div>
           <div className="-translate-x-1/2 absolute h-[199px] left-[calc(12.5%+81.5px)] top-[274px] w-[189px]" data-name="shutterstock_2474508323 [Converted]-01 2" data-node-id="78:449">
@@ -665,8 +671,8 @@ export default function Frame({
         </div>
       </div>
       {isConsultationModalOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#1f556b]/35 px-4">
-          <div className="relative w-full max-w-[620px] rounded-[32px] border-2 border-[var(--color,#1f556b)] bg-white p-8 shadow-[0_20px_55px_rgba(31,85,107,0.22)]">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#1f556b]/35 px-4 premium-modal-overlay">
+          <div className="relative w-full max-w-[620px] rounded-[32px] border-2 border-[var(--color,#1f556b)] bg-white p-8 shadow-[0_20px_55px_rgba(31,85,107,0.22)] premium-modal-panel">
             <button
               type="button"
               onClick={() => setIsConsultationModalOpen(false)}

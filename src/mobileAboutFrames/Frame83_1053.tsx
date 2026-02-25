@@ -40,12 +40,19 @@ export default function Mobile() {
   const [activeReviewIndex, setActiveReviewIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [slideDirection, setSlideDirection] = useState<'prev' | 'next'>('next');
+  const [pressedArrow, setPressedArrow] = useState<'prev' | 'next' | null>(null);
   const transitionTimerRef = useRef<number | null>(null);
+  const arrowTimerRef = useRef<number | null>(null);
+  const touchStartXRef = useRef(0);
+  const touchStartTimeRef = useRef(0);
 
   useEffect(() => {
     return () => {
       if (transitionTimerRef.current !== null) {
         window.clearTimeout(transitionTimerRef.current);
+      }
+      if (arrowTimerRef.current !== null) {
+        window.clearTimeout(arrowTimerRef.current);
       }
     };
   }, []);
@@ -61,17 +68,50 @@ export default function Mobile() {
     transitionTimerRef.current = window.setTimeout(() => {
       setActiveReviewIndex(nextIndex);
       setIsTransitioning(false);
-    }, 180);
+    }, 260);
   };
 
   const handlePrevReview = () => {
+    setPressedArrow('prev');
     const nextIndex = activeReviewIndex === 0 ? REVIEWS.length - 1 : activeReviewIndex - 1;
     switchReview(nextIndex, 'prev');
+    if (arrowTimerRef.current !== null) {
+      window.clearTimeout(arrowTimerRef.current);
+    }
+    arrowTimerRef.current = window.setTimeout(() => setPressedArrow(null), 180);
   };
 
   const handleNextReview = () => {
+    setPressedArrow('next');
     const nextIndex = activeReviewIndex === REVIEWS.length - 1 ? 0 : activeReviewIndex + 1;
     switchReview(nextIndex, 'next');
+    if (arrowTimerRef.current !== null) {
+      window.clearTimeout(arrowTimerRef.current);
+    }
+    arrowTimerRef.current = window.setTimeout(() => setPressedArrow(null), 180);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = event.touches[0]?.clientX ?? 0;
+    touchStartTimeRef.current = performance.now();
+  };
+
+  const handleTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    const endX = event.changedTouches[0]?.clientX ?? touchStartXRef.current;
+    const deltaX = endX - touchStartXRef.current;
+    const elapsedMs = Math.max(performance.now() - touchStartTimeRef.current, 1);
+    const velocity = Math.abs(deltaX) / elapsedMs;
+
+    if (Math.abs(deltaX) < 28 && velocity < 0.32) {
+      return;
+    }
+
+    if (deltaX < 0) {
+      handleNextReview();
+      return;
+    }
+
+    handlePrevReview();
   };
 
   const activeReview = REVIEWS[activeReviewIndex];
@@ -85,11 +125,16 @@ export default function Mobile() {
       <p className="-translate-x-1/2 absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(50%-0.5px)] not-italic text-[60.78px] text-[color:var(--color,#1f556b)] text-center top-[calc(50%-291px)] uppercase w-[539px] whitespace-pre-wrap" data-node-id="83:1054" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
         отзывы
       </p>
-      <div className="absolute bg-[var(--color,#1f556b)] h-[341.08px] left-[112px] overflow-clip rounded-[55.013px] top-[409px] w-[856px]" data-node-id="83:1055">
+      <div
+        className="absolute bg-[var(--color,#1f556b)] h-[341.08px] left-[112px] overflow-clip rounded-[55.013px] top-[409px] w-[856px]"
+        data-node-id="83:1055"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <button
           type="button"
           onClick={handleNextReview}
-          className="absolute flex h-[101.224px] items-center justify-center left-[760.28px] top-[119.93px] w-[58.314px] border-0 bg-transparent p-0 cursor-pointer transition-transform duration-150 active:scale-90 hover:opacity-85"
+          className={`absolute flex h-[101.224px] items-center justify-center left-[760.28px] top-[119.93px] w-[58.314px] border-0 bg-transparent p-0 cursor-pointer transition-all duration-200 hover:opacity-85 ${pressedArrow === 'next' ? 'scale-90' : 'scale-100'}`}
           style={{ "--transform-inner-width": "0", "--transform-inner-height": "0" } as React.CSSProperties}
           aria-label="Следующий отзыв"
         >
@@ -104,7 +149,7 @@ export default function Mobile() {
         <button
           type="button"
           onClick={handlePrevReview}
-          className="absolute flex h-[101.224px] items-center justify-center left-[37.41px] top-[119.93px] w-[58.314px] border-0 bg-transparent p-0 cursor-pointer transition-transform duration-150 active:scale-90 hover:opacity-85"
+          className={`absolute flex h-[101.224px] items-center justify-center left-[37.41px] top-[119.93px] w-[58.314px] border-0 bg-transparent p-0 cursor-pointer transition-all duration-200 hover:opacity-85 ${pressedArrow === 'prev' ? 'scale-90' : 'scale-100'}`}
           style={{ "--transform-inner-width": "0", "--transform-inner-height": "0" } as React.CSSProperties}
           aria-label="Предыдущий отзыв"
         >
@@ -116,14 +161,14 @@ export default function Mobile() {
             </div>
           </div>
         </button>
-        <p className={`absolute bottom-[14.03%] font-['Roboto:Light',sans-serif] font-light leading-none left-[calc(50%-319.08px)] text-[26px] text-[color:var(--color-4,white)] top-[49.03%] w-[637.049px] whitespace-pre-wrap transition-all duration-200 ${textTransitionClass}`} data-node-id="83:1058" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+        <p className={`absolute bottom-[14.03%] font-['Roboto:Light',sans-serif] font-light leading-none left-[calc(50%-319.08px)] text-[26px] text-[color:var(--color-4,white)] top-[49.03%] w-[637.049px] whitespace-pre-wrap transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${textTransitionClass}`} data-node-id="83:1058" style={{ fontVariationSettings: "\'wdth\' 100" }}>
           {activeReview.text}
         </p>
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[36.308px] left-[314.67px] rounded-[27.506px] top-[101.23px] w-[227.753px]" data-node-id="83:1059" />
-        <p className={`-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[calc(50%-0.15px)] text-[47.208px] text-[color:var(--color-4,white)] text-center top-[38px] w-[700px] min-h-[56px] h-auto transition-opacity duration-200 ${centeredTransitionClass}`} data-node-id="83:1060" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+        <p className={`-translate-x-1/2 absolute font-['Roboto:Medium',sans-serif] font-medium leading-none left-[calc(50%-0.15px)] text-[47.208px] text-[color:var(--color-4,white)] text-center top-[38px] w-[700px] min-h-[56px] h-auto transition-opacity duration-260 ease-[cubic-bezier(0.22,1,0.36,1)] ${centeredTransitionClass}`} data-node-id="83:1060" style={{ fontVariationSettings: "\'wdth\' 100" }}>
           {activeReview.name}
         </p>
-        <p className={`-translate-x-1/2 absolute bottom-[60.99%] font-['Roboto:Bold',sans-serif] font-bold leading-none left-[calc(50%-0.22px)] text-[26.57px] text-[color:var(--color-4,white)] text-center top-[31.1%] transition-opacity duration-200 ${centeredTransitionClass}`} data-node-id="83:1061" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+        <p className={`-translate-x-1/2 absolute bottom-[60.99%] font-['Roboto:Bold',sans-serif] font-bold leading-none left-[calc(50%-0.22px)] text-[26.57px] text-[color:var(--color-4,white)] text-center top-[31.1%] transition-opacity duration-260 ease-[cubic-bezier(0.22,1,0.36,1)] ${centeredTransitionClass}`} data-node-id="83:1061" style={{ fontVariationSettings: "\'wdth\' 100" }}>
           {activeReview.industry}
         </p>
       </div>

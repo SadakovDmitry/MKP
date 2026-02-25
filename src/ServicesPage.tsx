@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import SharedFooter from './SharedFooter';
 import getViewportWidth from './getViewportWidth';
 import type { SitePage } from './navigation';
@@ -34,6 +34,7 @@ type ServiceCardProps = {
   actionTextClassName?: string;
   iconClassName: string;
   onMoreClick?: () => void;
+  staggerDelayMs?: number;
 };
 
 function ActionArrowBadge() {
@@ -63,9 +64,14 @@ function ServiceCard({
   actionTextClassName = 'services-page__card-action-text',
   iconClassName,
   onMoreClick,
+  staggerDelayMs = 0,
 }: ServiceCardProps) {
   return (
-    <article className={cardClassName}>
+    <article
+      className={`${cardClassName} premium-stagger-item premium-tilt-card`}
+      data-tilt-card
+      style={{ '--stagger-delay': `${staggerDelayMs}ms` } as CSSProperties}
+    >
       <h2 className={titleClassName}>{title}</h2>
       <button type="button" className={actionClassName} aria-label="Подробнее" onClick={onMoreClick}>
         <span className={actionTextClassName}>Подробнее</span>
@@ -111,7 +117,7 @@ export default function ServicesPage({
             style={{ width: `${MOBILE_FRAME_WIDTH * mobileScale}px`, height: `${MOBILE_FRAME_HEIGHT * mobileScale}px` }}
           >
             <section
-              className="services-page__mobile-frame"
+              className="services-page__mobile-frame premium-stagger-parent"
               style={{
                 width: `${MOBILE_FRAME_WIDTH}px`,
                 height: `${MOBILE_FRAME_HEIGHT}px`,
@@ -119,7 +125,7 @@ export default function ServicesPage({
                 transformOrigin: 'top left',
               }}
             >
-              <button type="button" className="services-page__mobile-consultation" onClick={() => onNavigate('contacts')}>
+              <button type="button" className="services-page__mobile-consultation premium-cta-shimmer" onClick={() => onNavigate('contacts')}>
                 Получить консультацию
               </button>
 
@@ -136,6 +142,7 @@ export default function ServicesPage({
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--accounting"
                 onMoreClick={onOpenFirstService}
+                staggerDelayMs={40}
               />
 
               <ServiceCard
@@ -147,6 +154,7 @@ export default function ServicesPage({
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--audit"
                 onMoreClick={onOpenSecondService}
+                staggerDelayMs={90}
               />
 
               <ServiceCard
@@ -158,6 +166,7 @@ export default function ServicesPage({
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--legal"
                 onMoreClick={onOpenThirdService}
+                staggerDelayMs={140}
               />
 
               <ServiceCard
@@ -169,6 +178,7 @@ export default function ServicesPage({
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--management"
                 onMoreClick={onOpenFourthService}
+                staggerDelayMs={190}
               />
 
               <ServiceCard
@@ -180,6 +190,7 @@ export default function ServicesPage({
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--project"
                 onMoreClick={onOpenFifthService}
+                staggerDelayMs={240}
               />
             </section>
           </div>
@@ -195,7 +206,7 @@ export default function ServicesPage({
       <main className="services-page__main">
         <div className="services-page__scaled-wrap" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <section
-            className="services-page__frame"
+            className="services-page__frame premium-stagger-parent"
             style={{
               width: `${FRAME_WIDTH}px`,
               height: `${FRAME_HEIGHT}px`,
@@ -203,7 +214,7 @@ export default function ServicesPage({
               transformOrigin: 'top left',
             }}
           >
-            <button type="button" className="services-page__consultation" onClick={() => onNavigate('contacts')}>
+            <button type="button" className="services-page__consultation premium-cta-shimmer" onClick={() => onNavigate('contacts')}>
               Получить консультацию
             </button>
 
@@ -217,6 +228,7 @@ export default function ServicesPage({
               cardClassName="services-page__card services-page__card--accounting"
               iconClassName="services-page__card-icon services-page__card-icon--accounting"
               onMoreClick={onOpenFirstService}
+              staggerDelayMs={40}
             />
 
             <ServiceCard
@@ -225,6 +237,7 @@ export default function ServicesPage({
               cardClassName="services-page__card services-page__card--management"
               iconClassName="services-page__card-icon services-page__card-icon--management"
               onMoreClick={onOpenFourthService}
+              staggerDelayMs={90}
             />
 
             <ServiceCard
@@ -232,6 +245,7 @@ export default function ServicesPage({
               icon={imgChatGptImage70004Layer5}
               cardClassName="services-page__card services-page__card--hr services-page__card--hidden"
               iconClassName="services-page__card-icon services-page__card-icon--hr"
+              staggerDelayMs={140}
             />
 
             <ServiceCard
@@ -240,6 +254,7 @@ export default function ServicesPage({
               cardClassName="services-page__card services-page__card--project"
               iconClassName="services-page__card-icon services-page__card-icon--project"
               onMoreClick={onOpenFifthService}
+              staggerDelayMs={190}
             />
 
             <ServiceCard
@@ -248,6 +263,7 @@ export default function ServicesPage({
               cardClassName="services-page__card services-page__card--audit"
               iconClassName="services-page__card-icon services-page__card-icon--audit"
               onMoreClick={onOpenSecondService}
+              staggerDelayMs={240}
             />
 
             <ServiceCard
@@ -256,6 +272,7 @@ export default function ServicesPage({
               cardClassName="services-page__card services-page__card--legal"
               iconClassName="services-page__card-icon services-page__card-icon--legal"
               onMoreClick={onOpenThirdService}
+              staggerDelayMs={290}
             />
           </section>
         </div>

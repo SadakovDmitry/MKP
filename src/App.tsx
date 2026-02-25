@@ -35,6 +35,8 @@ const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
 const DESKTOP_BASE_WIDTH = 1400;
 const HOME_CONTACT_SECTION_ID = 'home-contact-section';
+const SCROLL_REVEAL_SELECTOR = 'main section, main article';
+const TILT_CARD_SELECTOR = '[data-tilt-card]';
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
 const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
@@ -216,6 +218,148 @@ export default function App() {
     });
   }, [currentPage]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    let rafId = 0;
+    const updateParallax = () => {
+      rafId = 0;
+      const nextParallax = Math.min(window.scrollY * 0.08, 42);
+      document.documentElement.style.setProperty('--parallax-scroll', `${nextParallax.toFixed(2)}px`);
+    };
+
+    const onScroll = () => {
+      if (rafId) {
+        return;
+      }
+      rafId = window.requestAnimationFrame(updateParallax);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (prefersReducedMotion || !hasFinePointer) {
+      return;
+    }
+
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(TILT_CARD_SELECTOR));
+    if (cards.length === 0) {
+      return;
+    }
+
+    const cleanups: Array<() => void> = [];
+
+    cards.forEach((card) => {
+      const handlePointerMove = (event: PointerEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 5.6;
+        const rotateX = (0.5 - y) * 4.8;
+
+        card.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
+        card.classList.add('is-tilting');
+      };
+
+      const resetTilt = () => {
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+        card.classList.remove('is-tilting');
+      };
+
+      card.addEventListener('pointermove', handlePointerMove);
+      card.addEventListener('pointerleave', resetTilt);
+      card.addEventListener('pointerup', resetTilt);
+      cleanups.push(() => {
+        card.removeEventListener('pointermove', handlePointerMove);
+        card.removeEventListener('pointerleave', resetTilt);
+        card.removeEventListener('pointerup', resetTilt);
+      });
+    });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
+  }, [currentPage]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const revealCandidates = Array.from(document.querySelectorAll<HTMLElement>(SCROLL_REVEAL_SELECTOR));
+    if (revealCandidates.length === 0) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    revealCandidates.forEach((node, index) => {
+      node.classList.add('reveal-on-scroll');
+      if (!prefersReducedMotion) {
+        node.style.setProperty('--reveal-delay', `${Math.min((index % 8) * 36, 216)}ms`);
+      }
+    });
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealCandidates.forEach((node) => node.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          const target = entry.target as HTMLElement;
+          target.classList.add('is-visible');
+          observer.unobserve(target);
+        });
+      },
+      {
+        threshold: 0.14,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    );
+
+    revealCandidates.forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.92) {
+        node.classList.add('is-visible');
+        return;
+      }
+
+      observer.observe(node);
+    });
+
+    return () => observer.disconnect();
+  }, [currentPage]);
+
   const handleNavigateToAppPage = (page: AppPage, replaceHistory = false) => {
     setPendingCasesFilter(null);
     setCurrentPage(page);
@@ -271,11 +415,17 @@ export default function App() {
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_LAYOUT_BREAKPOINT;
 
   const withHeader = (content: ReactNode) => {
+    const transitionedContent = (
+      <div key={currentPage} className="app-page-transition">
+        {content}
+      </div>
+    );
+
     if (isMobileLayout) {
       return (
         <>
           <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
-          {content}
+          {transitionedContent}
         </>
       );
     }
@@ -288,7 +438,7 @@ export default function App() {
       return (
         <div className="w-full overflow-x-hidden bg-white">
           <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} desktopScale={headerDesktopScale} />
-          {content}
+          {transitionedContent}
         </div>
       );
     }
@@ -297,7 +447,7 @@ export default function App() {
       <div className="w-full overflow-x-hidden bg-white">
         <div style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale }}>
           <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
-          {content}
+          {transitionedContent}
         </div>
       </div>
     );

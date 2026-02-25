@@ -1,6 +1,7 @@
 import './NewsPage.css';
 import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
+import type { CSSProperties } from 'react';
 
 const imgArticleOutsource = '/assets/news-figma-article-outsource.png';
 const imgArticleTax = '/assets/news-figma-article-tax.png';
@@ -119,15 +120,20 @@ export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondA
           </div>
         </section>
 
-        <section className="news-content">
+        <section className="news-content premium-stagger-parent">
           <div className="news-content__scale-wrap">
             <div className="news-content__frame">
               <h2 className="news-content__section-title news-content__section-title--articles">Статьи</h2>
               <h2 className="news-content__section-title news-content__section-title--news">Новости</h2>
 
               {ARTICLE_CARDS.map((card, index) => (
-                <article key={card.title} className={card.className}>
-                  <img src={card.image} alt="" className={card.imageClassName} />
+                <article
+                  key={card.title}
+                  className={`${card.className} premium-stagger-item premium-tilt-card premium-zoom-card`}
+                  data-tilt-card
+                  style={{ '--stagger-delay': `${80 + index * 70}ms` } as CSSProperties}
+                >
+                  <img src={card.image} alt="" className={`${card.imageClassName} premium-zoom-media`} />
                   <div className="news-content__article-overlay" />
                   <h3 className="news-content__article-title">{card.title}</h3>
                   <p className="news-content__article-date">{card.date}</p>
@@ -136,7 +142,12 @@ export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondA
               ))}
 
               {NEWS_CARDS.map((card, index) => (
-                <article key={card.title} className={`${card.className} news-content__news-card--${card.color}`}>
+                <article
+                  key={card.title}
+                  className={`${card.className} news-content__news-card--${card.color} premium-stagger-item premium-tilt-card`}
+                  data-tilt-card
+                  style={{ '--stagger-delay': `${340 + index * 70}ms` } as CSSProperties}
+                >
                   <h3 className="news-content__news-title">{card.title}</h3>
                   <button type="button" className="news-content__news-more" aria-label="Подробнее" onClick={() => handleOpenNewsCard(index)}>
                     <img src={imgNewsCardArrow} alt="" className="news-content__news-more-icon-image" />

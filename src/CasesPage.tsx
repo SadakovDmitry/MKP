@@ -206,19 +206,33 @@ function MoreButtonMobile({ onClick }: { onClick: () => void }) {
   );
 }
 
-function CaseCard({ card, slot, onOpenCase }: { card: CaseCardData; slot: { left: number; top: number }; onOpenCase: (caseId: CaseId) => void }) {
+function CaseCard({
+  card,
+  slot,
+  onOpenCase,
+  staggerDelayMs,
+}: {
+  card: CaseCardData;
+  slot: { left: number; top: number };
+  onOpenCase: (caseId: CaseId) => void;
+  staggerDelayMs: number;
+}) {
   return (
-    <div className="absolute bg-black h-[400px] overflow-clip rounded-[40px] w-[275px]" style={{ left: `${slot.left}px`, top: `${slot.top}px` }}>
+    <div
+      className="absolute bg-black h-[400px] overflow-clip rounded-[40px] w-[275px] premium-tilt-card premium-stagger-item premium-zoom-card group/case-card"
+      data-tilt-card
+      style={{ left: `${slot.left}px`, top: `${slot.top}px`, ['--stagger-delay' as string]: `${staggerDelayMs}ms` }}
+    >
       {card.rotatedImage ? (
         <div className={card.rotatedImage.wrapperClass} style={{ '--transform-inner-width': '0', '--transform-inner-height': '0' } as React.CSSProperties}>
           <div className="-scale-y-100 flex-none rotate-[178.18deg]">
             <div className={card.rotatedImage.innerClass}>
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={card.image} />
+              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full premium-zoom-media" src={card.image} />
             </div>
           </div>
         </div>
       ) : (
-        <img alt="" className={card.imageClass} src={card.image} />
+        <img alt="" className={`${card.imageClass} premium-zoom-media`} src={card.image} />
       )}
 
       <div className="absolute bg-gradient-to-t from-[rgba(49,49,49,0.75)] h-[222px] left-0 mix-blend-multiply to-[rgba(49,49,49,0)] top-[178px] via-1/2 via-[rgba(49,49,49,0.75)] w-[275px]" />
@@ -240,11 +254,11 @@ function CaseCard({ card, slot, onOpenCase }: { card: CaseCardData; slot: { left
 
 function MobileCaseCard({ card, onOpenCase }: { card: CaseCardData; onOpenCase: (caseId: CaseId) => void }) {
   return (
-    <article className="relative overflow-hidden rounded-[26px] bg-black aspect-[472.807/687.719]">
+    <article className="relative overflow-hidden rounded-[26px] bg-black aspect-[472.807/687.719] premium-stagger-item premium-zoom-card">
       <img
         alt=""
         src={card.image}
-        className="absolute inset-0 size-full max-w-none object-cover pointer-events-none"
+        className="absolute inset-0 size-full max-w-none object-cover pointer-events-none premium-zoom-media"
         style={{ objectPosition: card.mobileImagePosition ?? '50% 50%' }}
       />
       <div className="absolute bottom-0 left-0 right-0 h-[66%] bg-gradient-to-t from-[rgba(49,49,49,0.88)] via-[rgba(49,49,49,0.76)] to-[rgba(49,49,49,0)] mix-blend-multiply" />
@@ -338,7 +352,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
     return (
       <div className="min-h-screen bg-white text-[#313131]">
         <main className="w-full pt-[96px] pb-6">
-          <section className="w-full px-[14px]">
+          <section className="w-full px-[14px] premium-stagger-parent">
             <div className="flex flex-wrap gap-x-[8px] gap-y-[8px]">
               {FILTERS.map((filter) => {
                 const isActive = activeFilters.includes(filter.label);
@@ -430,7 +444,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
               </div>
 
               {visibleCards.slice(0, CARD_SLOTS.length).map((card, index) => (
-                <CaseCard key={card.id} card={card} slot={CARD_SLOTS[index]} onOpenCase={onOpenCase} />
+                <CaseCard key={card.id} card={card} slot={CARD_SLOTS[index]} onOpenCase={onOpenCase} staggerDelayMs={60 + index * 55} />
               ))}
             </div>
           </div>
