@@ -6,7 +6,7 @@ import AboutPageAdaptive from './AboutPageAdaptive';
 import AboutPageMobile, { ABOUT_MOBILE_FRAME_HEIGHT, ABOUT_MOBILE_FRAME_WIDTH } from './AboutPageMobile';
 import MobilePage, { getMobileFrameHeight, MOBILE_FRAME_WIDTH } from './MobilePage';
 import FloatingHeader from './FloatingHeader';
-import CasesPage from './CasesPage';
+import CasesPage, { CASES_PAGE_PRELOAD_IMAGES } from './CasesPage';
 import UsefulPage from './UsefulPage';
 import type { SitePage } from './navigation';
 import CaseDetailsPage from './CaseDetailsPage';
@@ -29,6 +29,7 @@ import ServiceAuditPage from './ServiceAuditPage';
 import ServiceLegalPage from './ServiceLegalPage';
 import ServiceManagementPage from './ServiceManagementPage';
 import ServiceProjectsPage from './ServiceProjectsPage';
+import { preloadImages } from './preloadImages';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -149,6 +150,10 @@ export default function App() {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState<AppPage>(() => resolveAppPageFromLocation());
   const [pendingCasesFilter, setPendingCasesFilter] = useState<CasesFilterLabel | null>(null);
+
+  useEffect(() => {
+    preloadImages(CASES_PAGE_PRELOAD_IMAGES, { addPreloadLinks: true });
+  }, []);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());

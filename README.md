@@ -2,73 +2,91 @@
 
 Корпоративный SPA-сайт на `React + TypeScript + Vite`.
 
-## Стек
+## Что в проекте
 
-- `react`, `react-dom`
-- `typescript`
-- `vite`
-- `tailwindcss` (в проекте также есть обычные CSS-файлы)
+- Фронтенд: `React 19`, `TypeScript`, `Vite`
+- Стили: обычные CSS + Tailwind в зависимостях
+- Тип приложения: SPA (клиентская маршрутизация)
+- Прод-артефакт: папка `dist/` после `npm run build`
 
 ## Требования
 
-- Node.js `20+` (рекомендуется `22 LTS`)
+- Node.js `20+` (лучше `22 LTS`)
 - npm `10+`
-- Linux-сервер (для деплоя ниже используется Ubuntu + Nginx)
+- Linux-сервер (в примере ниже: Ubuntu + Nginx)
+- Домен, направленный на ваш сервер
 
-## Локальный запуск
+## Быстрый запуск локально
 
 ```bash
 npm install
 npm run dev
 ```
 
-Сайт будет доступен на `http://localhost:5173`.
+Открыть: `http://localhost:5173`
 
-## Прод-сборка
+## Сборка для продакшена
 
 ```bash
 npm run build
 ```
 
-Готовые файлы появляются в папке `dist/`.
-
-Проверка локально:
+Проверить локально прод-сборку:
 
 ```bash
 npm run preview
 ```
 
-## Важный момент про маршруты (SPA)
+## Важно для SPA: fallback на `index.html`
 
-Сайт использует клиентскую навигацию (History API), поэтому на сервере **обязательно** нужен fallback:
-
-- любой путь (`/about`, `/services/audit`, `/articles/...`) должен отдавать `index.html`;
-- иначе при обновлении страницы будет `404`.
-
-Ниже в конфиге Nginx это реализовано через:
+Этот сайт использует клиентские маршруты (`/about`, `/services/...`, `/articles/...`).  
+На сервере обязательно нужен fallback:
 
 ```nginx
 try_files $uri $uri/ /index.html;
 ```
 
+Если его нет, при обновлении страницы на внутренних URL будет `404`.
+
 ---
 
-## Пошаговый деплой на VPS (Ubuntu + Nginx + HTTPS)
+## Полный деплой на VPS (Ubuntu + Nginx + HTTPS)
 
-### 1) Подготовить сервер
+Ниже инструкция, которую можно повторять буквально по шагам.
+
+### 1. Настройка DNS
+
+У регистратора домена создайте записи:
+
+- `A` для `your-domain.com` -> `IP_СЕРВЕРА`
+- `A` для `www.your-domain.com` -> `IP_СЕРВЕРА`
+
+Проверка:
+
+```bash
+dig +short your-domain.com
+dig +short www.your-domain.com
+```
+
+### 2. Подготовка сервера
+
+Подключитесь по SSH и установите базовые пакеты:
 
 ```bash
 sudo apt update
-sudo apt install -y nginx git curl
+sudo apt install -y nginx git curl ufw
 ```
 
-Проверить, что Nginx запущен:
+Откройте порты и включите firewall:
 
 ```bash
-systemctl status nginx
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+sudo ufw status
 ```
 
-### 2) Установить Node.js (через nvm)
+### 3. Установка Node.js через nvm
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
@@ -79,12 +97,11 @@ node -v
 npm -v
 ```
 
-### 3) Забрать проект и собрать
+### 4. Клонирование и первая сборка
 
 ```bash
-cd /var/www
 sudo mkdir -p /var/www/mkp
-sudo chown -R $USER:$USER /var/www/mkp
+sudo chown -R "$USER:$USER" /var/www/mkp
 cd /var/www/mkp
 
 git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ> .
@@ -92,9 +109,27 @@ npm ci
 npm run build
 ```
 
-После сборки должна быть папка `/var/www/mkp/dist`.
+После этого должна появиться папка `/var/www/mkp/dist`.
 
-### 4) Настроить Nginx
+### 5. Переменные окружения (если нужны)
+
+В проекте есть `.env.example`:
+
+```env
+VITE_YANDEX_MAPS_API_KEY=your_yandex_maps_api_key_here
+```
+
+Если используете переменные в проде:
+
+```bash
+cp .env.example .env.local
+nano .env.local
+npm run build
+```
+
+Сейчас карта в проекте подключена через iframe-конструктор Яндекс, поэтому ключ может не использоваться.
+
+### 6. Конфиг Nginx
 
 Создайте файл:
 
@@ -102,7 +137,7 @@ npm run build
 sudo nano /etc/nginx/sites-available/mkp
 ```
 
-Содержимое:
+Вставьте:
 
 ```nginx
 server {
@@ -117,49 +152,56 @@ server {
         try_files $uri $uri/ /index.html;
     }
 
-    # Кэш для статических ассетов Vite
+    # Кэш ассетов Vite
     location /assets/ {
         expires 30d;
         add_header Cache-Control "public, max-age=2592000, immutable";
         try_files $uri =404;
     }
+
+    # Базовые security headers
+    add_header X-Content-Type-Options nosniff always;
+    add_header X-Frame-Options SAMEORIGIN always;
+    add_header Referrer-Policy strict-origin-when-cross-origin always;
 }
 ```
 
-Активируйте сайт и перезапустите Nginx:
+Активируйте конфиг:
 
 ```bash
 sudo ln -s /etc/nginx/sites-available/mkp /etc/nginx/sites-enabled/mkp
-sudo nginx -t
-sudo systemctl reload nginx
-```
-
-Если включен дефолтный сайт, можно отключить:
-
-```bash
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-### 5) Подключить HTTPS (Let's Encrypt)
+### 7. HTTPS (Let's Encrypt)
 
 ```bash
 sudo apt install -y certbot python3-certbot-nginx
 sudo certbot --nginx -d your-domain.com -d www.your-domain.com
 ```
 
-Проверка автообновления сертификата:
+Проверить автообновление сертификата:
 
 ```bash
 sudo certbot renew --dry-run
 ```
 
+### 8. Проверка после запуска
+
+Проверьте:
+
+- `https://your-domain.com` открывается
+- прямой вход по внутреннему URL работает (`https://your-domain.com/about`)
+- перезагрузка внутренних URL не дает `404`
+- в DevTools нет ошибок загрузки `assets`
+
 ---
 
-## Обновление сайта после изменений
+## Регулярное обновление сайта
 
-На сервере:
+Каждый раз после изменений:
 
 ```bash
 cd /var/www/mkp
@@ -169,26 +211,93 @@ npm run build
 sudo systemctl reload nginx
 ```
 
-Этого достаточно, потому что Nginx напрямую раздает актуальную папку `dist`.
+## Удобный скрипт деплоя (опционально)
+
+Создайте `deploy.sh` в корне проекта:
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd /var/www/mkp
+git pull
+npm ci
+npm run build
+sudo systemctl reload nginx
+
+echo "Deploy complete"
+```
+
+Сделайте исполняемым:
+
+```bash
+chmod +x deploy.sh
+```
+
+Запуск:
+
+```bash
+./deploy.sh
+```
 
 ---
 
-## Частые проблемы и решения
+## Откат на предыдущую версию
 
-### 1) При обновлении страницы `404`
+Вариант через Git (если деплой из `main`):
 
-Причина: не настроен SPA fallback.  
-Решение: в `location /` должен быть `try_files $uri $uri/ /index.html;`.
+```bash
+cd /var/www/mkp
+git log --oneline -n 10
+git checkout <COMMIT_HASH>
+npm ci
+npm run build
+sudo systemctl reload nginx
+```
 
-### 2) Открывается старая версия сайта
+Потом можно вернуть текущую ветку:
 
-Причина: кэш браузера.  
-Решение:
-- сделать hard reload (`Ctrl+Shift+R`);
-- проверить, что в `dist/assets` появились новые файлы;
-- убедиться, что `npm run build` выполнился без ошибок.
+```bash
+git checkout main
+```
 
-### 3) Сборка падает на сервере
+---
+
+## Альтернатива: деплой через Docker (кратко)
+
+Если хотите изолированный деплой:
+
+1. Собираете `dist` в image.
+2. Отдаете статику через Nginx внутри контейнера.
+3. Публикуете `80/443` и подключаете сертификаты.
+
+Для этого можно добавить `Dockerfile` + `nginx.conf` + `docker-compose.yml`, но для текущего проекта обычный Nginx на сервере проще и надежнее.
+
+---
+
+## Частые проблемы
+
+### При обновлении страницы получаю `404`
+
+Проверьте, что в `location /` стоит:
+
+```nginx
+try_files $uri $uri/ /index.html;
+```
+
+### После деплоя видна старая версия
+
+- Сделайте hard reload (`Ctrl+Shift+R`)
+- Проверьте, что новая сборка реально создалась (`dist/assets` обновились)
+- Убедитесь, что Nginx указывает на правильный `root`
+
+### Белый экран
+
+- Проверьте `npm run build` на ошибки
+- Откройте DevTools Console/Network
+- Убедитесь, что ассеты доступны по URL `/assets/...`
+
+### Сборка не проходит на сервере
 
 Проверьте версию Node:
 
@@ -196,43 +305,15 @@ sudo systemctl reload nginx
 node -v
 ```
 
-Нужен `20+`.
-
-### 4) Белый экран после деплоя
-
-Проверьте:
-- успешность `npm run build`;
-- ошибки в DevTools Console;
-- доступность файлов из `/assets/...`;
-- корректность `root` в Nginx (`/var/www/mkp/dist`).
+Нужно `20+`.
 
 ---
 
-## Переменные окружения
-
-В репозитории есть `.env.example`:
-
-```env
-VITE_YANDEX_MAPS_API_KEY=your_yandex_maps_api_key_here
-```
-
-Сейчас карта на сайте подключена через iframe-конструктор Яндекс и не требует API-ключа.  
-Если позже перейдете на JS API Яндекс.Карт, создайте `.env.local` и используйте ключ через `import.meta.env`.
-
----
-
-## Полезные команды
+## Команды проекта
 
 ```bash
-# локальная разработка
-npm run dev
-
-# проверка линтера
-npm run lint
-
-# прод-сборка
-npm run build
-
-# локальный просмотр прод-сборки
-npm run preview
+npm run dev      # локальная разработка
+npm run build    # production сборка
+npm run preview  # локальный просмотр production сборки
+npm run lint     # проверка линтером
 ```

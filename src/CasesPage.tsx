@@ -4,6 +4,7 @@ import SharedFooter from './SharedFooter';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
 import type { CasesFilterLabel } from './casesFilters';
+import { preloadImages } from './preloadImages';
 
 const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png';
 const imgShutterstock23294881251 = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png';
@@ -11,6 +12,15 @@ const imgShutterstock24789007811 = '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d
 const imgShutterstock7041852821 = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.png';
 const imgShutterstock24973083451 = '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.png';
 const imgRectangle3284 = '/assets/0290e79d08816c64eb25f7f5862f1b56298d7111.svg';
+
+export const CASES_PAGE_PRELOAD_IMAGES = [
+  imgShutterstock20833920672,
+  imgShutterstock23294881251,
+  imgShutterstock24789007811,
+  imgShutterstock7041852821,
+  imgShutterstock24973083451,
+  imgRectangle3284,
+] as const;
 
 const FRAME_WIDTH = 1400;
 const CASES_SECTION_HEIGHT = 1080;
@@ -270,6 +280,10 @@ function MobileCasesTitleCard() {
 export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null }: CasesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [activeFilters, setActiveFilters] = useState<FilterLabel[]>(() => [...DEFAULT_ACTIVE_FILTERS]);
+
+  useEffect(() => {
+    preloadImages(CASES_PAGE_PRELOAD_IMAGES);
+  }, []);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());
