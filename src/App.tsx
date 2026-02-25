@@ -50,6 +50,85 @@ type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
 type ServicePage = (typeof SERVICE_ROUTE_ORDER)[number];
 type AppPage = SitePage | CaseId | ArticlePage | ServicePage;
 
+const APP_PAGE_PATHS: Record<AppPage, string> = {
+  home: '/',
+  about: '/about',
+  services: '/services',
+  cases: '/cases',
+  news: '/news',
+  useful: '/useful',
+  contacts: '/contacts',
+  'case-expertise': '/cases/expertise',
+  'case-recovery': '/cases/recovery',
+  'case-initiative': '/cases/initiative',
+  'case-automation-1': '/cases/automation-ops',
+  'case-automation-2': '/cases/automation-finance',
+  'article-1': '/articles/accounting-outsourcing',
+  'article-2': '/articles/subsidiary-liability',
+  'article-3': '/articles/tax-optimization',
+  'service-accounting': '/services/accounting',
+  'service-audit': '/services/audit',
+  'service-legal': '/services/legal',
+  'service-management': '/services/management',
+  'service-projects': '/services/projects',
+};
+
+const LEGACY_PAGE_PATHS: Record<string, AppPage> = {
+  '/home': 'home',
+  '/case-expertise': 'case-expertise',
+  '/case-recovery': 'case-recovery',
+  '/case-initiative': 'case-initiative',
+  '/case-automation-1': 'case-automation-1',
+  '/case-automation-2': 'case-automation-2',
+  '/article-1': 'article-1',
+  '/article-2': 'article-2',
+  '/article-3': 'article-3',
+  '/service-accounting': 'service-accounting',
+  '/service-audit': 'service-audit',
+  '/service-legal': 'service-legal',
+  '/service-management': 'service-management',
+  '/service-projects': 'service-projects',
+};
+
+const PATH_TO_APP_PAGE = new Map<string, AppPage>(
+  [
+    ...(Object.entries(APP_PAGE_PATHS) as Array<[AppPage, string]>).map(([page, path]) => [path, page] as const),
+    ...Object.entries(LEGACY_PAGE_PATHS),
+  ],
+);
+
+function normalizePathname(pathname: string) {
+  const trimmed = pathname.replace(/\/+$/, '');
+  return trimmed.length === 0 ? '/' : trimmed;
+}
+
+function resolveAppPageFromLocation(): AppPage {
+  if (typeof window === 'undefined') {
+    return 'home';
+  }
+
+  const hash = window.location.hash;
+  if (hash.startsWith('#/')) {
+    const hashPath = normalizePathname(hash.slice(1));
+    return PATH_TO_APP_PAGE.get(hashPath) ?? 'home';
+  }
+
+  const pathname = normalizePathname(window.location.pathname);
+  return PATH_TO_APP_PAGE.get(pathname) ?? 'home';
+}
+
+function shouldPreserveHomeContactHash(page: AppPage) {
+  return page === 'home' && window.location.hash === `#${HOME_CONTACT_SECTION_ID}`;
+}
+
+function buildUrlForPage(page: AppPage) {
+  const pathname = APP_PAGE_PATHS[page];
+  if (shouldPreserveHomeContactHash(page)) {
+    return `${pathname}#${HOME_CONTACT_SECTION_ID}`;
+  }
+  return pathname;
+}
+
 function isCaseId(page: AppPage): page is CaseId {
   return CASE_ROUTE_SET.has(page);
 }
@@ -68,7 +147,7 @@ function shouldUseAppDesktopScale(page: AppPage) {
 
 export default function App() {
   const [viewportWidth, setViewportWidth] = useState(0);
-  const [currentPage, setCurrentPage] = useState<AppPage>('home');
+  const [currentPage, setCurrentPage] = useState<AppPage>(() => resolveAppPageFromLocation());
   const [pendingCasesFilter, setPendingCasesFilter] = useState<CasesFilterLabel | null>(null);
 
   useEffect(() => {
@@ -80,6 +159,33 @@ export default function App() {
       window.removeEventListener('resize', updateViewport);
       window.visualViewport?.removeEventListener('resize', updateViewport);
     };
+  }, []);
+
+  useEffect(() => {
+    const syncPageFromLocation = () => {
+      const locationPage = resolveAppPageFromLocation();
+      setPendingCasesFilter(null);
+      setCurrentPage(locationPage);
+      return locationPage;
+    };
+
+    const initialPage = syncPageFromLocation();
+    const canonicalUrl = buildUrlForPage(initialPage);
+    const currentPath = normalizePathname(window.location.pathname);
+    const hasLegacyHashRoute = window.location.hash.startsWith('#/');
+    const currentComparableUrl = `${currentPath}${shouldPreserveHomeContactHash(initialPage) ? window.location.hash : ''}`;
+
+    if (hasLegacyHashRoute || currentComparableUrl !== canonicalUrl) {
+      window.history.replaceState({ page: initialPage }, '', canonicalUrl);
+    }
+
+    const handlePopState = () => {
+      syncPageFromLocation();
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   useEffect(() => {
@@ -105,9 +211,21 @@ export default function App() {
     });
   }, [currentPage]);
 
-  const handleNavigateToAppPage = (page: AppPage) => {
+  const handleNavigateToAppPage = (page: AppPage, replaceHistory = false) => {
     setPendingCasesFilter(null);
     setCurrentPage(page);
+    const nextUrl = buildUrlForPage(page);
+    const currentPath = normalizePathname(window.location.pathname);
+    const currentComparableUrl = `${currentPath}${shouldPreserveHomeContactHash(page) ? window.location.hash : ''}`;
+
+    if (currentComparableUrl !== nextUrl) {
+      if (replaceHistory) {
+        window.history.replaceState({ page }, '', nextUrl);
+      } else {
+        window.history.pushState({ page }, '', nextUrl);
+      }
+    }
+
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
@@ -118,6 +236,10 @@ export default function App() {
   const handleNavigateToCasesWithFilter = (filter: CasesFilterLabel) => {
     setPendingCasesFilter(filter);
     setCurrentPage('cases');
+    const nextUrl = APP_PAGE_PATHS.cases;
+    if (normalizePathname(window.location.pathname) !== nextUrl) {
+      window.history.pushState({ page: 'cases' }, '', nextUrl);
+    }
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 

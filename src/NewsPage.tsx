@@ -6,6 +6,7 @@ const imgArticleOutsource = '/assets/news-figma-article-outsource.png';
 const imgArticleTax = '/assets/news-figma-article-tax.png';
 const imgArticleLiability = '/assets/news-figma-article-liability.png';
 const imgNewsCardArrow = '/assets/news-figma-group-125.svg';
+const MIN_WAGE_LAW_URL = 'https://www.consultant.ru/document/cons_doc_LAW_27572/';
 
 type NewsPageProps = {
   onNavigate: (page: SitePage) => void;
@@ -96,6 +97,15 @@ function MoreButton({ onClick }: { onClick?: () => void }) {
 }
 
 export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondArticle, onOpenThirdArticle }: NewsPageProps) {
+  const handleOpenNewsCard = (index: number) => {
+    if (index === 2) {
+      window.open(MIN_WAGE_LAW_URL, '_blank', 'noopener,noreferrer');
+      return;
+    }
+
+    onOpenThirdArticle();
+  };
+
   return (
     <div className="news-page">
       <main className="news-page__main">
@@ -125,10 +135,10 @@ export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondA
                 </article>
               ))}
 
-              {NEWS_CARDS.map((card) => (
+              {NEWS_CARDS.map((card, index) => (
                 <article key={card.title} className={`${card.className} news-content__news-card--${card.color}`}>
                   <h3 className="news-content__news-title">{card.title}</h3>
-                  <button type="button" className="news-content__news-more" aria-label="Подробнее">
+                  <button type="button" className="news-content__news-more" aria-label="Подробнее" onClick={() => handleOpenNewsCard(index)}>
                     <img src={imgNewsCardArrow} alt="" className="news-content__news-more-icon-image" />
                   </button>
                 </article>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PAGE_LABELS, type SitePage } from './navigation';
+import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from './socialLinks';
 
 const imgVector = '/assets/45721801618c04b8d5b31a5597572b9d3e6da2b8.svg';
 const imgVector1 = '/assets/20ba96200c69778d7033bbee28fe80ff92d15d09.svg';
@@ -110,13 +111,14 @@ export default function FloatingHeader({ currentPage, onNavigate, desktopScale =
                       </button>
                     ))}
                   </div>
-                  <button
-                    type="button"
+                  <a
+                    href={SOCIAL_LINKS.telegram}
+                    {...SOCIAL_LINK_PROPS}
                     className="h-[37px] w-[37px] shrink-0 border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center"
                     aria-label="Telegram"
                   >
                     <img alt="" className="block h-full w-full object-contain" src={imgFrame13Desktop} />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -142,9 +144,9 @@ export default function FloatingHeader({ currentPage, onNavigate, desktopScale =
               {PAGE_LABELS[currentPage]}
             </p>
 
-            <button type="button" className="h-[36px] w-[36px] border-0 bg-transparent p-0 cursor-pointer" aria-label="Telegram">
+            <a href={SOCIAL_LINKS.telegram} {...SOCIAL_LINK_PROPS} className="h-[36px] w-[36px] border-0 bg-transparent p-0 cursor-pointer" aria-label="Telegram">
               <img alt="" className="block size-full" src={imgFrame13Mobile} />
-            </button>
+            </a>
           </div>
 
           {menuOpen && (

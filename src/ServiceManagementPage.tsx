@@ -31,10 +31,17 @@ function AuditMoreArrow() {
 }
 
 function AuditCard({ title, className }: { title: string; className: string }) {
+  const handleOpenDetails = () => {
+    const detailsSection = document.querySelector('.service-audit-mobile__details, .service-audit-page__details');
+    if (detailsSection instanceof HTMLElement) {
+      detailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <article className={`service-audit-page__card ${className}`}>
       <h2>{title}</h2>
-      <button type="button" className="service-audit-page__card-button" aria-label="Подробнее">
+      <button type="button" className="service-audit-page__card-button" aria-label="Подробнее" onClick={handleOpenDetails}>
         <span>Подробнее</span>
         <AuditMoreArrow />
       </button>

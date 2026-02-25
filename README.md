@@ -1,73 +1,238 @@
-# React + TypeScript + Vite
+# MKP Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Корпоративный SPA-сайт на `React + TypeScript + Vite`.
 
-Currently, two official plugins are available:
+## Стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `react`, `react-dom`
+- `typescript`
+- `vite`
+- `tailwindcss` (в проекте также есть обычные CSS-файлы)
 
-## React Compiler
+## Требования
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js `20+` (рекомендуется `22 LTS`)
+- npm `10+`
+- Linux-сервер (для деплоя ниже используется Ubuntu + Nginx)
 
-## Expanding the ESLint configuration
+## Локальный запуск
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Сайт будет доступен на `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Прод-сборка
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+```
+
+Готовые файлы появляются в папке `dist/`.
+
+Проверка локально:
+
+```bash
+npm run preview
+```
+
+## Важный момент про маршруты (SPA)
+
+Сайт использует клиентскую навигацию (History API), поэтому на сервере **обязательно** нужен fallback:
+
+- любой путь (`/about`, `/services/audit`, `/articles/...`) должен отдавать `index.html`;
+- иначе при обновлении страницы будет `404`.
+
+Ниже в конфиге Nginx это реализовано через:
+
+```nginx
+try_files $uri $uri/ /index.html;
+```
+
+---
+
+## Пошаговый деплой на VPS (Ubuntu + Nginx + HTTPS)
+
+### 1) Подготовить сервер
+
+```bash
+sudo apt update
+sudo apt install -y nginx git curl
+```
+
+Проверить, что Nginx запущен:
+
+```bash
+systemctl status nginx
+```
+
+### 2) Установить Node.js (через nvm)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.nvm/nvm.sh
+nvm install --lts
+nvm use --lts
+node -v
+npm -v
+```
+
+### 3) Забрать проект и собрать
+
+```bash
+cd /var/www
+sudo mkdir -p /var/www/mkp
+sudo chown -R $USER:$USER /var/www/mkp
+cd /var/www/mkp
+
+git clone <URL_ВАШЕГО_РЕПОЗИТОРИЯ> .
+npm ci
+npm run build
+```
+
+После сборки должна быть папка `/var/www/mkp/dist`.
+
+### 4) Настроить Nginx
+
+Создайте файл:
+
+```bash
+sudo nano /etc/nginx/sites-available/mkp
+```
+
+Содержимое:
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com www.your-domain.com;
+
+    root /var/www/mkp/dist;
+    index index.html;
+
+    # SPA fallback
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Кэш для статических ассетов Vite
+    location /assets/ {
+        expires 30d;
+        add_header Cache-Control "public, max-age=2592000, immutable";
+        try_files $uri =404;
+    }
+}
+```
+
+Активируйте сайт и перезапустите Nginx:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/mkp /etc/nginx/sites-enabled/mkp
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+Если включен дефолтный сайт, можно отключить:
+
+```bash
+sudo rm -f /etc/nginx/sites-enabled/default
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+### 5) Подключить HTTPS (Let's Encrypt)
+
+```bash
+sudo apt install -y certbot python3-certbot-nginx
+sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+```
+
+Проверка автообновления сертификата:
+
+```bash
+sudo certbot renew --dry-run
+```
+
+---
+
+## Обновление сайта после изменений
+
+На сервере:
+
+```bash
+cd /var/www/mkp
+git pull
+npm ci
+npm run build
+sudo systemctl reload nginx
+```
+
+Этого достаточно, потому что Nginx напрямую раздает актуальную папку `dist`.
+
+---
+
+## Частые проблемы и решения
+
+### 1) При обновлении страницы `404`
+
+Причина: не настроен SPA fallback.  
+Решение: в `location /` должен быть `try_files $uri $uri/ /index.html;`.
+
+### 2) Открывается старая версия сайта
+
+Причина: кэш браузера.  
+Решение:
+- сделать hard reload (`Ctrl+Shift+R`);
+- проверить, что в `dist/assets` появились новые файлы;
+- убедиться, что `npm run build` выполнился без ошибок.
+
+### 3) Сборка падает на сервере
+
+Проверьте версию Node:
+
+```bash
+node -v
+```
+
+Нужен `20+`.
+
+### 4) Белый экран после деплоя
+
+Проверьте:
+- успешность `npm run build`;
+- ошибки в DevTools Console;
+- доступность файлов из `/assets/...`;
+- корректность `root` в Nginx (`/var/www/mkp/dist`).
+
+---
+
+## Переменные окружения
+
+В репозитории есть `.env.example`:
+
+```env
+VITE_YANDEX_MAPS_API_KEY=your_yandex_maps_api_key_here
+```
+
+Сейчас карта на сайте подключена через iframe-конструктор Яндекс и не требует API-ключа.  
+Если позже перейдете на JS API Яндекс.Карт, создайте `.env.local` и используйте ключ через `import.meta.env`.
+
+---
+
+## Полезные команды
+
+```bash
+# локальная разработка
+npm run dev
+
+# проверка линтера
+npm run lint
+
+# прод-сборка
+npm run build
+
+# локальный просмотр прод-сборки
+npm run preview
 ```

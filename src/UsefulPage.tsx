@@ -89,6 +89,7 @@ export default function UsefulPage({ onNavigate }: UsefulPageProps) {
                   </p>
                   <button
                     type="button"
+                    onClick={() => onNavigate('news')}
                     className="mt-5 h-[48px] px-6 rounded-[999px] border-0 bg-[#1f556b] text-white text-[16px] font-['Geologica:Regular',sans-serif] cursor-pointer"
                   >
                     {item.action}
@@ -109,6 +110,7 @@ export default function UsefulPage({ onNavigate }: UsefulPageProps) {
                 <button
                   key={doc}
                   type="button"
+                  onClick={() => onNavigate('contacts')}
                   className="min-h-[88px] rounded-[22px] bg-[#44b1d2] text-white text-left px-5 py-4 border-0 cursor-pointer font-['Roboto:Medium',sans-serif] text-[16px] leading-[1.15]"
                 >
                   {doc}
