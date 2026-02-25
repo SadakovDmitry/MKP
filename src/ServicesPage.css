@@ -192,6 +192,7 @@
   position: absolute;
   top: 50%;
   right: 5px;
+  left: auto;
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
@@ -390,7 +391,8 @@
 }
 
 .services-page__card-action--mobile .services-page__card-action-badge {
-  right: 10px;
+  right: 5px;
+  left: auto;
   width: 68px;
   height: 68px;
 }

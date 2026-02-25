@@ -1,0 +1,475 @@
+.service-audit-page {
+  width: 100%;
+  background: #ffffff;
+}
+
+.service-audit-page__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.service-audit-page__shell {
+  position: relative;
+  margin: 0 auto;
+}
+
+.service-audit-page__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.service-audit-page__hero {
+  position: relative;
+  width: 1400px;
+  height: 700px;
+  background: #44b1d2;
+  overflow: hidden;
+}
+
+.service-audit-page__hero-icon {
+  position: absolute;
+  top: 169px;
+  left: 111px;
+  width: 241px;
+  height: 261px;
+  object-fit: cover;
+}
+
+.service-audit-page__hero h1 {
+  position: absolute;
+  top: 475px;
+  left: 120px;
+  width: 691px;
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+  font-size: 50px;
+  line-height: 0.9;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.service-audit-page__cards-section {
+  position: relative;
+  width: 1400px;
+  height: 390px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.service-audit-page__card {
+  position: absolute;
+  top: 90px;
+  width: 373px;
+  height: 210px;
+  border-radius: 40px;
+  background: #ffffff;
+  overflow: hidden;
+  color: #1f556b;
+}
+
+.service-audit-page__card--left {
+  left: 120px;
+}
+
+.service-audit-page__card--middle {
+  left: 514px;
+}
+
+.service-audit-page__card--right {
+  left: 907px;
+}
+
+.service-audit-page__card h2 {
+  position: absolute;
+  top: calc(50% - 77px);
+  left: calc(50% - 152.5px);
+  margin: 0;
+  font-family: 'Geologica', sans-serif;
+  font-size: 20px;
+  line-height: 0.9;
+  font-weight: 400;
+}
+
+.service-audit-page__card--left h2 {
+  width: 286px;
+}
+
+.service-audit-page__card--middle h2 {
+  width: 254px;
+}
+
+.service-audit-page__card--right h2 {
+  width: 305px;
+}
+
+.service-audit-page__card-button {
+  position: absolute;
+  width: 225px;
+  height: 50px;
+  top: 134px;
+  left: 122px;
+  border-radius: 50px;
+  border: 1px solid #1f556b;
+  background: transparent;
+  color: #1f556b;
+  cursor: pointer;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.service-audit-page__card-button > span:not(.service-audit-page__card-arrow) {
+  position: absolute;
+  top: 50%;
+  left: 9.78%;
+  transform: translateY(-50%);
+  font-family: 'Geologica', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  font-weight: 200;
+  transition: color 0.22s ease;
+}
+
+.service-audit-page__card-arrow {
+  position: absolute;
+  top: 50%;
+  right: 2.4%;
+  left: auto;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1f556b;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.service-audit-page__card-button:hover {
+  background: #1f556b;
+  border-color: #1f556b;
+  color: #ffffff;
+}
+
+.service-audit-page__card-button:hover .service-audit-page__card-arrow {
+  background: #ffffff;
+  color: #1f556b;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.service-audit-page__card-button:active .service-audit-page__card-arrow {
+  transform: translateY(-50%) scale(0.98);
+}
+
+.service-audit-page__details {
+  position: relative;
+  width: 1400px;
+  height: 3026px;
+  background: #ffffff;
+  overflow: hidden;
+  text-align: left;
+  font-size: 36.65px;
+  color: #313131;
+  font-family: "Geologica", sans-serif;
+}
+
+.service-audit-page__details-title {
+  position: absolute;
+  left: 120px;
+  width: 791px;
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.service-audit-page__details-title--first {
+  top: 93px;
+}
+
+.service-audit-page__details-title--second {
+  top: 874px;
+}
+
+.service-audit-page__details-title--third {
+  top: 1892px;
+}
+
+.service-audit-page__details-text {
+  position: absolute;
+  left: 120px;
+  font-size: 31.63px;
+  line-height: 1;
+  font-family: "Roboto", sans-serif;
+  color: #313131;
+}
+
+.service-audit-page__details-text--first {
+  top: 191px;
+  width: 1120px;
+}
+
+.service-audit-page__details-text--second {
+  top: 952px;
+  width: 1029px;
+}
+
+.service-audit-page__details-text--third {
+  top: 2050px;
+  width: 1040px;
+}
+
+.service-audit-page__details-text p {
+  margin: 0;
+}
+
+.service-audit-page__details-text ul {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: 42px;
+  list-style: disc;
+}
+
+.service-audit-page__details-text li {
+  margin-bottom: 0;
+}
+
+.service-audit-page__details-text li::marker {
+  color: #313131;
+  font-size: 0.65em;
+}
+
+.service-audit-page__order {
+  position: absolute;
+  left: 120px;
+  width: 391.02px;
+  height: 49.93px;
+  border: 0;
+  border-radius: 50px;
+  background: #44b1d2;
+  color: #ffffff;
+  font-size: 31.59px;
+  cursor: pointer;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.service-audit-page__order--first {
+  top: 708.08px;
+}
+
+.service-audit-page__order--second {
+  top: 1726.23px;
+}
+
+.service-audit-page__order--third {
+  top: 2823.84px;
+}
+
+.service-audit-page__order-text {
+  position: absolute;
+  top: 21.43%;
+  left: 5.88%;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  font-weight: 500;
+  transition: color 0.22s ease;
+}
+
+.service-audit-page__order-arrow {
+  position: absolute;
+  height: 79.2%;
+  width: 10.13%;
+  top: 10%;
+  right: 1.38%;
+  bottom: 10.8%;
+  left: 88.49%;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #44b1d2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transform: scale(1);
+  transform-origin: center;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.service-audit-page__order:hover {
+  background: #ffffff;
+  color: #44b1d2;
+  box-shadow: inset 0 0 0 1px #44b1d2;
+}
+
+.service-audit-page__order:hover .service-audit-page__order-arrow {
+  background: #44b1d2;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.service-audit-page__order:active .service-audit-page__order-arrow {
+  transform: scale(0.98);
+}
+
+.service-audit-page__other {
+  position: relative;
+  width: 1400px;
+  height: 630px;
+  background: #e2f4fa;
+  overflow: hidden;
+}
+
+.service-audit-page__other h2 {
+  position: absolute;
+  top: 120px;
+  left: calc(50% - 200px);
+  width: 400px;
+  margin: 0;
+  font-family: "Geologica", sans-serif;
+  font-size: 36.65px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #313131;
+  text-align: center;
+}
+
+.service-audit-page__other-card {
+  position: absolute;
+  top: 211px;
+  left: 120px;
+  width: 275px;
+  height: 275px;
+  border-radius: 40px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.service-audit-page__other-card--management {
+  left: 120px;
+  top: 211px;
+}
+
+.service-audit-page__other-card--audit {
+  left: 415px;
+  top: 211px;
+}
+
+.service-audit-page__other-card--staffing {
+  left: 563px;
+  top: 211px;
+  display: none;
+}
+
+.service-audit-page__other-card--projects {
+  left: 710px;
+  top: 211px;
+}
+
+.service-audit-page__other-card--legal {
+  left: 1005px;
+  top: 209px;
+}
+
+.service-audit-page__other-title {
+  position: absolute;
+  top: calc(50% - 81.5px);
+  left: calc(50% - 114.5px);
+  margin: 0;
+  display: inline-block;
+  line-height: 0.9;
+  white-space: pre-line;
+  font-family: "Geologica", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.service-audit-page__other-title--default {
+  width: 227px;
+}
+
+.service-audit-page__other-title--audit {
+  width: 207px;
+}
+
+.service-audit-page__other-title--staffing {
+  width: 233px;
+}
+
+.service-audit-page__other-more-btn {
+  position: absolute;
+  height: 18.18%;
+  width: 81.82%;
+  top: 72.73%;
+  right: 9.09%;
+  bottom: 9.09%;
+  left: 9.09%;
+  border-radius: 50px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.service-audit-page__other-more-btn > span:not(.service-audit-page__other-more-badge) {
+  position: absolute;
+  top: 50%;
+  left: 17.09%;
+  transform: translateY(-50%);
+  font-family: "Geologica", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  font-weight: 100;
+}
+
+.service-audit-page__other-more-badge {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  left: auto;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #1f556b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.service-audit-page__other-more-btn:hover {
+  background: #ffffff;
+  color: #1f556b;
+}
+
+.service-audit-page__other-more-btn:hover .service-audit-page__other-more-badge {
+  background: #1f556b;
+  color: #ffffff;
+}

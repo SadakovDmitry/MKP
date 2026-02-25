@@ -19,6 +19,7 @@ const imgChatGptImage70003Layer4 = '/assets/bfecad0c6eac05654a6d611c67a7eb884267
 type ServicesPageProps = {
   onNavigate: (page: SitePage) => void;
   onOpenFirstService: () => void;
+  onOpenSecondService: () => void;
 };
 
 type ServiceCardProps = {
@@ -72,7 +73,7 @@ function ServiceCard({
   );
 }
 
-export default function ServicesPage({ onNavigate, onOpenFirstService }: ServicesPageProps) {
+export default function ServicesPage({ onNavigate, onOpenFirstService, onOpenSecondService }: ServicesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   useEffect(() => {
@@ -135,6 +136,7 @@ export default function ServicesPage({ onNavigate, onOpenFirstService }: Service
                 actionClassName="services-page__card-action services-page__card-action--mobile"
                 actionTextClassName="services-page__card-action-text services-page__card-action-text--mobile"
                 iconClassName="services-page__mobile-card-icon services-page__card-icon--audit"
+                onMoreClick={onOpenSecondService}
               />
 
               <ServiceCard
@@ -230,6 +232,7 @@ export default function ServicesPage({ onNavigate, onOpenFirstService }: Service
               icon={imgChatGptImage70001Layer2}
               cardClassName="services-page__card services-page__card--audit"
               iconClassName="services-page__card-icon services-page__card-icon--audit"
+              onMoreClick={onOpenSecondService}
             />
 
             <ServiceCard
