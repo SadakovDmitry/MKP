@@ -1,0 +1,53 @@
+.service-legal-page .service-audit-page__details {
+  height: 2173px;
+}
+
+.service-legal-page .service-audit-page__details-title--first {
+  top: 93px;
+  width: 877px;
+}
+
+.service-legal-page .service-audit-page__details-title--second {
+  top: 901px;
+  width: 791px;
+}
+
+.service-legal-page .service-audit-page__details-title--third {
+  top: 1519px;
+  width: 851px;
+}
+
+.service-legal-page .service-audit-page__details-text--first {
+  top: 170px;
+  width: 1120px;
+}
+
+.service-legal-page .service-audit-page__details-text--second {
+  top: 979px;
+  width: 908px;
+}
+
+.service-legal-page .service-audit-page__details-text--third {
+  top: 1597px;
+  width: 1040px;
+}
+
+.service-legal-page .service-audit-page__order--first {
+  top: 751px;
+}
+
+.service-legal-page .service-audit-page__order--second {
+  top: 1369px;
+}
+
+.service-legal-page .service-audit-page__order--third {
+  top: 1988px;
+}
+
+.service-legal-mobile .service-audit-mobile__details {
+  min-height: 2700px;
+}
+
+.service-legal-mobile .service-audit-mobile__other {
+  top: 4700px;
+}

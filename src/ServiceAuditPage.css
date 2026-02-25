@@ -473,3 +473,413 @@
   background: #1f556b;
   color: #ffffff;
 }
+
+.service-audit-mobile {
+  width: 100%;
+  background: #44b1d2;
+}
+
+.service-audit-mobile__main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.service-audit-mobile__shell {
+  position: relative;
+  margin: 0 auto;
+}
+
+.service-audit-mobile__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.service-audit-mobile__hero {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1080px;
+  height: 1080px;
+  background: #44b1d2;
+  overflow: hidden;
+}
+
+.service-audit-mobile__header {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  width: 978px;
+  height: 130.5px;
+  border-radius: 138.77px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.service-audit-mobile__header-row {
+  position: absolute;
+  top: calc(50% - 49.59px);
+  left: 14px;
+  right: 12.9px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.service-audit-mobile__header-logo {
+  width: 100.9px;
+  height: 100.9px;
+  border: 0;
+  padding: 0;
+  border-radius: 107.75px;
+  background: #ffffff;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.service-audit-mobile__header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.service-audit-mobile__header-title {
+  width: 244.8px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-family: "Roboto", sans-serif;
+  font-size: 51.37px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.service-audit-mobile__header-telegram {
+  width: 102.8px;
+  height: 102.7px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.service-audit-mobile__header-telegram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.service-audit-mobile__menu {
+  position: absolute;
+  top: calc(50% - 25.25px);
+  left: 152.02px;
+  width: 74px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.service-audit-mobile__menu span {
+  width: 74px;
+  height: 8px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.service-audit-mobile__hero-icon {
+  position: absolute;
+  top: 330px;
+  left: 354px;
+  width: 372px;
+  height: 402px;
+  object-fit: cover;
+}
+
+.service-audit-mobile__hero h1 {
+  position: absolute;
+  top: 780px;
+  left: 120px;
+  width: 840px;
+  margin: 0;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 55.78px;
+  line-height: 0.9;
+  font-weight: 400;
+  text-align: center;
+}
+
+.service-audit-mobile__cards {
+  position: absolute;
+  left: 0;
+  top: 1080px;
+  width: 1080px;
+  height: 860px;
+  background: #1f556b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-top: 70px;
+  box-sizing: border-box;
+}
+
+.service-audit-mobile__cards .service-audit-page__card {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 900px;
+  height: 210px;
+  border-radius: 40px;
+}
+
+.service-audit-mobile__cards .service-audit-page__card--left {
+  top: auto;
+  left: auto;
+}
+
+.service-audit-mobile__cards .service-audit-page__card--middle {
+  top: auto;
+  left: auto;
+}
+
+.service-audit-mobile__cards .service-audit-page__card--right {
+  top: auto;
+  left: auto;
+}
+
+.service-audit-mobile__cards .service-audit-page__card h2 {
+  left: 40px;
+  top: 30px;
+  width: 820px;
+  font-size: 42px;
+}
+
+.service-audit-mobile__cards .service-audit-page__card-button {
+  left: 628px;
+  top: 136px;
+  width: 252px;
+  border-color: #1f556b;
+}
+
+.service-audit-mobile__details {
+  position: absolute;
+  left: 0;
+  top: 1940px;
+  width: 1080px;
+  min-height: 3200px;
+  background: #ffffff;
+  overflow: visible;
+  padding: 80px;
+  box-sizing: border-box;
+}
+
+.service-audit-mobile__details h2 {
+  position: static;
+  width: 920px;
+  margin: 0;
+  color: #313131;
+  font-family: "Geologica", sans-serif;
+  font-size: 54px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.service-audit-mobile__subtitle {
+  margin-top: 88px !important;
+}
+
+.service-audit-mobile__subtitle--third {
+  margin-top: 88px !important;
+}
+
+.service-audit-mobile__text {
+  position: static;
+  width: 920px;
+  margin: 30px 0 0;
+  color: #313131;
+  font-family: "Roboto", sans-serif;
+  font-size: 29px;
+  line-height: 1;
+}
+
+.service-audit-mobile__text--first {
+  margin-top: 34px;
+}
+
+.service-audit-mobile__text--second {
+  margin-top: 34px;
+}
+
+.service-audit-mobile__text--third {
+  margin-top: 34px;
+}
+
+.service-audit-mobile__text p {
+  margin: 0;
+}
+
+.service-audit-mobile__text ul {
+  margin: 0;
+  padding-left: 38px;
+  list-style: disc;
+}
+
+.service-audit-mobile__text li::marker {
+  font-size: 0.65em;
+}
+
+.service-audit-mobile__order {
+  position: relative;
+  top: auto;
+  left: 0;
+  width: 430px;
+  height: 64px;
+  margin-top: 44px;
+  font-size: 34px;
+}
+
+.service-audit-mobile__order--first {
+  margin-bottom: 88px;
+}
+
+.service-audit-mobile__order--second {
+  margin-bottom: 88px;
+}
+
+.service-audit-mobile__order--third {
+  margin-bottom: 0;
+}
+
+.service-audit-mobile__other {
+  position: absolute;
+  left: 0;
+  top: 5200px;
+  width: 1080px;
+  height: 1640px;
+  background: #e2f4fa;
+  overflow: hidden;
+}
+
+.service-audit-mobile__other h2 {
+  position: absolute;
+  top: 189px;
+  left: calc(50% - 364px);
+  width: 727px;
+  margin: 0;
+  color: #313131;
+  font-family: "Geologica", sans-serif;
+  font-size: 60.78px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+}
+
+.service-audit-mobile__other-card {
+  position: absolute;
+  width: 347.4px;
+  height: 347.4px;
+  border-radius: 50.53px;
+  background: #1f556b;
+  overflow: hidden;
+}
+
+.service-audit-mobile__other-card--management {
+  top: 396px;
+  left: 180.27px;
+}
+
+.service-audit-mobile__other-card--audit {
+  top: 396px;
+  left: 555px;
+}
+
+.service-audit-mobile__other-card--projects {
+  top: 775.37px;
+  left: 180.27px;
+}
+
+.service-audit-mobile__other-card--legal {
+  top: 775.37px;
+  left: 552.63px;
+}
+
+.service-audit-mobile__other-title {
+  position: absolute;
+  top: calc(50% - 102.97px);
+  left: calc(50% - 144.65px);
+  margin: 0;
+  width: 286.7px;
+  color: #ffffff;
+  font-family: "Geologica", sans-serif;
+  font-size: 31.58px;
+  line-height: 0.9;
+  font-weight: 400;
+  white-space: pre-line;
+}
+
+.service-audit-mobile__other-title--audit {
+  width: 261.5px;
+}
+
+.service-audit-mobile__other-more-btn {
+  position: absolute;
+  height: 18.19%;
+  width: 81.81%;
+  top: 72.72%;
+  right: 9.1%;
+  bottom: 9.09%;
+  left: 9.09%;
+  border-radius: 63.16px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.service-audit-mobile__other-more-btn > span:not(.service-audit-page__other-more-badge) {
+  position: absolute;
+  top: 32%;
+  left: 9.78%;
+  font-size: 25.26px;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+  font-weight: 200;
+}
+
+.service-audit-mobile__other-more-btn .service-audit-page__other-more-badge {
+  position: absolute;
+  top: 10%;
+  right: 2.4%;
+  left: 80%;
+  width: 17.6%;
+  height: 79.2%;
+  transform: none;
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.service-audit-mobile__other-more-btn:hover {
+  background: #ffffff;
+  color: #1f556b;
+}
+
+.service-audit-mobile__other-more-btn:hover .service-audit-page__other-more-badge {
+  background: #1f556b;
+  color: #ffffff;
+  transform: scale(1.06);
+}

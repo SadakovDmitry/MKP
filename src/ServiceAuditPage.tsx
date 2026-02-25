@@ -6,6 +6,9 @@ import './ServiceAuditPage.css';
 
 const FRAME_WIDTH = 1400;
 const FRAME_HEIGHT = 4746;
+const MOBILE_BREAKPOINT = 1200;
+const MOBILE_FRAME_WIDTH = 1080;
+const MOBILE_BASE_HEIGHT = 6680;
 
 const heroIcon = '/assets/b375f28bf7f11fb12e7b9b5c52811e656d947049.png';
 
@@ -77,6 +80,171 @@ export default function ServiceAuditPage({ onNavigate }: ServiceAuditPageProps) 
 
   const measuredViewportWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
   const scale = measuredViewportWidth > 0 ? measuredViewportWidth / FRAME_WIDTH : 1;
+  const isMobileLayout = measuredViewportWidth > 0 && measuredViewportWidth < MOBILE_BREAKPOINT;
+  const mobileScale = measuredViewportWidth > 0 ? Math.min(1, measuredViewportWidth / MOBILE_FRAME_WIDTH) : 1;
+
+  if (isMobileLayout) {
+    return (
+      <div className="service-audit-mobile">
+        <main className="service-audit-mobile__main">
+          <div
+            className="service-audit-mobile__shell"
+            style={{ width: `${MOBILE_FRAME_WIDTH * mobileScale}px`, height: `${MOBILE_BASE_HEIGHT * mobileScale}px` }}
+          >
+            <section
+              className="service-audit-mobile__frame"
+              style={{
+                width: `${MOBILE_FRAME_WIDTH}px`,
+                height: `${MOBILE_BASE_HEIGHT}px`,
+                transform: `scale(${mobileScale})`,
+                transformOrigin: 'top left',
+              }}
+            >
+              <section className="service-audit-mobile__hero">
+                <img src={heroIcon} alt="" className="service-audit-mobile__hero-icon" />
+                <h1>Аудит и анализ деятельности компаний</h1>
+              </section>
+
+              <section className="service-audit-mobile__cards">
+                <AuditCard
+                  className="service-audit-mobile__card service-audit-mobile__card--left"
+                  title="Проведение инициативного аудита предприятия и организации"
+                />
+                <AuditCard className="service-audit-mobile__card service-audit-mobile__card--middle" title="Экспресс-аудит" />
+                <AuditCard
+                  className="service-audit-mobile__card service-audit-mobile__card--right"
+                  title="Анализ и диагностика финансово хозяйственной деятельности предприятия, организации"
+                />
+              </section>
+
+              <section className="service-audit-mobile__details">
+                <h2>Проведение инициативного аудита предприятия и организации</h2>
+                <div className="service-audit-mobile__text service-audit-mobile__text--first">
+                  Один из наиболее верных способов получения объективной информации о положении дел компании является инициативный аудит. Как
+                  правило это услуга, адресована собственникам предприятия, по экспертизе состояния бухгалтерского учета и налогового учета, а
+                  также оценке эффективности управления Компанией.
+                  <br />
+                  <br />
+                  Аудиторская проверка осуществляется по инициативе учредителей или руководящего состава организации по запросу за любой отрезок
+                  времени. С его помощью можно проверить финансовое положение определённого подразделения или Компании в целом.
+                  <br />
+                  <br />
+                  Аудит по инициативе руководства позволяет досконально проверить работу всех подразделений организации, выявить возможные риски и
+                  срытые проблемы, которые могут привести к ухудшению финансового состояния компании.
+                </div>
+
+                <OrderServiceButton className="service-audit-mobile__order service-audit-mobile__order--first" onClick={() => onNavigate('contacts')} />
+
+                <h2 className="service-audit-mobile__subtitle">Экспресс-аудиТ</h2>
+                <div className="service-audit-mobile__text service-audit-mobile__text--second">
+                  <p>
+                    Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из
+                    вариантов инициативного аудита.
+                  </p>
+                  <p>
+                    Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный
+                    анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в
+                    данном случае экспресс-аудит имеет ряд безусловных плюсов:
+                  </p>
+                  <ul>
+                    <li>
+                      Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих
+                      сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).
+                    </li>
+                    <li>
+                      Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной
+                      информацией по интересующим его вопросам.
+                    </li>
+                    <li>
+                      В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий
+                      ритм.
+                    </li>
+                  </ul>
+                </div>
+
+                <OrderServiceButton className="service-audit-mobile__order service-audit-mobile__order--second" onClick={() => onNavigate('contacts')} />
+
+                <h2 className="service-audit-mobile__subtitle service-audit-mobile__subtitle--third">
+                  Анализ и диагностика финансово хозяйственной деятельности предприятия, организации
+                </h2>
+                <div className="service-audit-mobile__text service-audit-mobile__text--third">
+                  <p>
+                    Все большей популярностью у Руководителей компаний пользуется экспресс-аудит. Данная проверка представляет собой один из
+                    вариантов инициативного аудита.
+                  </p>
+                  <p>
+                    Услуги экспресс-аудита проводится в тех случаях, когда компания по каким-либо причинам не может или не хочет проводить полный
+                    анализ и аудит компании. Как правило, это связано с ограничением сроков для принятия Руководителем тех или иных решений. И в
+                    данном случае экспресс-аудит имеет ряд безусловных плюсов:
+                  </p>
+                  <ul>
+                    <li>
+                      Важные сведения заказчик получает максимально быстро (промежуточную информацию Руководитель получает уже в ходе рабочих
+                      сессий, т.е. в процесс работы специалистов МКР в компании Заказчика).
+                    </li>
+                    <li>
+                      Подготовка итогового заключения и рекомендаций занимает 3-5 рабочих дней, при этом Руководитель уже владеет основной
+                      информацией по интересующим его вопросам.
+                    </li>
+                    <li>
+                      В ходе экспресс-проверки специалисты минимально вмешиваются в текущую деятельность бухгалтеров, существенно не нарушая рабочий
+                      ритм.
+                    </li>
+                  </ul>
+                </div>
+                <OrderServiceButton className="service-audit-mobile__order service-audit-mobile__order--third" onClick={() => onNavigate('contacts')} />
+              </section>
+
+              <section className="service-audit-mobile__other">
+                <h2>другие виды услуг</h2>
+
+                <article className="service-audit-mobile__other-card service-audit-mobile__other-card--management">
+                  <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">
+                    Управленческий и финансовый консалтинг
+                  </h3>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                    <span>Подробнее</span>
+                    <OtherMoreArrow />
+                  </button>
+                </article>
+
+                <article className="service-audit-mobile__other-card service-audit-mobile__other-card--audit">
+                  <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--audit">
+                    Аудит компании и анализ деятельности предприятия
+                  </h3>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                    <span>Подробнее</span>
+                    <OtherMoreArrow />
+                  </button>
+                </article>
+
+                <article className="service-audit-mobile__other-card service-audit-mobile__other-card--projects">
+                  <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">
+                    Управление
+                    <br />и сопровождение проектов
+                  </h3>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                    <span>Подробнее</span>
+                    <OtherMoreArrow />
+                  </button>
+                </article>
+
+                <article className="service-audit-mobile__other-card service-audit-mobile__other-card--legal">
+                  <h3 className="service-audit-mobile__other-title service-audit-mobile__other-title--default">Юридические услуги</h3>
+                  <button type="button" className="service-audit-mobile__other-more-btn" onClick={() => onNavigate('services')}>
+                    <span>Подробнее</span>
+                    <OtherMoreArrow />
+                  </button>
+                </article>
+              </section>
+            </section>
+          </div>
+        </main>
+
+        <SharedFooter onNavigate={onNavigate} forceMobile />
+      </div>
+    );
+  }
 
   return (
     <div className="service-audit-page">

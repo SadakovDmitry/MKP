@@ -22,8 +22,6 @@ const MOBILE_FIFTH_SECTION_TOP = MOBILE_FIRST_SECTION_HEIGHT + MOBILE_SECOND_SEC
 const heroIcon = '/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.png';
 const sendIcon = '/assets/e38681f5ecbd1f392819aea92eb2583c57615e89.svg';
 const envelopeIcon = '/assets/99529a733eeb5b552be035c8cca8fe0182a35c67.png';
-const mobileHeaderLogo = '/assets/news-figma-header-logo.png';
-const mobileHeaderTelegram = '/assets/552b828f557817905235015c2dad5dabdcd75d06.svg';
 
 const TASK_ITEMS = [
   'предоставление консультации по любому вопросу, связанному с правилами ведения бухгалтерии, изменением законодательства и др.;',
@@ -127,28 +125,6 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
               }}
             >
               <div className="service-accounting-mobile__hero-section">
-                <div className="service-accounting-mobile__header">
-                  <div className="service-accounting-mobile__header-row">
-                    <button type="button" className="service-accounting-mobile__header-logo" onClick={() => onNavigate('home')} aria-label="Главная">
-                      <img src={mobileHeaderLogo} alt="" />
-                    </button>
-
-                    <button type="button" className="service-accounting-mobile__header-title" onClick={() => onNavigate('home')}>
-                      Главная
-                    </button>
-
-                    <button type="button" className="service-accounting-mobile__header-telegram" aria-label="Telegram">
-                      <img src={mobileHeaderTelegram} alt="" />
-                    </button>
-                  </div>
-
-                  <button type="button" className="service-accounting-mobile__menu" aria-label="Меню">
-                    <span />
-                    <span />
-                    <span />
-                  </button>
-                </div>
-
                 <h1 className="service-accounting-mobile__title">
                   Бухгалтерский
                   <br />и налоговый консалтинг

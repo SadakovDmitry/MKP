@@ -26,6 +26,7 @@ import ContactsPage from './ContactsPage';
 import ServicesPage from './ServicesPage';
 import ServiceAccountingPage from './ServiceAccountingPage';
 import ServiceAuditPage from './ServiceAuditPage';
+import ServiceLegalPage from './ServiceLegalPage';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -33,7 +34,7 @@ const DESKTOP_BASE_WIDTH = 1400;
 const CASE_ROUTE_SET = new Set<string>(CASE_ROUTE_ORDER);
 const ARTICLE_ROUTE_ORDER = ['article-1', 'article-2', 'article-3'] as const;
 const ARTICLE_ROUTE_SET = new Set<string>(ARTICLE_ROUTE_ORDER);
-const SERVICE_ROUTE_ORDER = ['service-accounting', 'service-audit'] as const;
+const SERVICE_ROUTE_ORDER = ['service-accounting', 'service-audit', 'service-legal'] as const;
 const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
@@ -179,14 +180,15 @@ export default function App() {
   }
 
   if (currentPage === 'service-accounting') {
-    if (isMobileLayout) {
-      return <ServiceAccountingPage onNavigate={handleNavigate} />;
-    }
     return withHeader(<ServiceAccountingPage onNavigate={handleNavigate} />);
   }
 
   if (currentPage === 'service-audit') {
     return withHeader(<ServiceAuditPage onNavigate={handleNavigate} />);
+  }
+
+  if (currentPage === 'service-legal') {
+    return withHeader(<ServiceLegalPage onNavigate={handleNavigate} />);
   }
 
   if (currentPage === 'about') {
@@ -235,6 +237,7 @@ export default function App() {
         onNavigate={handleNavigate}
         onOpenFirstService={() => handleOpenService('service-accounting')}
         onOpenSecondService={() => handleOpenService('service-audit')}
+        onOpenThirdService={() => handleOpenService('service-legal')}
       />,
     );
   }
