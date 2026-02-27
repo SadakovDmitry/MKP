@@ -4,23 +4,13 @@ import SharedFooter from './SharedFooter';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
 import type { CasesFilterLabel } from './casesFilters';
-import { preloadImages } from './preloadImages';
 
-const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png';
-const imgShutterstock23294881251 = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png';
-const imgShutterstock24789007811 = '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d5596.png';
-const imgShutterstock7041852821 = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.png';
-const imgShutterstock24973083451 = '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.png';
+const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.jpg';
+const imgShutterstock23294881251 = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.jpg';
+const imgShutterstock24789007811 = '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d5596.jpg';
+const imgShutterstock7041852821 = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.jpg';
+const imgShutterstock24973083451 = '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.jpg';
 const imgRectangle3284 = '/assets/0290e79d08816c64eb25f7f5862f1b56298d7111.svg';
-
-export const CASES_PAGE_PRELOAD_IMAGES = [
-  imgShutterstock20833920672,
-  imgShutterstock23294881251,
-  imgShutterstock24789007811,
-  imgShutterstock7041852821,
-  imgShutterstock24973083451,
-  imgRectangle3284,
-] as const;
 
 const FRAME_WIDTH = 1400;
 const CASES_SECTION_HEIGHT = 1080;
@@ -153,7 +143,7 @@ function MoreButton({ onClick }: { onClick: () => void }) {
       onClick={onClick}
       className="absolute h-[50px] left-[25px] top-[325px] w-[225px] border-0 bg-transparent p-0 cursor-pointer group"
     >
-      <img alt="" className="absolute inset-0 block max-w-none size-full" src={imgRectangle3284} />
+      <img alt="" className="absolute inset-0 block max-w-none size-full" src={imgRectangle3284} loading="lazy" decoding="async" />
       <p
         className="absolute font-['Geologica:ExtraLight',sans-serif] font-extralight left-[31px] leading-[0.9] not-italic text-[20px] text-[color:var(--color-4,white)] top-[17px] tracking-[0.4px]"
         style={{ fontVariationSettings: "'CRSV' 0, 'SHRP' 0" }}
@@ -227,12 +217,18 @@ function CaseCard({
         <div className={card.rotatedImage.wrapperClass} style={{ '--transform-inner-width': '0', '--transform-inner-height': '0' } as React.CSSProperties}>
           <div className="-scale-y-100 flex-none rotate-[178.18deg]">
             <div className={card.rotatedImage.innerClass}>
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full premium-zoom-media" src={card.image} />
+              <img
+                alt=""
+                className="absolute inset-0 max-w-none object-cover pointer-events-none size-full premium-zoom-media"
+                src={card.image}
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
       ) : (
-        <img alt="" className={`${card.imageClass} premium-zoom-media`} src={card.image} />
+        <img alt="" className={`${card.imageClass} premium-zoom-media`} src={card.image} loading="lazy" decoding="async" />
       )}
 
       <div className="absolute bg-gradient-to-t from-[rgba(49,49,49,0.75)] h-[222px] left-0 mix-blend-multiply to-[rgba(49,49,49,0)] top-[178px] via-1/2 via-[rgba(49,49,49,0.75)] w-[275px]" />
@@ -260,6 +256,8 @@ function MobileCaseCard({ card, onOpenCase }: { card: CaseCardData; onOpenCase: 
         src={card.image}
         className="absolute inset-0 size-full max-w-none object-cover pointer-events-none premium-zoom-media"
         style={{ objectPosition: card.mobileImagePosition ?? '50% 50%' }}
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute bottom-0 left-0 right-0 h-[66%] bg-gradient-to-t from-[rgba(49,49,49,0.88)] via-[rgba(49,49,49,0.76)] to-[rgba(49,49,49,0)] mix-blend-multiply" />
       <div className="absolute inset-x-0 bottom-0 px-[clamp(10px,2vw,18px)] pb-[clamp(10px,2vw,18px)] flex flex-col">
@@ -294,10 +292,6 @@ function MobileCasesTitleCard() {
 export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null }: CasesPageProps) {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [activeFilters, setActiveFilters] = useState<FilterLabel[]>(() => [...DEFAULT_ACTIVE_FILTERS]);
-
-  useEffect(() => {
-    preloadImages(CASES_PAGE_PRELOAD_IMAGES);
-  }, []);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());

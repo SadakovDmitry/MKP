@@ -1,9 +1,9 @@
 export const CASE_HERO_IMAGES = {
-  expertise: '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.png',
-  recovery: '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.png',
-  initiative: '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.png',
-  automationOps: '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.png',
-  automationFinance: '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d5596.png',
+  expertise: '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.jpg',
+  recovery: '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.jpg',
+  initiative: '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.jpg',
+  automationOps: '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.jpg',
+  automationFinance: '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d5596.jpg',
 } as const;
 
 export const CASE_ROUTE_ORDER = [

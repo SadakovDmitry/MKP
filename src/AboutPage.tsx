@@ -9,7 +9,7 @@ const imgMkrIcons0004Layer0Copy = "/assets/967e1e665c88e5a01a218fecde6762cf105f5
 const imgMkrIcons0001Layer2 = "/assets/1a01377457f84ffc40bea44a61f20a55bf14abd5.png";
 const imgMkrIcons0000Layer1 = "/assets/a47f2e952395700cbc7d73f619fb126302fe4876.png";
 const imgPhoto1581847797580A3Ac8010D37C6 = "/assets/6826aba9ca6c5754507d0ace4c141b413a723ce2.png";
-const imgPhoto1581847797580A3Ac8010D37C4 = "/assets/4c40daade4fe15d923424347599abcd4494255dc.png";
+const imgPhoto1581847797580A3Ac8010D37C4 = "/assets/4c40daade4fe15d923424347599abcd4494255dc.jpg";
 const imgPhoto1581847797580A3Ac8010D37C2 = "/assets/a3c6acf47334f080ede8b9f1d08b1c29979c7cb7.png";
 const imgPhoto1581847797580A3Ac8010D37C3 = "/assets/a2690544f5482e64438463611a054497557f0095.png";
 const imgPhoto1581847797580A3Ac8010D37C1 = "/assets/6e6dc8eaf9c066423b563fe491388fde30f273d3.png";
@@ -144,7 +144,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(8.33%+167.33px)] not-italic text-[50.081px] text-[color:var(--color-4,white)] text-center top-[405px] h-[63px] w-[393px] flex items-center justify-center" data-node-id="38:44" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           эффективным
         </p>
-        <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(50%-19px)] not-italic text-[50.081px] text-[color:var(--color-3,#313131)] text-center top-[405px] h-[63px] w-[38px] flex items-center justify-center" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
+        <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(50%-6px)] not-italic text-[50.081px] text-[color:var(--color-3,#313131)] text-center top-[405px] h-[63px] w-[38px] flex items-center justify-center" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
           и
         </p>
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[normal] left-[calc(50%+49px)] not-italic text-[50.081px] text-[color:var(--color-4,white)] text-center top-[405px] h-[63px] w-[367px] flex items-center justify-center" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>

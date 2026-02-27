@@ -248,27 +248,34 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
               >
                 <h2>напишите нам</h2>
 
-                <div className="service-accounting-mobile__contact-comment">
-                  <textarea className="service-accounting-mobile__contact-comment-input" placeholder="Комментарий" />
-                </div>
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    event.currentTarget.reset();
+                  }}
+                >
+                  <div className="service-accounting-mobile__contact-comment">
+                    <textarea className="service-accounting-mobile__contact-comment-input" placeholder="Комментарий" />
+                  </div>
 
-                <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--name">
-                  <input type="text" className="service-accounting-mobile__contact-field-input" placeholder="Имя" />
-                </div>
+                  <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--name">
+                    <input type="text" className="service-accounting-mobile__contact-field-input" placeholder="Имя" />
+                  </div>
 
-                <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--phone">
-                  <input type="tel" className="service-accounting-mobile__contact-field-input" placeholder="Телефон" />
-                </div>
+                  <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--phone">
+                    <input type="tel" className="service-accounting-mobile__contact-field-input" placeholder="Телефон" />
+                  </div>
 
-                <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--email">
-                  <input type="email" className="service-accounting-mobile__contact-field-input" placeholder="E-mail" />
-                </div>
+                  <div className="service-accounting-mobile__contact-field service-accounting-mobile__contact-field--email">
+                    <input type="email" className="service-accounting-mobile__contact-field-input" placeholder="E-mail" />
+                  </div>
 
-                <button type="button" className="service-accounting-mobile__contact-submit">
-                  <div className="service-accounting-mobile__contact-submit-bg" />
-                  <div className="service-accounting-mobile__contact-submit-label">Отправить</div>
-                  <img className="service-accounting-mobile__contact-submit-icon" src={sendIcon} alt="" />
-                </button>
+                  <button type="submit" className="service-accounting-mobile__contact-submit">
+                    <div className="service-accounting-mobile__contact-submit-bg" />
+                    <div className="service-accounting-mobile__contact-submit-label">Отправить</div>
+                    <img className="service-accounting-mobile__contact-submit-icon" src={sendIcon} alt="" />
+                  </button>
+                </form>
 
                 <img className="service-accounting-mobile__contact-envelope" src={envelopeIcon} alt="" />
               </section>
@@ -389,18 +396,24 @@ export default function ServiceAccountingPage({ onNavigate }: ServiceAccountingP
 
             <section className="service-accounting-exact__contact">
               <h2>Напишите нам</h2>
-              <div className="service-accounting-exact__contact-grid">
+              <form
+                className="service-accounting-exact__contact-grid"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  event.currentTarget.reset();
+                }}
+              >
                 <div className="service-accounting-exact__contact-left">
                   <input type="text" placeholder="Имя" />
                   <input type="tel" placeholder="Телефон" />
                   <input type="email" placeholder="E-mail" />
-                  <button type="button">
+                  <button type="submit">
                     <span>Отправить</span>
                     <img src={sendIcon} alt="" />
                   </button>
                 </div>
                 <textarea placeholder="Комментарий" />
-              </div>
+              </form>
               <div className="service-accounting-exact__contact-envelope" aria-hidden="true">
                 <img src={envelopeIcon} alt="" />
               </div>

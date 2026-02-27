@@ -67,8 +67,9 @@
 }
 
 .news-hero__title-middle {
-  left: calc(50% - 19px);
-  transform: translateX(-50%);
+  left: calc(50% - 55px);
+  width: 61px;
+  transform: none;
   color: #313131;
 }
 

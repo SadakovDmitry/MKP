@@ -6,7 +6,7 @@ import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
 
-const heroImage = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.png';
+const heroImage = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.jpg';
 const problemImage = '/assets/case-situation-warning-clean.png';
 
 const FRAME_WIDTH = 1400;

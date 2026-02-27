@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { type SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CasesFilterLabel } from './casesFilters';
 import AnimatedCounter from './AnimatedCounter';
 
-const img21 = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png";
+const heroVideo = "/assets/mkr-neuronka.mp4";
 const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.png";
 const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.png";
 const imgChatGptImage720251251291 = "/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.png";
@@ -79,6 +80,18 @@ export default function Frame({
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
+  useEffect(() => {
+    if (!isConsultationModalOpen) {
+      return;
+    }
+
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, [isConsultationModalOpen]);
+
   return (
     <div className="w-full overflow-x-hidden bg-white">
       <div className="mx-auto relative" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
@@ -89,11 +102,16 @@ export default function Frame({
           <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="78:640">
       <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
         <div className="-translate-y-1/2 absolute left-[calc(58.33%-18.67px)] size-[448px] top-1/2" data-name="2имидж 1" data-node-id="78:3">
-          <img
-            alt=""
+          <video
             className="absolute inset-0 max-w-none object-cover pointer-events-none size-full parallax-media"
             style={{ ['--parallax-depth' as string]: '0.2' }}
-            src={img21}
+            src={heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label="Презентационное видео МКР"
           />
         </div>
         <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.1] left-[calc(25%-230px)] not-italic text-[50.081px] text-[color:var(--color-3,#313131)] top-[calc(50%-111px)] w-[567px] whitespace-pre-wrap" data-node-id="78:4" style={{ fontVariationSettings: "\'CRSV\' 0, \'SHRP\' 0" }}>
@@ -605,6 +623,7 @@ export default function Frame({
           className="absolute inset-0"
           onSubmit={(event) => {
             event.preventDefault();
+            event.currentTarget.reset();
           }}
         >
           <input
@@ -670,62 +689,64 @@ export default function Frame({
           </div>
         </div>
       </div>
-      {isConsultationModalOpen && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#1f556b]/35 px-4 premium-modal-overlay">
-          <div className="relative w-full max-w-[620px] rounded-[32px] border-2 border-[var(--color,#1f556b)] bg-white p-8 shadow-[0_20px_55px_rgba(31,85,107,0.22)] premium-modal-panel">
-            <button
-              type="button"
-              onClick={() => setIsConsultationModalOpen(false)}
-              className="absolute right-5 top-5 h-9 w-9 rounded-full border border-[var(--color,#1f556b)] bg-transparent text-[var(--color,#1f556b)] text-xl leading-none cursor-pointer transition-colors duration-200 hover:bg-[var(--color,#1f556b)] hover:text-white"
-              aria-label="Закрыть форму"
-            >
-              ×
-            </button>
-            <p className="m-0 pr-12 font-['Geologica:Medium',sans-serif] text-[30px] leading-[1.05] uppercase text-[var(--color,#1f556b)]">
-              Запись на консультацию
-            </p>
-            <p className="mb-0 mt-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[#4f4f4f]">
-              Оставьте контакты и мы свяжемся с вами в ближайшее время.
-            </p>
-            <form
-              className="mt-6 flex flex-col gap-4"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setIsConsultationModalOpen(false);
-              }}
-            >
-              <input
-                type="text"
-                required
-                placeholder="Имя"
-                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
-              />
-              <input
-                type="tel"
-                required
-                placeholder="Телефон"
-                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
-              />
-              <input
-                type="email"
-                placeholder="E-mail"
-                className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
-              />
-              <textarea
-                rows={4}
-                placeholder="Комментарий"
-                className="resize-none rounded-[24px] border border-[#97b6c2] px-5 py-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
-              />
+      {isConsultationModalOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#1f556b]/35 px-4 premium-modal-overlay">
+            <div className="relative w-full max-w-[620px] rounded-[32px] border-2 border-[var(--color,#1f556b)] bg-white p-8 shadow-[0_20px_55px_rgba(31,85,107,0.22)] premium-modal-panel">
               <button
-                type="submit"
-                className="mt-1 h-[56px] rounded-[30px] border border-[var(--color,#1f556b)] bg-[var(--color,#1f556b)] font-['Geologica:Medium',sans-serif] text-[20px] uppercase tracking-[0.02em] text-white cursor-pointer transition-colors duration-200 hover:bg-white hover:text-[var(--color,#1f556b)]"
+                type="button"
+                onClick={() => setIsConsultationModalOpen(false)}
+                className="absolute right-5 top-5 h-9 w-9 rounded-full border border-[var(--color,#1f556b)] bg-transparent text-[var(--color,#1f556b)] text-xl leading-none cursor-pointer transition-colors duration-200 hover:bg-[var(--color,#1f556b)] hover:text-white"
+                aria-label="Закрыть форму"
               >
-                Отправить
+                ×
               </button>
-            </form>
-          </div>
-        </div>
-      )}
+              <p className="m-0 pr-12 font-['Geologica:Medium',sans-serif] text-[30px] leading-[1.05] uppercase text-[var(--color,#1f556b)]">
+                Запись на консультацию
+              </p>
+              <p className="mb-0 mt-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[#4f4f4f]">
+                Оставьте контакты и мы свяжемся с вами в ближайшее время.
+              </p>
+              <form
+                className="mt-6 flex flex-col gap-4"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setIsConsultationModalOpen(false);
+                }}
+              >
+                <input
+                  type="text"
+                  required
+                  placeholder="Имя"
+                  className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+                />
+                <input
+                  type="tel"
+                  required
+                  placeholder="Телефон"
+                  className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  className="h-[54px] rounded-[30px] border border-[#97b6c2] px-5 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+                />
+                <textarea
+                  rows={4}
+                  placeholder="Комментарий"
+                  className="resize-none rounded-[24px] border border-[#97b6c2] px-5 py-3 font-['Roboto:Regular',sans-serif] text-[18px] text-[var(--color,#1f556b)] outline-none transition-colors focus:border-[var(--color,#1f556b)]"
+                />
+                <button
+                  type="submit"
+                  className="mt-1 h-[56px] rounded-[30px] border border-[var(--color,#1f556b)] bg-[var(--color,#1f556b)] font-['Geologica:Medium',sans-serif] text-[20px] uppercase tracking-[0.02em] text-white cursor-pointer transition-colors duration-200 hover:bg-white hover:text-[var(--color,#1f556b)]"
+                >
+                  Отправить
+                </button>
+              </form>
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }
