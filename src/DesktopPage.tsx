@@ -6,6 +6,7 @@ import type { CasesFilterLabel } from './casesFilters';
 import AnimatedCounter from './AnimatedCounter';
 
 const heroVideo = "/assets/mkr-neuronka.mp4";
+const heroPoster = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp";
 const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.webp";
 const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.webp";
 const imgChatGptImage720251251291 = "/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.webp";
@@ -68,6 +69,7 @@ export default function Frame({
 }: DesktopPageProps) {
   const [scale, setScale] = useState(1);
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+  const [isHeroVideoReady, setIsHeroVideoReady] = useState(false);
 
   useEffect(() => {
     const updateScale = () => {
@@ -102,15 +104,24 @@ export default function Frame({
           <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="78:640">
       <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
         <div className="-translate-y-1/2 absolute left-[calc(58.33%-18.67px)] size-[448px] top-1/2" data-name="2имидж 1" data-node-id="78:3">
+          <img
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 max-w-none object-cover pointer-events-none size-full transition-opacity duration-300 ${isHeroVideoReady ? 'opacity-0' : 'opacity-100'}`}
+            src={heroPoster}
+          />
           <video
             className="absolute inset-0 max-w-none object-cover pointer-events-none size-full parallax-media"
             style={{ ['--parallax-depth' as string]: '0.2' }}
             src={heroVideo}
+            poster={heroPoster}
             autoPlay
             muted
             loop
             playsInline
-            preload="metadata"
+            preload="auto"
+            onCanPlay={() => setIsHeroVideoReady(true)}
+            onLoadedData={() => setIsHeroVideoReady(true)}
             aria-label="Презентационное видео МКР"
           />
         </div>
