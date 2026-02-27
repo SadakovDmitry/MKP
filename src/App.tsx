@@ -6,7 +6,7 @@ import AboutPageAdaptive from './AboutPageAdaptive';
 import AboutPageMobile, { ABOUT_MOBILE_FRAME_HEIGHT, ABOUT_MOBILE_FRAME_WIDTH } from './AboutPageMobile';
 import MobilePage, { getMobileFrameHeight, MOBILE_FRAME_WIDTH } from './MobilePage';
 import FloatingHeader from './FloatingHeader';
-import CasesPage from './CasesPage';
+import CasesPage, { CASES_PAGE_PRELOAD_IMAGES } from './CasesPage';
 import UsefulPage from './UsefulPage';
 import type { SitePage } from './navigation';
 import CaseDetailsPage from './CaseDetailsPage';
@@ -29,6 +29,7 @@ import ServiceAuditPage from './ServiceAuditPage';
 import ServiceLegalPage from './ServiceLegalPage';
 import ServiceManagementPage from './ServiceManagementPage';
 import ServiceProjectsPage from './ServiceProjectsPage';
+import { preloadImages } from './preloadImages';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
 const ABOUT_DESKTOP_BREAKPOINT = 1280;
@@ -47,6 +48,7 @@ const SERVICE_ROUTE_ORDER = [
   'service-projects',
 ] as const;
 const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
+const CASES_PRELOAD_IDLE_TIMEOUT_MS = 5000;
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
 type ServicePage = (typeof SERVICE_ROUTE_ORDER)[number];
@@ -151,6 +153,56 @@ export default function App() {
   const [viewportWidth, setViewportWidth] = useState(0);
   const [currentPage, setCurrentPage] = useState<AppPage>(() => resolveAppPageFromLocation());
   const [pendingCasesFilter, setPendingCasesFilter] = useState<CasesFilterLabel | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const connection = (window.navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+    if (connection?.saveData || connection?.effectiveType === 'slow-2g' || connection?.effectiveType === '2g') {
+      return;
+    }
+
+    let timeoutId: number | null = null;
+    let idleId: number | null = null;
+
+    const runPreload = () => preloadImages(CASES_PAGE_PRELOAD_IMAGES, { addPreloadLinks: true });
+
+    const schedulePreload = () => {
+      const requestIdleCallback = window.requestIdleCallback?.bind(window) as
+        | ((callback: () => void, options?: { timeout: number }) => number)
+        | undefined;
+
+      if (requestIdleCallback) {
+        idleId = requestIdleCallback(runPreload, { timeout: CASES_PRELOAD_IDLE_TIMEOUT_MS });
+        return;
+      }
+
+      timeoutId = window.setTimeout(runPreload, 1200);
+    };
+
+    const onLoad = () => {
+      schedulePreload();
+    };
+
+    if (document.readyState === 'complete') {
+      schedulePreload();
+    } else {
+      window.addEventListener('load', onLoad, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', onLoad);
+      if (timeoutId !== null) {
+        window.clearTimeout(timeoutId);
+      }
+      if (idleId !== null && 'cancelIdleCallback' in window) {
+        const cancelIdleCallback = (window as Window & { cancelIdleCallback: (handle: number) => void }).cancelIdleCallback;
+        cancelIdleCallback(idleId);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const updateViewport = () => setViewportWidth(getViewportWidth());

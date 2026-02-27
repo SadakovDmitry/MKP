@@ -12,6 +12,15 @@ const imgShutterstock7041852821 = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce
 const imgShutterstock24973083451 = '/assets/9caeca757f49fce2da4992aa999e6d77c10b0482.jpg';
 const imgRectangle3284 = '/assets/0290e79d08816c64eb25f7f5862f1b56298d7111.svg';
 
+export const CASES_PAGE_PRELOAD_IMAGES = [
+  imgShutterstock20833920672,
+  imgShutterstock23294881251,
+  imgShutterstock24789007811,
+  imgShutterstock7041852821,
+  imgShutterstock24973083451,
+  imgRectangle3284,
+] as const;
+
 const FRAME_WIDTH = 1400;
 const CASES_SECTION_HEIGHT = 1080;
 const MOBILE_BREAKPOINT = 1200;

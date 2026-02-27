@@ -131,49 +131,41 @@ npm run build
 
 ### 6. Конфиг Nginx
 
-Создайте файл:
+В репозитории уже есть готовые конфиги:
 
 ```bash
-sudo nano /etc/nginx/sites-available/mkp
+deploy/nginx/mkp.conf
+deploy/nginx/mkp-brotli.conf
 ```
 
-Вставьте:
-
-```nginx
-server {
-    listen 80;
-    server_name your-domain.com www.your-domain.com;
-
-    root /var/www/mkp/dist;
-    index index.html;
-
-    # SPA fallback
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
-    # Кэш ассетов Vite
-    location /assets/ {
-        expires 30d;
-        add_header Cache-Control "public, max-age=2592000, immutable";
-        try_files $uri =404;
-    }
-
-    # Базовые security headers
-    add_header X-Content-Type-Options nosniff always;
-    add_header X-Frame-Options SAMEORIGIN always;
-    add_header Referrer-Policy strict-origin-when-cross-origin always;
-}
-```
-
-Активируйте конфиг:
+Проверьте, есть ли поддержка brotli в вашем Nginx:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/mkp /etc/nginx/sites-enabled/mkp
+nginx -V 2>&1 | grep -i brotli
+```
+
+Если команда вернула результат -> используйте `mkp-brotli.conf`, если нет -> `mkp.conf`.
+
+Скопируйте выбранный конфиг и активируйте сайт:
+
+```bash
+cd /var/www/mkp
+# вариант без brotli:
+sudo cp deploy/nginx/mkp.conf /etc/nginx/sites-available/mkp
+# вариант с brotli:
+# sudo cp deploy/nginx/mkp-brotli.conf /etc/nginx/sites-available/mkp
+
+sudo ln -sfn /etc/nginx/sites-available/mkp /etc/nginx/sites-enabled/mkp
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo systemctl reload nginx
 ```
+
+Что уже настроено в этих файлах:
+- `Cache-Control` для `index.html` -> без кэша (чтобы после деплоя сразу видеть новую версию)
+- `Cache-Control: immutable` для `/assets/*` (хешированные файлы Vite)
+- `gzip` (и `brotli` в отдельном варианте)
+- SPA fallback: `try_files $uri $uri/ /index.html`
 
 ### 7. HTTPS (Let's Encrypt)
 
