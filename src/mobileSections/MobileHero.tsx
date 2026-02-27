@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { PAGE_LABELS, type SitePage } from '../navigation';
 
-const img21 = '/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.png';
+const img21 = '/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp';
 const imgVector = '/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
 const imgVector1 = '/assets/4305a8c880c19e1f347ca88e2e48d92536cfc532.svg';
 const imgVector2 = '/assets/c1c654e7baca0059e60a181a264f0b17e06a7cb0.svg';

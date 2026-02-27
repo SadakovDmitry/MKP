@@ -1,8 +1,8 @@
-const imgChatGptImage70002Layer3 = "/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.png";
-const imgChatGptImage70003Layer4 = "/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.png";
-const imgChatGptImage70001Layer2 = "/assets/b375f28bf7f11fb12e7b9b5c52811e656d947049.png";
+const imgChatGptImage70002Layer3 = "/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.webp";
+const imgChatGptImage70003Layer4 = "/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.webp";
+const imgChatGptImage70001Layer2 = "/assets/b375f28bf7f11fb12e7b9b5c52811e656d947049.webp";
 const imgChatGptImage70000Layer1 = "/assets/e8463afe767ac9cfe505ca2c0a7aec9317a62958.png";
-const imgChatGptImage70004Layer5 = "/assets/6970dcca3d53861e581296f70514cacb37f69779.png";
+const imgChatGptImage70004Layer5 = "/assets/6970dcca3d53861e581296f70514cacb37f69779.webp";
 const imgExclude = "/assets/2e0b66efe5df2d146aff97771fbc062a73479162.svg";
 const imgExcludeHover = "/assets/6f378aae965602164109861c6e749b9386f7b4dd.svg";
 

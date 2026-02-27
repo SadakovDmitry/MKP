@@ -11,7 +11,7 @@ const MOBILE_BREAKPOINT = 1200;
 const MOBILE_FRAME_WIDTH = 1080;
 const MOBILE_BASE_HEIGHT = 6680;
 
-const heroIcon = '/assets/6970dcca3d53861e581296f70514cacb37f69779.png';
+const heroIcon = '/assets/6970dcca3d53861e581296f70514cacb37f69779.webp';
 
 type ServiceProjectsPageProps = {
   onNavigate: (

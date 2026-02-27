@@ -19,7 +19,7 @@ const MOBILE_SIXTH_SECTION_HEIGHT = 1600;
 const MOBILE_SEVENTH_SECTION_HEIGHT = 1640;
 const MOBILE_FIFTH_SECTION_TOP = MOBILE_FIRST_SECTION_HEIGHT + MOBILE_SECOND_SECTION_HEIGHT + MOBILE_THIRD_SECTION_HEIGHT + MOBILE_FOURTH_SECTION_HEIGHT;
 
-const heroIcon = '/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.png';
+const heroIcon = '/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.webp';
 const sendIcon = '/assets/e38681f5ecbd1f392819aea92eb2583c57615e89.svg';
 const envelopeIcon = '/assets/99529a733eeb5b552be035c8cca8fe0182a35c67.png';
 

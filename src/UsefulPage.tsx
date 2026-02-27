@@ -2,7 +2,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 
 const imgLaw = '/assets/931b6633863d1f54a5fc4411e8d68e92170b9644.png';
-const imgCase = '/assets/fd2feb640c8e531cfacca0277edea7ff68ecea7f.png';
+const imgCase = '/assets/fd2feb640c8e531cfacca0277edea7ff68ecea7f.webp';
 const imgChecklist = '/assets/38c93582bc755349ad4bcef1516f2c8f81b8cf05.png';
 
 const materials = [

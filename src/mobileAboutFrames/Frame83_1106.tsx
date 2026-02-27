@@ -1,4 +1,4 @@
-const imgChatGptImage2020251203481 = "/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.png";
+const imgChatGptImage2020251203481 = "/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.webp";
 
 export default function Mobile() {
   return (

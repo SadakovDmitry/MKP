@@ -7,7 +7,7 @@ import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
 
 const heroImage = '/assets/9833dc10daa3f3fe1ef9edb61ec632af462d5596.jpg';
-const situationImage = '/assets/case-situation-warning-clean.png';
+const situationImage = '/assets/case-situation-warning-clean.webp';
 
 const FRAME_WIDTH = 1400;
 const FRAME_HEIGHT = 4120;

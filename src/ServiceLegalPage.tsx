@@ -11,7 +11,7 @@ const MOBILE_BREAKPOINT = 1200;
 const MOBILE_FRAME_WIDTH = 1080;
 const MOBILE_BASE_HEIGHT = 6400;
 
-const heroIcon = '/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.png';
+const heroIcon = '/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.webp';
 
 type ServiceLegalPageProps = {
   onNavigate: (
