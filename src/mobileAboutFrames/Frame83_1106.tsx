@@ -11,7 +11,7 @@ export default function Mobile() {
         мы помогаем руководителям эффективно управлять бизнесом, оказываем экспертную поддержку и решаем задачи финансового, кадрового и налогового учёта на предприятиях.
       </p>
       <p className="-translate-x-1/2 absolute font-['Roboto:Bold',sans-serif] font-bold top-[435px] left-1/2 w-[620px] min-h-[53px] h-auto leading-none text-[52.598px] text-[color:var(--color,#1f556b)] text-center whitespace-nowrap" data-node-id="83:1109" style={{ fontVariationSettings: "\'wdth\' 100" }}>
-        Более 5 лет
+        Более 10 лет
       </p>
       <div className="absolute font-['Roboto:Bold',sans-serif] font-bold inset-[31.86%_19.26%_63.45%_19.26%] leading-none text-[52.598px] text-[color:var(--color,#1f556b)] text-center whitespace-nowrap" data-node-id="83:1110" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         <p className="mb-0">Консалтинговое агентство</p>

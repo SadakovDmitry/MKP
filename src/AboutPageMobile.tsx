@@ -3,7 +3,6 @@ import Frame83_434 from './mobileAboutFrames/Frame83_434';
 import Frame83_1106 from './mobileAboutFrames/Frame83_1106';
 import Frame83_1317 from './mobileAboutFrames/Frame83_1317';
 import Frame83_1189 from './mobileAboutFrames/Frame83_1189';
-import Frame83_916 from './mobileAboutFrames/Frame83_916';
 import Frame83_1027 from './mobileAboutFrames/Frame83_1027';
 import Frame83_1053 from './mobileAboutFrames/Frame83_1053';
 import Frame83_1062 from './mobileAboutFrames/Frame83_1062';
@@ -11,7 +10,7 @@ import SharedFooter from './SharedFooter';
 import type { SitePage } from './navigation';
 
 export const ABOUT_MOBILE_FRAME_WIDTH = 1080;
-export const ABOUT_MOBILE_FRAME_HEIGHT = 18840;
+export const ABOUT_MOBILE_FRAME_HEIGHT = 14340;
 
 type SectionFrame = {
   key: string;
@@ -24,7 +23,7 @@ const SECTION_STACK: SectionFrame[] = [
   { key: '83:1106', height: 2260, Component: Frame83_1106 },
   { key: '83:1317', height: 1200, Component: Frame83_1317 },
   { key: '83:1189', height: 960, Component: Frame83_1189 },
-  { key: '83:916', height: 4500, Component: Frame83_916 },
+  // { key: '83:916', height: 4500, Component: Frame83_916 }, // Секция "Команда" временно скрыта
   { key: '83:1027', height: 2080, Component: Frame83_1027 },
   { key: '83:1053', height: 960, Component: Frame83_1053 },
   { key: '83:1062', height: 4000, Component: Frame83_1062 },
