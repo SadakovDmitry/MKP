@@ -106,7 +106,7 @@ function RelatedMoreButton({ onClick }: { onClick: () => void }) {
 export default function ArticleSecondPage({ onNavigate, onOpenArticle }: ArticleSecondPageProps) {
   return (
     <div className="article-second-page">
-      <main className="article-second-page__main">
+      <main className="article-second-page__main desktop-full-bleed-frame">
         <section className="article-second-hero">
           <img src={imgHero} alt="" className="article-second-hero__image" />
           <div className="article-second-hero__overlay" />

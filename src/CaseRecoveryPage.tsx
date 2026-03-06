@@ -5,6 +5,7 @@ import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 
 const heroImage = '/assets/b2a669d0351f584ebef2df816f31f342aa1ce334.jpg';
 const problemImage = '/assets/case-situation-warning-clean.webp';
@@ -44,7 +45,7 @@ export default function CaseRecoveryPage({ onNavigate, onOpenCase }: CaseRecover
     if (viewportWidth <= 0) {
       return 1;
     }
-    return viewportWidth / FRAME_WIDTH;
+    return getDesktopScale(viewportWidth, FRAME_WIDTH);
   }, [viewportWidth]);
 
   const mobileProblemScale = useMemo(() => {
@@ -247,7 +248,7 @@ export default function CaseRecoveryPage({ onNavigate, onOpenCase }: CaseRecover
       <main className="case2-main">
         <div className="case2-shell" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <div
-            className="case2-frame"
+            className="case2-frame desktop-full-bleed-frame"
             style={{
               width: `${FRAME_WIDTH}px`,
               transform: `scale(${scale})`,

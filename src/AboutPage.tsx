@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { type SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
+import getDesktopScale from './getDesktopScale';
 
 const imgChatGptImage2020251203481 = "/assets/9a05eb3c69e44eb9374f6a2b6b8432d5210e8bdc.webp";
 const imgMkrIcons0003Layer4 = "/assets/392e3857209dc66690ca73b8a690e23d914c2f6f.png";
@@ -36,7 +37,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
 
   useEffect(() => {
     const updateScale = () => {
-      const nextScale = window.innerWidth / FRAME_WIDTH;
+      const nextScale = getDesktopScale(window.innerWidth, FRAME_WIDTH);
       setScale(nextScale);
     };
 
@@ -57,7 +58,7 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           className="absolute left-0 top-0"
           style={{ width: `${FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: 'top left' }}
         >
-<div className="content-stretch flex flex-col items-start relative size-full" data-name="О компании" data-node-id="38:275">
+<div className="content-stretch flex flex-col items-start relative size-full desktop-full-bleed-frame" data-name="О компании" data-node-id="38:275">
       <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="1" data-node-id="38:3">
         <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--color-2,#44b1d2)] h-[47px] left-1/2 overflow-clip rounded-[50px] top-[calc(50%-281.5px)] w-[1160px]" data-node-id="38:4">
           <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-[5px] right-[4.69px] top-1/2" data-node-id="38:5">

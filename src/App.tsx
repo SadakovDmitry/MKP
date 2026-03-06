@@ -18,6 +18,7 @@ import CaseAutomationOpsPage from './CaseAutomationOpsPage';
 import CaseAutomationFinancePage from './CaseAutomationFinancePage';
 import NewsPage from './NewsPage';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 import type { CasesFilterLabel } from './casesFilters';
 import ArticleFirstPage from './ArticleFirstPage';
 import ArticleSecondPage from './ArticleSecondPage';
@@ -49,6 +50,8 @@ const SERVICE_ROUTE_ORDER = [
 ] as const;
 const SERVICE_ROUTE_SET = new Set<string>(SERVICE_ROUTE_ORDER);
 const CASES_PRELOAD_IDLE_TIMEOUT_MS = 5000;
+const DESKTOP_FULL_BLEED_BREAKPOINT = 1500;
+const DESKTOP_FULL_BLEED_FRAME_SELECTOR = '.desktop-full-bleed-frame';
 
 type ArticlePage = (typeof ARTICLE_ROUTE_ORDER)[number];
 type ServicePage = (typeof SERVICE_ROUTE_ORDER)[number];
@@ -270,6 +273,71 @@ export default function App() {
       return;
     }
 
+    const measuredWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
+    if (measuredWidth <= DESKTOP_FULL_BLEED_BREAKPOINT) {
+      return;
+    }
+
+    let rafId = 0;
+    const enhancedNodes: HTMLElement[] = [];
+
+    const applyDesktopFullBleed = () => {
+      const frames = Array.from(document.querySelectorAll<HTMLElement>(DESKTOP_FULL_BLEED_FRAME_SELECTOR));
+      frames.forEach((frame) => {
+        const frameRect = frame.getBoundingClientRect();
+        const frameWidth = frameRect.width;
+        if (!Number.isFinite(frameWidth) || frameWidth <= 0) {
+          return;
+        }
+
+        Array.from(frame.children).forEach((node) => {
+          if (!(node instanceof HTMLElement)) {
+            return;
+          }
+
+          const styles = window.getComputedStyle(node);
+          if (styles.position === 'absolute') {
+            return;
+          }
+
+          const bgImage = styles.backgroundImage;
+          const bgColor = styles.backgroundColor;
+          const isTransparent = !bgColor || bgColor === 'transparent' || bgColor === 'rgba(0, 0, 0, 0)';
+          if (bgImage !== 'none' || isTransparent) {
+            return;
+          }
+
+          const childRect = node.getBoundingClientRect();
+          const widthDelta = Math.abs(childRect.width - frameWidth);
+          if (widthDelta > 6 || childRect.height < 80) {
+            return;
+          }
+
+          node.style.setProperty('--desktop-full-bleed-bg', bgColor);
+          node.classList.add('desktop-full-bleed-section');
+          enhancedNodes.push(node);
+        });
+      });
+    };
+
+    rafId = window.requestAnimationFrame(applyDesktopFullBleed);
+
+    return () => {
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      enhancedNodes.forEach((node) => {
+        node.classList.remove('desktop-full-bleed-section');
+        node.style.removeProperty('--desktop-full-bleed-bg');
+      });
+    };
+  }, [currentPage, viewportWidth]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       return;
@@ -478,7 +546,7 @@ export default function App() {
     }
 
     const measuredDesktopWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
-    const desktopScale = measuredDesktopWidth > 0 ? measuredDesktopWidth / DESKTOP_BASE_WIDTH : 1;
+    const desktopScale = getDesktopScale(measuredDesktopWidth, DESKTOP_BASE_WIDTH);
     const headerDesktopScale = shouldUseAppDesktopScale(currentPage) ? 1 : Math.max(1, desktopScale);
 
     if (!shouldUseAppDesktopScale(currentPage)) {
@@ -491,8 +559,8 @@ export default function App() {
     }
 
     return (
-      <div className="w-full overflow-x-hidden bg-white">
-        <div style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale }}>
+      <div className="w-full bg-white">
+        <div style={{ width: `${DESKTOP_BASE_WIDTH}px`, zoom: desktopScale, margin: '0 auto' }}>
           <FloatingHeader currentPage={headerPage} onNavigate={handleNavigate} />
           {transitionedContent}
         </div>

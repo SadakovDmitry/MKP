@@ -4,6 +4,7 @@ import { type SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CasesFilterLabel } from './casesFilters';
 import AnimatedCounter from './AnimatedCounter';
+import getDesktopScale from './getDesktopScale';
 
 const heroVideo = "/assets/mkr-neuronka.mp4";
 const heroPoster = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp";
@@ -73,7 +74,7 @@ export default function Frame({
 
   useEffect(() => {
     const updateScale = () => {
-      const nextScale = window.innerWidth / FRAME_WIDTH;
+      const nextScale = getDesktopScale(window.innerWidth, FRAME_WIDTH);
       setScale(nextScale);
     };
 
@@ -101,7 +102,7 @@ export default function Frame({
           className="absolute left-0 top-0"
           style={{ width: `${FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: "top left" }}
         >
-          <div className="content-stretch flex flex-col items-start relative size-full" data-node-id="78:640">
+          <div className="content-stretch flex flex-col items-start relative size-full desktop-full-bleed-frame" data-node-id="78:640">
       <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
         <div className="-translate-y-1/2 absolute left-[calc(58.33%-18.67px)] size-[448px] top-1/2" data-name="2имидж 1" data-node-id="78:3">
           <img
@@ -467,7 +468,7 @@ export default function Frame({
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.48px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:589" />
           <button
             type="button"
-            onClick={() => onOpenCasesByFilter('Разработка ПО')}
+            onClick={() => onOpenCasesByFilter('Финансы')}
             className="absolute h-[54.314px] left-[25.48px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
             data-node-id="78:590"
           >
@@ -486,7 +487,7 @@ export default function Frame({
           <div className="absolute bg-[var(--color-2,#44b1d2)] h-[54.314px] left-[25.49px] rounded-[36.299px] top-[177.48px] w-[321.312px]" data-node-id="78:594" />
           <button
             type="button"
-            onClick={() => onOpenCasesByFilter('HoReCa')}
+            onClick={() => onOpenCasesByFilter('Финансы')}
             className="absolute h-[54.314px] left-[25.49px] top-[177.48px] w-[321.312px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[36.299px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.02] active:translate-y-0 active:scale-[0.98] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
             data-node-id="78:595"
           >

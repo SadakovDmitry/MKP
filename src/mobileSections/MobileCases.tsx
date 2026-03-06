@@ -84,7 +84,7 @@ export default function MobileCases({ onOpenCasesByFilter }: MobileCasesProps) {
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.52px] rounded-[70.56px] top-[344.98px] w-[624.583px]" data-node-id="83:1443" />
         <button
           type="button"
-          onClick={() => onOpenCasesByFilter('Разработка ПО')}
+          onClick={() => onOpenCasesByFilter('Финансы')}
           className="absolute h-[105.578px] left-[49.52px] top-[344.98px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
           data-node-id="83:1444"
         >
@@ -103,7 +103,7 @@ export default function MobileCases({ onOpenCasesByFilter }: MobileCasesProps) {
         <div className="absolute bg-[var(--color-2,#44b1d2)] h-[105.578px] left-[49.55px] rounded-[70.56px] top-[344.99px] w-[624.583px]" data-node-id="83:1448" />
         <button
           type="button"
-          onClick={() => onOpenCasesByFilter('HoReCa')}
+          onClick={() => onOpenCasesByFilter('Финансы')}
           className="absolute h-[105.578px] left-[49.55px] top-[344.99px] w-[624.583px] border-0 bg-transparent p-0 cursor-pointer flex items-center justify-center relative overflow-hidden rounded-[70.56px] group transition-transform duration-200 ease-out hover:-translate-y-[1px] hover:scale-[1.01] active:translate-y-0 active:scale-[0.985] hover:shadow-[inset_0_0_0_2px_rgba(255,255,255,0.22)] active:shadow-[inset_0_0_0_3px_rgba(255,255,255,0.3)]"
           data-node-id="83:1449"
         >

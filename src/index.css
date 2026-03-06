@@ -205,6 +205,25 @@ body {
   animation-delay: var(--stagger-delay, 0ms);
 }
 
+@media (min-width: 1501px) {
+  .news-page__main.desktop-full-bleed-frame,
+  .article-first-page__main.desktop-full-bleed-frame,
+  .article-second-page__main.desktop-full-bleed-frame,
+  .article-third-page__main.desktop-full-bleed-frame {
+    overflow-x: visible;
+  }
+
+  .desktop-full-bleed-footer {
+    box-shadow: 0 0 0 100vmax #313131;
+    clip-path: inset(0 -100vmax);
+  }
+
+  .desktop-full-bleed-section {
+    box-shadow: 0 0 0 100vmax var(--desktop-full-bleed-bg);
+    clip-path: inset(0 -100vmax);
+  }
+}
+
 @keyframes premium-stagger-in {
   from {
     opacity: 0;

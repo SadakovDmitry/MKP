@@ -90,7 +90,7 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
   }
 
   return (
-    <footer className="w-full bg-[var(--color-3,#313131)] overflow-hidden" style={{ height: `${desktopScaledHeight}px` }}>
+    <footer className="w-full bg-[var(--color-3,#313131)] overflow-hidden desktop-full-bleed-footer" style={{ height: `${desktopScaledHeight}px` }}>
       <div className="relative mx-auto" style={{ width: `${desktopScaledWidth}px`, height: `${desktopScaledHeight}px` }}>
         <div
           className="absolute left-0 top-0"

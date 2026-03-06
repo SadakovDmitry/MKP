@@ -5,6 +5,7 @@ import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 
 const imgHero = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.jpg';
 const imgSituation = '/assets/3cb062f04f739d8bdb43861c24a230efcc0960c3.webp';
@@ -44,7 +45,7 @@ export default function CaseExpertisePage({ onNavigate, onOpenCase }: CaseExpert
     if (viewportWidth <= 0) {
       return 1;
     }
-    return viewportWidth / FRAME_WIDTH;
+    return getDesktopScale(viewportWidth, FRAME_WIDTH);
   }, [viewportWidth]);
 
   const mobileSituationScale = useMemo(() => {
@@ -324,7 +325,7 @@ export default function CaseExpertisePage({ onNavigate, onOpenCase }: CaseExpert
       <main className="case1-main">
         <div className="case1-shell" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <div
-            className="case1-frame"
+            className="case1-frame desktop-full-bleed-frame"
             style={{
               width: `${FRAME_WIDTH}px`,
               transform: `scale(${scale})`,

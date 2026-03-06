@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import SharedFooter from './SharedFooter';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 import type { SitePage } from './navigation';
 import ContactsMap from './ContactsMap';
 import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from './socialLinks';
@@ -35,7 +36,7 @@ export default function ContactsPage({ onNavigate }: ContactsPageProps) {
   }, []);
 
   const measuredViewportWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
-  const scale = measuredViewportWidth > 0 ? measuredViewportWidth / FRAME_WIDTH : 1;
+  const scale = getDesktopScale(measuredViewportWidth, FRAME_WIDTH);
   const isMobileLayout = measuredViewportWidth > 0 && measuredViewportWidth < MOBILE_BREAKPOINT;
 
   if (isMobileLayout) {
@@ -47,7 +48,7 @@ export default function ContactsPage({ onNavigate }: ContactsPageProps) {
       <main className="contacts-page__main">
         <div className="contacts-page__scaled-wrap" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${CONTACTS_FRAME_HEIGHT * scale}px` }}>
           <section
-            className="contacts-page__frame"
+            className="contacts-page__frame desktop-full-bleed-frame"
             style={{
               width: `${FRAME_WIDTH}px`,
               height: `${CONTACTS_FRAME_HEIGHT}px`,

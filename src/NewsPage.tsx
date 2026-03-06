@@ -8,6 +8,8 @@ const imgArticleTax = '/assets/news-figma-article-tax.png';
 const imgArticleLiability = '/assets/news-figma-article-liability.png';
 const imgNewsCardArrow = '/assets/news-figma-group-125.svg';
 const MIN_WAGE_LAW_URL = 'https://www.consultant.ru/document/cons_doc_LAW_27572/';
+const ARTICLES_SECTION_ID = 'news-articles-section';
+const NEWS_SECTION_ID = 'news-news-section';
 
 type NewsPageProps = {
   onNavigate: (page: SitePage) => void;
@@ -98,6 +100,22 @@ function MoreButton({ onClick }: { onClick?: () => void }) {
 }
 
 export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondArticle, onOpenThirdArticle }: NewsPageProps) {
+  const scrollToSection = (sectionId: string) => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+  };
+
   const handleOpenNewsCard = (index: number) => {
     if (index === 2) {
       window.open(MIN_WAGE_LAW_URL, '_blank', 'noopener,noreferrer');
@@ -109,22 +127,36 @@ export default function NewsPage({ onNavigate, onOpenFirstArticle, onOpenSecondA
 
   return (
     <div className="news-page">
-      <main className="news-page__main">
+      <main className="news-page__main desktop-full-bleed-frame">
         <section className="news-hero">
-          <div className="news-hero__pill news-hero__pill--left" />
-          <div className="news-hero__pill news-hero__pill--right" />
-          <div className="news-hero__title">
-            <span className="news-hero__title-left">Статьи</span>
-            <span className="news-hero__title-middle">и</span>
-            <span className="news-hero__title-right">Новости</span>
-          </div>
+          <button
+            type="button"
+            className="news-hero__pill news-hero__pill--left news-hero__pill-button"
+            onClick={() => scrollToSection(ARTICLES_SECTION_ID)}
+            aria-label="Перейти к разделу Статьи"
+          >
+            Статьи
+          </button>
+          <button
+            type="button"
+            className="news-hero__pill news-hero__pill--right news-hero__pill-button"
+            onClick={() => scrollToSection(NEWS_SECTION_ID)}
+            aria-label="Перейти к разделу Новости"
+          >
+            Новости
+          </button>
+          <p className="news-hero__title-middle">и</p>
         </section>
 
         <section className="news-content premium-stagger-parent">
           <div className="news-content__scale-wrap">
             <div className="news-content__frame">
-              <h2 className="news-content__section-title news-content__section-title--articles">Статьи</h2>
-              <h2 className="news-content__section-title news-content__section-title--news">Новости</h2>
+              <h2 id={ARTICLES_SECTION_ID} className="news-content__section-title news-content__section-title--articles">
+                Статьи
+              </h2>
+              <h2 id={NEWS_SECTION_ID} className="news-content__section-title news-content__section-title--news">
+                Новости
+              </h2>
 
               {ARTICLE_CARDS.map((card, index) => (
                 <article

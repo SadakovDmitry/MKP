@@ -3,6 +3,7 @@ import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 import type { CasesFilterLabel } from './casesFilters';
 
 const imgShutterstock20833920672 = '/assets/f0cb7c8701cc0b94143cc332b0dcf7ab3d527412.jpg';
@@ -32,24 +33,14 @@ type CasesPageProps = {
 };
 
 const FILTERS = [
-  { label: 'Финансы', left: 594, width: 100 },
-  { label: 'Строительство', left: 704, width: 148 },
-  { label: 'Сельское хозяйство', left: 862, width: 174 },
-  { label: 'HoReCa', left: 1046, width: 86 },
-  { label: 'Разработка ПО', left: 1142, width: 133 },
-] as const satisfies ReadonlyArray<{ label: CasesFilterLabel; left: number; width: number }>;
-
-const MOBILE_FILTER_WIDTHS: Record<FilterLabel, string> = {
-  Финансы: 'w-[84px]',
-  Строительство: 'w-[132px]',
-  'Сельское хозяйство': 'w-[156px]',
-  HoReCa: 'w-[76px]',
-  'Разработка ПО': 'w-[118px]',
-};
+  { label: 'Финансы', width: 100 },
+  { label: 'Строительство', width: 148 },
+  { label: 'Сельское хозяйство', width: 174 },
+] as const satisfies ReadonlyArray<{ label: CasesFilterLabel; width: number }>;
 
 type FilterLabel = CasesFilterLabel;
 
-const DEFAULT_ACTIVE_FILTERS: FilterLabel[] = ['Финансы', 'Строительство', 'Сельское хозяйство', 'Разработка ПО'];
+const DEFAULT_ACTIVE_FILTERS: FilterLabel[] = ['Финансы', 'Строительство', 'Сельское хозяйство'];
 
 type CaseCardData = {
   id: CaseId;
@@ -117,7 +108,7 @@ const CASE_CARDS: CaseCardData[] = [
       innerClass: 'h-[477.606px] relative w-[716.322px]',
     },
     mobileImagePosition: '58% 50%',
-    tags: ['Строительство', 'HoReCa'],
+    tags: ['Строительство'],
   },
   {
     id: 'case-automation-1',
@@ -129,7 +120,7 @@ const CASE_CARDS: CaseCardData[] = [
     descriptionTop: 'top-[270px]',
     imageClass: 'absolute h-[401px] left-[-172px] max-w-none object-cover pointer-events-none top-0 w-[602px]',
     mobileImagePosition: '45% 42%',
-    tags: ['Разработка ПО', 'Финансы'],
+    tags: ['Финансы'],
   },
   {
     id: 'case-automation-2',
@@ -141,7 +132,7 @@ const CASE_CARDS: CaseCardData[] = [
     descriptionTop: 'top-[276px]',
     imageClass: 'absolute h-[401px] left-[-164px] max-w-none object-cover pointer-events-none top-0 w-[602px]',
     mobileImagePosition: '50% 46%',
-    tags: ['Финансы', 'HoReCa'],
+    tags: ['Финансы'],
   },
 ];
 
@@ -322,7 +313,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
     setActiveFilters([...DEFAULT_ACTIVE_FILTERS]);
   }, [initialFilter]);
 
-  const scale = viewportWidth > 0 ? viewportWidth / FRAME_WIDTH : 1;
+  const scale = getDesktopScale(viewportWidth, FRAME_WIDTH);
   const isMobileLayout = viewportWidth > 0 && viewportWidth < MOBILE_BREAKPOINT;
 
   const visibleCards = useMemo(() => {
@@ -356,7 +347,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
       <div className="min-h-screen bg-white text-[#313131]">
         <main className="w-full pt-[96px] pb-6">
           <section className="w-full px-[14px] premium-stagger-parent">
-            <div className="flex flex-wrap gap-x-[8px] gap-y-[8px]">
+            <div className="grid w-full grid-cols-3 gap-[8px]">
               {FILTERS.map((filter) => {
                 const isActive = activeFilters.includes(filter.label);
                 return (
@@ -368,7 +359,7 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
                         prev.includes(filter.label) ? prev.filter((item) => item !== filter.label) : [...prev, filter.label],
                       )
                     }
-                    className={`${MOBILE_FILTER_WIDTHS[filter.label]} h-[20px] rounded-[86px] border text-[9.8px] leading-none font-['Roboto:Medium',sans-serif] transition-colors duration-150 ${
+                    className={`h-[24px] w-full rounded-[86px] border px-[4px] text-[8.8px] leading-none font-['Roboto:Medium',sans-serif] transition-colors duration-150 ${
                       isActive ? 'bg-[#313131] border-[#313131] text-white' : 'bg-white border-[#313131] text-[#313131]'
                     }`}
                   >
@@ -416,26 +407,28 @@ export default function CasesPage({ onNavigate, onOpenCase, initialFilter = null
                 <p className="font-['Roboto:Medium',sans-serif] font-medium leading-[normal] text-[14.175px] text-[color:var(--color-3,#313131)] text-center">Применить фильтр</p>
               </button>
 
-              {FILTERS.map((filter) => {
-                const isActive = activeFilters.includes(filter.label);
-                return (
-                  <button
-                    key={filter.label}
-                    type="button"
-                    onClick={() =>
-                      setActiveFilters((prev) =>
-                        prev.includes(filter.label) ? prev.filter((item) => item !== filter.label) : [...prev, filter.label],
-                      )
-                    }
-                    className={`absolute content-stretch flex items-center justify-center overflow-clip px-[6px] py-[4px] rounded-[38.823px] top-[147px] border cursor-pointer transition-colors duration-150 ${
-                      isActive ? 'bg-[#313131] border-[#313131] text-white' : 'bg-white border-[#313131] text-[#313131]'
-                    }`}
-                    style={{ left: `${filter.left}px`, width: `${filter.width}px` }}
-                  >
-                    <p className="font-['Roboto:Medium',sans-serif] font-medium leading-[normal] text-[14.175px] text-center">{filter.label}</p>
-                  </button>
-                );
-              })}
+              <div className="absolute right-[125px] top-[147px] flex items-center gap-[10px]">
+                {FILTERS.map((filter) => {
+                  const isActive = activeFilters.includes(filter.label);
+                  return (
+                    <button
+                      key={filter.label}
+                      type="button"
+                      onClick={() =>
+                        setActiveFilters((prev) =>
+                          prev.includes(filter.label) ? prev.filter((item) => item !== filter.label) : [...prev, filter.label],
+                        )
+                      }
+                      className={`content-stretch flex h-[26.056px] items-center justify-center overflow-clip rounded-[38.823px] border px-[6px] py-[4px] cursor-pointer transition-colors duration-150 ${
+                        isActive ? 'bg-[#313131] border-[#313131] text-white' : 'bg-white border-[#313131] text-[#313131]'
+                      }`}
+                      style={{ width: `${filter.width}px` }}
+                    >
+                      <p className="font-['Roboto:Medium',sans-serif] font-medium leading-[normal] text-[14.175px] text-center">{filter.label}</p>
+                    </button>
+                  );
+                })}
+              </div>
 
               <div className="absolute bg-[var(--color-2,#44b1d2)] h-[400px] left-[120px] overflow-clip rounded-[40px] top-[195px] w-[275px]">
                 <p

@@ -1,5 +1,8 @@
 import './MobileNewsPage.css';
 
+export const MOBILE_NEWS_ARTICLES_SECTION_ID = 'mobile-news-articles-section';
+export const MOBILE_NEWS_NEWS_SECTION_ID = 'mobile-news-news-section';
+
 const imgArticleOutsource = '/assets/news-figma-article-outsource.png';
 const imgArticleTax = '/assets/news-figma-article-tax.png';
 const imgArticleLiability = '/assets/news-figma-article-liability.png';
@@ -102,8 +105,12 @@ export default function MobileNewsPage({ onOpenFirstArticle, onOpenSecondArticle
 
   return (
     <section className="mobile-news-page">
-      <h2 className="mobile-news-page__section-title mobile-news-page__section-title--articles">статьи</h2>
-      <h2 className="mobile-news-page__section-title mobile-news-page__section-title--news">новости</h2>
+      <h2 id={MOBILE_NEWS_ARTICLES_SECTION_ID} className="mobile-news-page__section-title mobile-news-page__section-title--articles">
+        статьи
+      </h2>
+      <h2 id={MOBILE_NEWS_NEWS_SECTION_ID} className="mobile-news-page__section-title mobile-news-page__section-title--news">
+        новости
+      </h2>
 
       {ARTICLE_CARDS.map((card, index) => (
         <article key={card.title} className={card.className}>

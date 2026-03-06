@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 import type { SitePage } from './navigation';
 import SharedFooter from './SharedFooter';
 import './ServiceAuditPage.css';
@@ -89,7 +90,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
   }, []);
 
   const measuredViewportWidth = viewportWidth > 0 ? viewportWidth : getViewportWidth();
-  const scale = measuredViewportWidth > 0 ? measuredViewportWidth / FRAME_WIDTH : 1;
+  const scale = getDesktopScale(measuredViewportWidth, FRAME_WIDTH);
   const isMobileLayout = measuredViewportWidth > 0 && measuredViewportWidth < MOBILE_BREAKPOINT;
   const mobileScale = measuredViewportWidth > 0 ? Math.min(1, measuredViewportWidth / MOBILE_FRAME_WIDTH) : 1;
 
@@ -258,7 +259,7 @@ export default function ServiceLegalPage({ onNavigate }: ServiceLegalPageProps) 
       <main className="service-audit-page__main">
         <div className="service-audit-page__shell" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <div
-            className="service-audit-page__frame"
+            className="service-audit-page__frame desktop-full-bleed-frame"
             style={{
               width: `${FRAME_WIDTH}px`,
               height: `${FRAME_HEIGHT}px`,

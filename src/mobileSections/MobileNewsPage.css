@@ -32,6 +32,11 @@
   top: calc(50% + 218px);
 }
 
+#mobile-news-articles-section,
+#mobile-news-news-section {
+  scroll-margin-top: 110px;
+}
+
 .mobile-news-page__article-card {
   position: absolute;
   left: 177px;

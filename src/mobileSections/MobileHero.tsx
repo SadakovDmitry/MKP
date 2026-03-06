@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { PAGE_LABELS, type SitePage } from '../navigation';
+import { MOBILE_NEWS_ARTICLES_SECTION_ID, MOBILE_NEWS_NEWS_SECTION_ID } from './MobileNewsPage';
 
 const img21 = '/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp';
 const imgVector = '/assets/abf229e8dc301d2b0d5c414508c551d659e997c1.svg';
@@ -30,15 +31,43 @@ export default function MobileHero({ currentPage, onNavigate }: MobileHeroProps)
     setMenuOpen(false);
   };
 
+  const scrollToNewsSection = (sectionId: string) => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    const prefersReducedMotion =
+      typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    section.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
+  };
+
   if (isNewsPage) {
     return (
       <div className="bg-[var(--color-4,white)] relative size-full">
-        <div className="absolute bg-[var(--color-2,#44b1d2)] h-[84.9px] left-[184px] rounded-[42.46px] top-[542.7px] w-[283px]" />
-        <div className="absolute bg-[var(--color,#1f556b)] h-[84.9px] left-[549.26px] rounded-[42.46px] top-[542.7px] w-[347.7px]" />
-        <p className="absolute font-['Geologica:Medium',sans-serif] font-medium leading-[1.2] left-[calc(50%-330.39px)] m-0 text-[67.5px] text-[color:var(--color-4,white)] top-[540px]">
-          <span>Статьи</span>
-          <span className="text-[var(--color-3,#313131)] whitespace-pre-wrap">{'   и   '}</span>
-          <span>Новости</span>
+        <button
+          type="button"
+          onClick={() => scrollToNewsSection(MOBILE_NEWS_ARTICLES_SECTION_ID)}
+          className="absolute bg-[var(--color-2,#44b1d2)] h-[84.9px] left-[184px] rounded-[42.46px] top-[542.7px] w-[283px] border-0 p-0 m-0 cursor-pointer font-['Geologica:Medium',sans-serif] font-medium leading-[1.2] text-[67.5px] text-[color:var(--color-4,white)]"
+          aria-label="Перейти к разделу Статьи"
+        >
+          Статьи
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollToNewsSection(MOBILE_NEWS_NEWS_SECTION_ID)}
+          className="absolute bg-[var(--color,#1f556b)] h-[84.9px] left-[549.26px] rounded-[42.46px] top-[542.7px] w-[347.7px] border-0 p-0 m-0 cursor-pointer font-['Geologica:Medium',sans-serif] font-medium leading-[1.2] text-[67.5px] text-[color:var(--color-4,white)]"
+          aria-label="Перейти к разделу Новости"
+        >
+          Новости
+        </button>
+        <p className="absolute -translate-x-1/2 font-['Geologica:Medium',sans-serif] font-medium leading-[1.2] left-[508.13px] m-0 text-[67.5px] text-[var(--color-3,#313131)] top-[540px] whitespace-nowrap">
+          и
         </p>
       </div>
     );

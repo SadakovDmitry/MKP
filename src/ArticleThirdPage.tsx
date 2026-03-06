@@ -107,7 +107,7 @@ function RelatedMoreButton({ onClick }: { onClick: () => void }) {
 export default function ArticleThirdPage({ onNavigate, onOpenArticle }: ArticleThirdPageProps) {
   return (
     <div className="article-third-page">
-      <main className="article-third-page__main">
+      <main className="article-third-page__main desktop-full-bleed-frame">
         <section className="article-third-hero">
           <img src={imgHero} alt="" className="article-third-hero__image" />
           <div className="article-third-hero__overlay" />

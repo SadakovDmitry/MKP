@@ -5,6 +5,7 @@ import SharedFooter from './SharedFooter';
 import MobileCaseExtraSection from './MobileCaseExtraSection';
 import type { CaseId } from './caseDetailsData';
 import getViewportWidth from './getViewportWidth';
+import getDesktopScale from './getDesktopScale';
 
 const heroImage = '/assets/b2b736d622a11a57c36aed328ad4b3329851a19d.jpg';
 const situationImage = '/assets/case-situation-warning-clean.webp';
@@ -46,7 +47,7 @@ export default function CaseAutomationOpsPage({ onNavigate, onOpenCase }: CaseAu
     if (viewportWidth <= 0) {
       return 1;
     }
-    return viewportWidth / FRAME_WIDTH;
+    return getDesktopScale(viewportWidth, FRAME_WIDTH);
   }, [viewportWidth]);
 
   const mobileSituationScale = useMemo(() => {
@@ -305,7 +306,7 @@ export default function CaseAutomationOpsPage({ onNavigate, onOpenCase }: CaseAu
       <main className="case4-main">
         <div className="case4-shell" style={{ width: `${FRAME_WIDTH * scale}px`, height: `${FRAME_HEIGHT * scale}px` }}>
           <div
-            className="case4-frame"
+            className="case4-frame desktop-full-bleed-frame"
             style={{
               width: `${FRAME_WIDTH}px`,
               transform: `scale(${scale})`,
