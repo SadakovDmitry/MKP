@@ -6,7 +6,7 @@ import type { CasesFilterLabel } from './casesFilters';
 import AnimatedCounter from './AnimatedCounter';
 import getDesktopScale from './getDesktopScale';
 
-const heroVideo = "/assets/mkr-neuronka.mp4";
+const heroVideo = "/assets/mkr-neuronka-v2.mp4";
 const heroPoster = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp";
 const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.webp";
 const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.webp";
