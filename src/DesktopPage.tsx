@@ -102,8 +102,8 @@ export default function Frame({
           className="absolute left-0 top-0"
           style={{ width: `${FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: "top left" }}
         >
-          <div className="content-stretch flex flex-col items-start relative size-full desktop-full-bleed-frame" data-node-id="78:640">
-      <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
+          <div className="content-stretch flex flex-col items-start relative size-full desktop-full-bleed-frame app-fixed-hero-frame" data-node-id="78:640">
+      <div className="app-fixed-hero-section bg-white h-[700px] overflow-clip relative shrink-0 w-full" data-name="17" data-node-id="78:2">
         <div className="-translate-y-1/2 absolute left-[calc(58.33%-18.67px)] size-[448px] top-1/2" data-name="2имидж 1" data-node-id="78:3">
           <img
             alt=""

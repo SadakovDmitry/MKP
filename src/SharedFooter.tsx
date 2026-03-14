@@ -176,28 +176,25 @@ export default function SharedFooter({ onNavigate, forceMobile = false, mobileEm
           © МКР, 2025, All Rights Reserved | Политика Конфиденциальности
         </p>
         <p
-          className="absolute font-['Roboto:Light',sans-serif] font-light inset-[76.8%_62.57%_17.6%_8.57%] leading-[0.9] text-[16px] text-[color:var(--color-4,white)]"
+          className="absolute font-['Roboto:Light',sans-serif] font-light inset-[76.8%_58.4%_17.6%_8.57%] leading-[0.9] text-[16px] text-[color:var(--color-4,white)] whitespace-nowrap"
           style={{ fontVariationSettings: '\'wdth\' 100' }}
         >
           г. Москва, Благовещенский пер., дом 3, стр. 1, пом. 1/6
         </p>
-        <a href={SOCIAL_LINKS.whatsapp} {...SOCIAL_LINK_PROPS} aria-label="WhatsApp" className="absolute inset-[18%_8.57%_62.8%_85.86%]">
-          <img alt="" className="absolute block max-w-none size-full" src={imgVector5} />
-        </a>
-        <a
-          href={SOCIAL_LINKS.telegram}
-          {...SOCIAL_LINK_PROPS}
-          aria-label="Telegram"
-          className="absolute h-[48px] left-[calc(83.33%-51.67px)] top-[45px] w-[53px]"
-        >
-          <img alt="" className="absolute block max-w-none size-full" src={imgExclude1} />
-        </a>
-        <a href={SOCIAL_LINKS.vk} {...SOCIAL_LINK_PROPS} aria-label="VK" className="absolute inset-[18%_22.36%_62.8%_74.21%]">
-          <img alt="" className="absolute block max-w-none size-full" src={imgExclude2} />
-        </a>
-        <a href={SOCIAL_LINKS.max} {...SOCIAL_LINK_PROPS} aria-label="MAX" className="absolute inset-[18%_27.79%_62.8%_68.64%]">
-          <img alt="" className="absolute block max-w-none size-full" src={imgVector6} />
-        </a>
+        <div className="absolute right-[120px] top-[50px] flex items-center gap-[26px] h-[38px]">
+          <a href={SOCIAL_LINKS.max} {...SOCIAL_LINK_PROPS} aria-label="MAX" className="relative h-[38px] w-[38px] shrink-0">
+            <img alt="" className="absolute block max-w-none size-full object-contain" src={imgVector6} />
+          </a>
+          <a href={SOCIAL_LINKS.vk} {...SOCIAL_LINK_PROPS} aria-label="VK" className="relative h-[38px] w-[42px] shrink-0">
+            <img alt="" className="absolute block max-w-none size-full object-contain" src={imgExclude2} />
+          </a>
+          <a href={SOCIAL_LINKS.telegram} {...SOCIAL_LINK_PROPS} aria-label="Telegram" className="relative h-[38px] w-[42px] shrink-0">
+            <img alt="" className="absolute block max-w-none size-full object-contain" src={imgExclude1} />
+          </a>
+          <a href={SOCIAL_LINKS.whatsapp} {...SOCIAL_LINK_PROPS} aria-label="WhatsApp" className="relative h-[38px] w-[38px] shrink-0">
+            <img alt="" className="absolute block max-w-none size-full object-contain" src={imgVector5} />
+          </a>
+        </div>
           </div>
         </div>
       </div>

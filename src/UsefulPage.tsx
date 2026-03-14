@@ -53,7 +53,7 @@ export default function UsefulPage({ onNavigate }: UsefulPageProps) {
   return (
     <div className="bg-white min-h-screen text-[#313131]">
       <main>
-        <section className="bg-[#e2f4fa] pt-24 pb-10 sm:pt-28 lg:pt-36">
+        <section className="bg-[#e2f4fa] pt-16 pb-10 sm:pt-20 lg:pt-24">
           <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
             <p className="font-['Geologica:Medium',sans-serif] text-[#1f556b] text-[16px] sm:text-[20px] uppercase tracking-[0.04em]">
               Полезное

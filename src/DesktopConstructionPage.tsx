@@ -41,8 +41,8 @@ export default function DesktopConstructionPage({ currentPage, onNavigate }: Des
           className="absolute left-0 top-0"
           style={{ width: `${FRAME_WIDTH}px`, transform: `scale(${scale})`, transformOrigin: 'top left' }}
         >
-          <div className="content-stretch flex flex-col items-start relative size-full">
-            <div className="bg-white h-[700px] overflow-clip relative shrink-0 w-full">
+          <div className="content-stretch flex flex-col items-start relative size-full app-fixed-hero-frame">
+            <div className="app-fixed-hero-section bg-white h-[700px] overflow-clip relative shrink-0 w-full">
               <div className="-translate-x-1/2 -translate-y-1/2 absolute bg-[var(--color-2,#44b1d2)] h-[47px] left-1/2 overflow-clip rounded-[50px] top-[calc(50%-281.5px)] w-[1160px]" data-node-id="78:40">
                 <div className="-translate-y-1/2 absolute content-stretch flex items-center justify-between left-[5px] right-[4.69px] top-1/2" data-node-id="78:41">
                   <div className="bg-[var(--color-4,white)] h-[36px] overflow-clip relative rounded-[38.823px] shrink-0 w-[100px]" data-node-id="78:42">

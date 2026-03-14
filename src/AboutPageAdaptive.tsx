@@ -177,7 +177,7 @@ export default function AboutPageAdaptive({ onNavigate }: AboutPageAdaptiveProps
       </header>
 
       <main>
-        <section className="mx-auto max-w-[1200px] px-4 pb-14 pt-10 sm:px-6 lg:px-8">
+        <section className="mx-auto max-w-[1200px] px-4 pb-14 pt-6 sm:px-6 sm:pt-8 lg:px-8">
           <h1 className="font-['Geologica:Medium',sans-serif] text-[30px] sm:text-[40px] lg:text-[50.081px] leading-[1.1] text-center lg:text-left max-w-[820px]">
             Мы знаем, как сделать ваш бизнес{' '}
             <span className="inline-flex h-[42px] sm:h-[48px] lg:h-[63px] items-center justify-center bg-[#44b1d2] text-white rounded-[31.5px] px-4 sm:px-6 align-middle">эффективным</span>{' '}

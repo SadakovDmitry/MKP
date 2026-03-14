@@ -46,6 +46,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  --app-hero-gap-trim: 120px;
 }
 
 * {
@@ -72,6 +73,24 @@ body {
 
 .about-adaptive-local-header {
   display: none !important;
+}
+
+.app-fixed-hero-frame > .app-fixed-hero-section {
+  margin-bottom: calc(-1 * var(--app-hero-gap-trim));
+}
+
+.news-hero,
+.article-first-hero,
+.article-second-hero,
+.article-third-hero,
+.service-accounting-exact__hero,
+.service-audit-page__hero,
+.case1-hero,
+.case2-hero,
+.case3-hero,
+.case4-hero,
+.case5-hero {
+  height: calc(700px - var(--app-hero-gap-trim));
 }
 
 .app-page-transition {

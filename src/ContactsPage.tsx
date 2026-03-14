@@ -8,7 +8,7 @@ import { SOCIAL_LINK_PROPS, SOCIAL_LINKS } from './socialLinks';
 import './ContactsPage.css';
 
 const FRAME_WIDTH = 1400;
-const CONTACTS_FRAME_HEIGHT = 1460;
+const CONTACTS_FRAME_HEIGHT = 1040;
 const MOBILE_BREAKPOINT = 1200;
 
 const imgSendIcon = '/assets/e38681f5ecbd1f392819aea92eb2583c57615e89.svg';

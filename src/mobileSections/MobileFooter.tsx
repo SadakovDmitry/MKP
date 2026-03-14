@@ -24,7 +24,7 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
         href={SOCIAL_LINKS.telegram}
         {...SOCIAL_LINK_PROPS}
         aria-label="Telegram"
-        className="absolute inset-[66.27%_35.09%_27.86%_50.74%]"
+        className="absolute left-[558px] top-[1072px] h-[78px] w-[78px]"
         data-name="Vector"
         data-node-id="83:1501"
       >
@@ -34,7 +34,7 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
         href={SOCIAL_LINKS.vk}
         {...SOCIAL_LINK_PROPS}
         aria-label="VK"
-        className="absolute h-[94px] left-[calc(25%+106px)] top-[1060.3px] w-[104px]"
+        className="absolute h-[78px] left-[382px] top-[1071px] w-[86px]"
         data-name="Exclude"
         data-node-id="83:1502"
       >
@@ -44,7 +44,7 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
         href={SOCIAL_LINKS.max}
         {...SOCIAL_LINK_PROPS}
         aria-label="MAX"
-        className="absolute inset-[66.25%_70.31%_27.84%_20.93%]"
+        className="absolute left-[226px] top-[1071px] h-[78px] w-[78px]"
         data-name="Exclude"
         data-node-id="83:1503"
       >
@@ -56,7 +56,7 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
       <p className="absolute font-['Roboto:Light',sans-serif] font-light inset-[85.75%_8.43%_12.56%_8.43%] leading-[0.9] text-[29.809px] text-[color:var(--color-4,white)]" data-node-id="83:1507" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         © МКР, 2025, All Rights Reserved | Политика Конфиденциальности
       </p>
-      <p className="absolute font-['Roboto:Light',sans-serif] font-light inset-[91.96%_21.85%_6.35%_8.43%] leading-[0.9] text-[29.809px] text-[color:var(--color-4,white)]" data-node-id="83:1508" style={{ fontVariationSettings: "\'wdth\' 100" }}>
+      <p className="absolute font-['Roboto:Light',sans-serif] font-light left-[91px] top-[1471px] leading-[0.9] text-[25px] text-[color:var(--color-4,white)] whitespace-nowrap" data-node-id="83:1508" style={{ fontVariationSettings: "\'wdth\' 100" }}>
         г. Москва, Благовещенский пер., дом 3, стр. 1, пом. 1/6
       </p>
       <button type="button" onClick={() => onNavigate('about')} className="absolute font-['Roboto:Regular',sans-serif] font-normal inset-[30.19%_53.43%_66.19%_12.96%] leading-[0.9] text-[64.28px] text-[color:var(--color-4,white)] whitespace-nowrap border-0 bg-transparent p-0 cursor-pointer text-left" data-node-id="83:1509" style={{ fontVariationSettings: "\'wdth\' 100" }}>
@@ -87,7 +87,7 @@ export default function MobileFooter({ onNavigate }: MobileFooterProps) {
         href={SOCIAL_LINKS.whatsapp}
         {...SOCIAL_LINK_PROPS}
         aria-label="WhatsApp"
-        className="absolute inset-[66.25%_20.93%_27.81%_70%]"
+        className="absolute left-[716px] top-[1071px] h-[78px] w-[78px]"
         data-name="Vector"
         data-node-id="177:217"
       >

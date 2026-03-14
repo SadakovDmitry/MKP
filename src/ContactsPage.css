@@ -24,7 +24,7 @@
 
 .contacts-page__title {
   position: absolute;
-  top: 160px;
+  top: 112px;
   left: 120px;
   margin: 0;
   font-family: "Geologica:Medium", "Geologica", sans-serif;
@@ -36,7 +36,7 @@
 
 .contacts-page__city {
   position: absolute;
-  top: 350px;
+  top: 210px;
   left: 120px;
   margin: 0;
   font-family: "Geologica:ExtraBold", "Geologica", sans-serif;
@@ -48,7 +48,7 @@
 
 .contacts-page__address {
   position: absolute;
-  top: 392px;
+  top: 250px;
   left: 120px;
   margin: 0;
   font-family: "RobotoLocal", "Roboto", sans-serif;
@@ -60,7 +60,7 @@
 
 .contacts-page__email {
   position: absolute;
-  top: 292px;
+  top: 184px;
   right: 120px;
   margin: 0;
   text-align: right;
@@ -73,7 +73,7 @@
 
 .contacts-page__phones {
   position: absolute;
-  top: 380px;
+  top: 266px;
   right: 120px;
   margin: 0;
   text-align: right;
@@ -86,10 +86,10 @@
 
 .contacts-page__map {
   position: absolute;
-  top: 511px;
+  top: 380px;
   left: 120px;
   width: 1160px;
-  height: 548px;
+  height: 320px;
   border-radius: 40px;
   overflow: hidden;
   background: #d7ebf3;
@@ -150,7 +150,7 @@
 
 .contacts-page__decor {
   position: absolute;
-  top: 665px;
+  top: 494px;
   left: 663px;
   width: 169px;
   height: 79px;
@@ -167,11 +167,11 @@
 .contacts-page__form {
   position: absolute;
   left: 120px;
-  top: 1123px;
+  top: 748px;
   width: 472px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .contacts-page__input-shell {
@@ -237,14 +237,14 @@
 .contacts-page__socials {
   position: absolute;
   right: 120px;
-  top: 1277px;
+  top: 806px;
   display: flex;
   gap: 0px;
 }
 
 .contacts-page__social-btn {
-  width: 108px;
-  height: 108px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   background: #fff;
   display: inline-flex;
@@ -255,8 +255,8 @@
 }
 
 .contacts-page__social-btn img {
-  width: 78px;
-  height: 78px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
   display: block;
 }
