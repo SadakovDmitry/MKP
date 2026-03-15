@@ -33,7 +33,7 @@ import ServiceProjectsPage from './ServiceProjectsPage';
 import { preloadImages } from './preloadImages';
 
 const MOBILE_LAYOUT_BREAKPOINT = 1200;
-const ABOUT_DESKTOP_BREAKPOINT = 1280;
+const ABOUT_DESKTOP_BREAKPOINT = MOBILE_LAYOUT_BREAKPOINT;
 const DESKTOP_BASE_WIDTH = 1400;
 const HOME_CONTACT_SECTION_ID = 'home-contact-section';
 const SCROLL_REVEAL_SELECTOR = 'main section, main article';

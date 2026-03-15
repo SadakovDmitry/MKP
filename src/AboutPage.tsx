@@ -521,10 +521,10 @@ export default function AboutPage({ onNavigate }: AboutPageProps) {
           </li>
         </ul>
       </div>
-      <SharedFooter onNavigate={onNavigate} />
     </div>
         </div>
       </div>
+      <SharedFooter onNavigate={onNavigate} desktopScale={scale} />
     </div>
   );
 }

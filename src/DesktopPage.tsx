@@ -8,10 +8,10 @@ import getDesktopScale from './getDesktopScale';
 
 const heroVideo = "/assets/mkr-neuronka-v2.mp4";
 const heroPoster = "/assets/fd01438e00c60be1901fac9f11f8ef9bc2b9afd8.webp";
-const imgChatGptImage1320251804221 = "/assets/c1943de73e30c25267fce6bfb7ea226035562464.webp";
-const imgChatGptImage720251248321 = "/assets/94a22839c9325e1749240f5d169676c408f85555.webp";
-const imgChatGptImage720251251291 = "/assets/6e5a106fdd7d0784c4e2d1d2f358a766874cb177.webp";
-const imgShutterstock2474508323Converted012 = "/assets/a721360e788c5c8db3a22e6abc8d2bd83fdd4248.webp";
+const imgChatGptImage1320251804221 = "/assets/ChatGPT_Image4.svg";
+const imgChatGptImage720251248321 = "/assets/ChatGPT_Image2.svg";
+const imgChatGptImage720251251291 = "/assets/ChatGPT_Image3.svg";
+const imgShutterstock2474508323Converted012 = "/assets/shutterstock_2474508323.svg";
 const imgChatGptImage70002Layer3 = "/assets/b168250fe902bb2dbc34cfdf6686d1c1d2e2e6de.webp";
 const imgChatGptImage70003Layer4 = "/assets/bfecad0c6eac05654a6d611c67a7eb8842671718.webp";
 const imgChatGptImage70001Layer2 = "/assets/b375f28bf7f11fb12e7b9b5c52811e656d947049.webp";
@@ -228,8 +228,8 @@ export default function Frame({
             </div>
           </div>
           <div className="absolute aspect-[714/810] left-[75.14%] right-[12%] top-[130px]" data-name="ChatGPT Image 13 окт. 2025 г., 18_04_22 1" data-node-id="78:437">
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img alt="" className="absolute h-[126.42%] left-[-21.71%] max-w-none top-[-13.21%] w-[143.42%]" src={imgChatGptImage1320251804221} />
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+              <img alt="" className="block h-full w-full object-contain" src={imgChatGptImage1320251804221} />
             </div>
           </div>
         </div>
